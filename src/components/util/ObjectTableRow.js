@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * This component renders a <tr> given a dataObject and 
+ * an array of headers. It will iterate through the headers
+ * in the given order and create a <td> for each. Each header
+ * should include a displayName property, used for 
+ * component metadata, and a field property. The field property
+ * will tell the component which property of the dataObject to look at.
+ * field can also be a function that will be applied to the dataObject.
+ * The return value of this function will be the displayed inner value.
+ */
 export default class ObjectTableRow extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { dataObject, headers } = this.props;
+    const { headers } = this.props;
     return (
       <tr>
         {

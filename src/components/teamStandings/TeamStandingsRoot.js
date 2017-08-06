@@ -1,7 +1,7 @@
 import React from 'react';
 import TeamStandingsContent from './TeamStandingsContent';
 
-export default class TeamStandings extends React.Component {
+export default class TeamStandingsRoot extends React.Component {
 
   render() {
     return (

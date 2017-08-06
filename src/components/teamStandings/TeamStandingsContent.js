@@ -6,12 +6,9 @@ import TeamsAggregateStatsTable from './TeamsAggregateStatsTable';
 
 export default class TeamStandingsContent extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { divisions, teamStats } = this.props;
+    console.log(divisions);
     let standingsComponent;
     if (divisions.length === 0) {
       standingsComponent = <TeamsAggregateStatsTable teamStats={teamStats} pointScheme={[ { value: 10 }, { value: 15 }]}/>

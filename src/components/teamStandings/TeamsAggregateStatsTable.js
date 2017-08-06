@@ -25,15 +25,11 @@ const INDEX_TO_INSERT_POINT_SCHEME = 8;
 
 export default class TeamsAggregateStatsTable extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   static getTableHeaders(pointScheme) {
     const copy = Object.assign([], HEADERS);
     const values = pointScheme.map(tv => ({
       displayName: tv.value,
-      field: team => team.tossupTotals.find(totals => totals.value === tv.value),
+      field: team => team.tossupTotals.find(totals => totals.value === tv.value).value,
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
     return copy;

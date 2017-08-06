@@ -9,9 +9,9 @@ import {
   decrementAsync
 } from '../../modules/counter'
 
-import TeamStandings from '../../components/teamStandings/TeamStandingsRoot';
+import TeamStandingsRoot from '../../components/teamStandings/TeamStandingsRoot';
 
-const Home = props => (
+/*const Home = props => (
   <div>
     <h1>Home</h1>
     <p>Count: {props.count}</p>
@@ -28,7 +28,7 @@ const Home = props => (
 
     <p><button onClick={() => props.changePage()}>Go to about page via redux</button></p>
   </div>
-)
+)*/
 
 const mapStateToProps = state => ({
   count: state.counter.count,
@@ -41,11 +41,10 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   incrementAsync,
   decrement,
   decrementAsync,
-  changePage: () => push('/about-us')
 }, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TeamStandings);
+)(TeamStandingsRoot);
 

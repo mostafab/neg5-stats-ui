@@ -6,9 +6,6 @@ import store, { history } from './store';
 import App from './containers/app';
 
 import 'sanitize.css/sanitize.css';
-import 'semantic-ui-react/';
-
-import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
 const target = document.querySelector('#root');

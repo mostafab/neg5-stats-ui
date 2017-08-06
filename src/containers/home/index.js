@@ -9,6 +9,8 @@ import {
   decrementAsync
 } from '../../modules/counter'
 
+import TeamStandings from '../../components/teamStandings/TeamStandingsRoot';
+
 const Home = props => (
   <div>
     <h1>Home</h1>
@@ -45,4 +47,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(TeamStandings);
+

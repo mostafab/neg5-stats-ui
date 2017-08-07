@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom'
 
-import TeamStandingsRoot from '../home'
+import TeamStandingsRoot from '../home/TeamStandings';
 import TopNavbar from './../../components/TopNavbar';
 
 const Main = () => (

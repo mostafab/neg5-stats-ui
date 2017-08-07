@@ -3,17 +3,19 @@ import { Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import TeamsAggregateStatsTable from './TeamsAggregateStatsTable';
+import TeamsAggregateStatsByBracketWrapper from './TeamsAggregateStatsByBracketWrapper';
+
+const POINT_SCHEME = [ { value: 10 }, { value: 15 } ];
 
 export default class TeamStandingsContent extends React.Component {
 
   render() {
-    const { divisions, teamStats } = this.props;
-    console.log(divisions);
+    const { brackets, teamStats } = this.props;
     let standingsComponent;
-    if (divisions.length === 0) {
-      standingsComponent = <TeamsAggregateStatsTable teamStats={teamStats} pointScheme={[ { value: 10 }, { value: 15 }]}/>
+    if (brackets.length === 0) {
+      standingsComponent = <TeamsAggregateStatsTable teamStats={teamStats} pointScheme={POINT_SCHEME}/>
     } else {
-      
+      standingsComponent = <TeamsAggregateStatsByBracketWrapper teamStats={teamStats} pointScheme={POINT_SCHEME} brackets={brackets} />
     }
     return (
       <Row>
@@ -29,12 +31,12 @@ export default class TeamStandingsContent extends React.Component {
 
 TeamStandingsContent.propTypes = {
   teamStats: PropTypes.arrayOf(PropTypes.object),
-  divisions: PropTypes.arrayOf(PropTypes.object),
+  brackets: PropTypes.arrayOf(PropTypes.object),
   pointScheme: PropTypes.arrayOf(PropTypes.object),
 };
 
 TeamStandingsContent.defaultProps = {
-  divisions: [],
+  brackets: [],
   teamStats: [],
   pointScheme: [],
 };

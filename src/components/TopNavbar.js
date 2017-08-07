@@ -5,7 +5,7 @@ export default () => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href='https://neg5.org' target='_blank'>Neg 5 Stats</a>
+        <a href='https://neg5.org' rel='noopener noreferrer' target='_blank'>Neg 5 Stats</a>
       </Navbar.Brand>
     </Navbar.Header>
     <Navbar.Collapse>

@@ -1,4 +1,5 @@
 import { getTeamStandings } from '../../client/stats-client';
+import { mapTeamStandings } from './../../mappers/team-standings-mapper';
 
 const ROOT = 'teamStandings/';
 
@@ -14,6 +15,8 @@ export const requestTeamStandings = (tournamentId, phaseId) =>
     try {
       const teamStandings = await getTeamStandings(tournamentId, phaseId);
       console.log(teamStandings);
+      const mappedTeamStandings = mapTeamStandings(teamStandings.stats);
+      console.log(mappedTeamStandings);
       dispatch({
         type: TEAM_STANDINGS_RECEIVED,
       });

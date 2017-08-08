@@ -10,12 +10,12 @@ const POINT_SCHEME = [ { value: 10 }, { value: 15 } ];
 export default class TeamStandingsContent extends React.Component {
 
   render() {
-    const { brackets, teamStats } = this.props;
+    const { brackets, allTeamStats } = this.props;
     let standingsComponent;
     if (brackets.length === 0) {
-      standingsComponent = <TeamsAggregateStatsTable teamStats={teamStats} pointScheme={POINT_SCHEME}/>
+      standingsComponent = <TeamsAggregateStatsTable allTeamStats={allTeamStats} pointScheme={POINT_SCHEME}/>
     } else {
-      standingsComponent = <TeamsAggregateStatsByBracketWrapper teamStats={teamStats} pointScheme={POINT_SCHEME} brackets={brackets} />
+      standingsComponent = <TeamsAggregateStatsByBracketWrapper allTeamStats={allTeamStats} pointScheme={POINT_SCHEME} brackets={brackets} />
     }
     return (
       <Row>
@@ -30,14 +30,14 @@ export default class TeamStandingsContent extends React.Component {
 };
 
 TeamStandingsContent.propTypes = {
-  teamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
   brackets: PropTypes.arrayOf(PropTypes.object).isRequired,
   pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 TeamStandingsContent.defaultProps = {
   brackets: [],
-  teamStats: [],
+  allTeamStats: [],
   pointScheme: [],
 };
 

@@ -36,7 +36,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
   }
 
   render() {
-    const { pointScheme, teamStats } = this.props;
+    const { pointScheme, allTeamStats } = this.props;
     const TABLE_HEADERS = TeamsAggregateStatsTable.getTableHeaders(pointScheme);
     return (
       <Table responsive condensed hover>
@@ -49,7 +49,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
           </thead>
           <tbody>
             {
-              teamStats.map(team => <ObjectTableRow dataObject={team} headers={TABLE_HEADERS}/>)
+              allTeamStats.map(team => <ObjectTableRow dataObject={team} headers={TABLE_HEADERS}/>)
             }
           </tbody>
       </Table>
@@ -58,12 +58,12 @@ export default class TeamsAggregateStatsTable extends React.Component {
 };
 
 TeamsAggregateStatsTable.propTypes = {
-  teamStats: PropTypes.arrayOf(PropTypes.object),
+  allTeamStats: PropTypes.arrayOf(PropTypes.object),
   pointScheme: PropTypes.arrayOf(PropTypes.object),
 };
 
 TeamsAggregateStatsTable.defaultProps = {
-  teamStats: [],
+  allTeamStats: [],
   pointScheme: [],
 };
 

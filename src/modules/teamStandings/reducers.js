@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   requestingTeamStandings: false,
-  teamStats: [],
+  allTeamStats: [],
   brackets: [],
 };
 

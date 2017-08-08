@@ -10,7 +10,7 @@ const HEADERS = [
   { displayName: 'W', field: 'wins' },
   { displayName: 'L', field: 'losses' },
   { displayName: 'T', field: 'ties' },
-  { displayName: 'Win Pct', field: 'winPct' },
+  { displayName: 'Win Pct', field: 'winPercentage' },
   { displayName: 'PPG', field: 'ppg' },
   { displayName: 'PAPG', field: 'papg' },
   { displayName: 'Margin', field: 'margin' },
@@ -38,6 +38,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
   render() {
     const { pointScheme, allTeamStats } = this.props;
     const TABLE_HEADERS = TeamsAggregateStatsTable.getTableHeaders(pointScheme);
+    console.log(allTeamStats);
     return (
       <Table responsive condensed hover>
           <thead>
@@ -49,7 +50,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
           </thead>
           <tbody>
             {
-              allTeamStats.map(team => <ObjectTableRow dataObject={team} headers={TABLE_HEADERS}/>)
+              allTeamStats.map(team => <ObjectTableRow key={team.teamId} dataObject={team} headers={TABLE_HEADERS}/>)
             }
           </tbody>
       </Table>

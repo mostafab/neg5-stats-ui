@@ -15,10 +15,11 @@ export default class ObjectTableRow extends Component {
 
   render() {
     const { headers } = this.props;
+    console.log(this);
     return (
       <tr>
         {
-          headers.map(this.mapFunction)
+          headers.map(header => this.mapFunction(header))
         }
       </tr>
     )
@@ -29,7 +30,7 @@ export default class ObjectTableRow extends Component {
     if (typeof header.field === 'function') {
       innerValue = header.field(this.dataObject);
     } else {
-      innerValue = this.dataObject[header.field];
+      innerValue = this.props.dataObject[header.field];
     }
     return (
       <td key={header.displayName} data-display-name={header.displayName}>
@@ -43,7 +44,7 @@ ObjectTableRow.propTypes = {
   dataObject: PropTypes.object.isRequired,
   headers: PropTypes.arrayOf(
     PropTypes.shape({
-      displayName: PropTypes.string.isRequired,
+      displayName: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
       field: PropTypes.oneOfType([ PropTypes.string, PropTypes.func ]).isRequired,   
     }),
   ).isRequired,

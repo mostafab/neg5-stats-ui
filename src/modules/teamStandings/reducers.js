@@ -15,4 +15,8 @@ export default handleActions({
     ...state,
     requestingTeamStandings: true,
   }),
+  [TEAM_STANDINGS_RECEIVED]: (state, action) => ({
+    ...state,
+    allTeamStats: action.allTeamStats,
+  }),
 }, initialState);

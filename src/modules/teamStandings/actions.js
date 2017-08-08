@@ -14,11 +14,12 @@ export const requestTeamStandings = (tournamentId, phaseId) =>
     });
     try {
       const teamStandings = await getTeamStandings(tournamentId, phaseId);
-      console.log(teamStandings);
+      // console.log(teamStandings);
       const mappedTeamStandings = mapTeamStandings(teamStandings.stats);
-      console.log(mappedTeamStandings);
+      // console.log(mappedTeamStandings);
       dispatch({
         type: TEAM_STANDINGS_RECEIVED,
+        allTeamStats: mappedTeamStandings,
       });
     } catch (e) {
       dispatch({

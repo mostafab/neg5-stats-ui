@@ -11,7 +11,7 @@ export default class TeamStandingsRoot extends React.Component {
   render() {
     return (
       <div>
-        <TeamStandingsContent />
+        <TeamStandingsContent allTeamStats={ this.props.allTeamStats } />
       </div>
     )
   }

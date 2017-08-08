@@ -28,7 +28,7 @@ export default class ObjectTableRow extends Component {
   mapFunction(header) {
     let innerValue;
     if (typeof header.field === 'function') {
-      innerValue = header.field(this.dataObject);
+      innerValue = header.field(this.props.dataObject);
     } else {
       innerValue = this.props.dataObject[header.field];
     }

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 
+import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio } from './../../util/team-util';
+
 import ObjectTableRow from '../util/ObjectTableRow';
 
 const HEADERS = [
@@ -15,9 +17,9 @@ const HEADERS = [
   { displayName: 'PAPG', field: 'papg' },
   { displayName: 'Margin', field: 'margin' },
   { displayName: 'TUH', field: 'totalTUH' },
-  { displayName: 'PPTH', field: team => team.totalPoints / team.totalTUH },
-  { displayName: 'P / N', field: team => team.totalPowers / team.totalNegs },
-  { displayName: 'G / N', field: team => team.rawTotalGets / team.totalNegs },
+  { displayName: 'PPTH', field: team => getPointsPerTossupHeard(team) },
+  { displayName: 'P / N', field: team => getPowersToNegRatio(team) },
+  { displayName: 'G / N', field: team => getGetsToNegRatio(team) },
   { displayName: 'PPB', field: 'ppb' },
 ];
 

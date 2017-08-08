@@ -21,6 +21,7 @@ export const mapSingleTeamStats = teamStats => ({
   phaseId: teamStats.phase_id,
   papg: teamStats.papg,
   ppg: teamStats.ppg,
+  ppb: teamStats.ppb,
   rank: parseInt(teamStats.rank),
   totalGets: teamStats.raw_total_gets,
   totalTossupPoints: teamStats.raw_total_tossup_points,

@@ -11,8 +11,9 @@ import TeamStandingsRoot from '../../components/teamStandings/TeamStandingsRoot'
 
 const mapStateToProps = state => ({
   teamStats: state.teamStandings.teamStats,
-  pointScheme: state.teamStandings.pointScheme,
+  pointScheme: state.globalState.pointScheme,
   brackets: state.teamStandings.brackets,
+  requestingTeamStandings: state.teamStandings.requestingTeamStandings,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

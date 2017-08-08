@@ -6,6 +6,8 @@ import {
 
 const initialState = {
   requestingTeamStandings: false,
+  teamStats: [],
+  brackets: [],
 };
 
 export default handleActions({

@@ -3,8 +3,12 @@ import TeamStandingsContent from './TeamStandingsContent';
 
 export default class TeamStandingsRoot extends React.Component {
 
+  componentDidMount() {
+    const tournamentId = this.props.match.params.tournamentId;
+    this.props.requestTeamStandings(tournamentId);
+  }
+
   render() {
-    console.log(this.props);
     return (
       <div>
         <TeamStandingsContent />

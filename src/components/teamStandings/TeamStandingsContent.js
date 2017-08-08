@@ -30,9 +30,9 @@ export default class TeamStandingsContent extends React.Component {
 };
 
 TeamStandingsContent.propTypes = {
-  teamStats: PropTypes.arrayOf(PropTypes.object),
-  brackets: PropTypes.arrayOf(PropTypes.object),
-  pointScheme: PropTypes.arrayOf(PropTypes.object),
+  teamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
+  brackets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 TeamStandingsContent.defaultProps = {

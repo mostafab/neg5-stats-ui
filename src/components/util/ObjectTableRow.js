@@ -15,7 +15,6 @@ export default class ObjectTableRow extends Component {
 
   render() {
     const { headers } = this.props;
-    console.log(this);
     return (
       <tr>
         {

@@ -1,8 +1,10 @@
-export const getPointsPerTossupHeard = team => team.totalPoints / team.totalTUH;
+import { round } from 'lodash';
 
-export const getPowersToNegRatio = team => team.totalPowers / team.totalNegs;
+export const getPointsPerTossupHeard = team => round(team.totalPoints / team.totalTUH, 2) || 0;
 
-export const getGetsToNegRatio = team => team.totalGets / team.totalNegs;
+export const getPowersToNegRatio = team => round(team.totalPowers / team.totalNegs, 2) || 0;
+
+export const getGetsToNegRatio = team => round(team.totalGets / team.totalNegs) || 0;
 
 export default {
   getPointsPerTossupHeard,

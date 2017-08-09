@@ -1,11 +1,11 @@
-import React from 'react';
-import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {
-  requestTeamStandings
+  requestTeamStandings,
+  getTournamentBrackets,
 } from '../../modules/teamStandings/actions';
+
 
 import TeamStandingsRoot from '../../components/teamStandings/TeamStandingsRoot';
 
@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   requestTeamStandings,
+  getTournamentBrackets,
 }, dispatch);
 
 export default connect(

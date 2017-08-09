@@ -40,7 +40,6 @@ export default class TeamsAggregateStatsTable extends React.Component {
   render() {
     const { pointScheme, allTeamStats } = this.props;
     const TABLE_HEADERS = TeamsAggregateStatsTable.getTableHeaders(pointScheme);
-    console.log(allTeamStats);
     return (
       <Table responsive condensed hover>
           <thead>

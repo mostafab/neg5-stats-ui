@@ -6,7 +6,9 @@ import TeamStandingsRoot from './../containers/home/TeamStandings';
 export default class TournamentStatsWrapper extends React.Component {
 
   componentDidMount() {
-    
+    const { getTournamentPhases, match } = this.props;
+    const tournamentId = match.params.tournamentId;
+    getTournamentPhases(tournamentId);
   }
 
   render() {

@@ -10,19 +10,20 @@ export default class TeamsAggregateStatsByBracketWrapper extends React.Component
   render() {
     const { brackets, allTeamStats, pointScheme } = this.props;
     const groupedTeams = this.groupTeamsByBracket();
+    const nonEmptyBrackets = brackets.filter(bracket => groupedTeams[bracket.id]);
     const teamsWithoutBracket = groupedTeams['null'] || [];
     return (
       <div>
-        {
-          brackets.map(bracket =>
-            <TeamsAggregateStatsTable allTeamStats={groupedTeams[bracket.name]} pointScheme={pointScheme} bracket={bracket}/> )
+         {
+          nonEmptyBrackets.map(bracket =>
+            <TeamsAggregateStatsTable key={bracket.id} allTeamStats={groupedTeams[bracket.id]} pointScheme={pointScheme} bracket={bracket}/> )
         }
       </div>
     )
   }
 
   groupTeamsByBracket() {
-    return groupBy(this.allTeamStats, team => team.divisionId);
+    return groupBy(this.props.allTeamStats, team => team.divisionId);
   }
 
 };

@@ -13,7 +13,11 @@ export default class TeamStandingsContent extends React.Component {
     const { brackets, allTeamStats } = this.props;
     let standingsComponent;
     if (brackets.length === 0) {
-      standingsComponent = <TeamsAggregateStatsTable allTeamStats={allTeamStats} pointScheme={POINT_SCHEME}/>
+      const bracket = {
+        id: 'allTeams',
+        name: 'All Teams',
+      };
+      standingsComponent = <TeamsAggregateStatsTable allTeamStats={allTeamStats} pointScheme={POINT_SCHEME} bracket={ bracket } />
     } else {
       standingsComponent = <TeamsAggregateStatsByBracketWrapper allTeamStats={allTeamStats} pointScheme={POINT_SCHEME} brackets={brackets} />
     }

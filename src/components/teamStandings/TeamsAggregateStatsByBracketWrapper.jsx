@@ -15,8 +15,8 @@ export default class TeamsAggregateStatsByBracketWrapper extends React.Component
     return (
       <div>
          {
-          nonEmptyBrackets.map(bracket =>
-            <TeamsAggregateStatsTable key={bracket.id} allTeamStats={groupedTeams[bracket.id]} pointScheme={pointScheme} bracket={bracket}/> )
+          nonEmptyBrackets.map(bracket => 
+            <TeamsAggregateStatsTable key={bracket.id} allTeamStats={groupedTeams[bracket.id]} pointScheme={pointScheme} bracket={bracket} /> )
         }
       </div>
     )

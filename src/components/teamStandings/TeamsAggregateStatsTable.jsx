@@ -38,11 +38,13 @@ export default class TeamsAggregateStatsTable extends React.Component {
   }
 
   render() {
-    const { pointScheme, allTeamStats } = this.props;
+    const { pointScheme, allTeamStats, bracket } = this.props;
     const TABLE_HEADERS = TeamsAggregateStatsTable.getTableHeaders(pointScheme);
+    const bracketHeader = bracket ? <tr><th colSpan={TABLE_HEADERS.length}> { bracket.name } </th></tr> : null;
     return (
       <Table responsive condensed hover>
           <thead>
+            { bracketHeader }
             <tr>
               {
                 TABLE_HEADERS.map(header => <th key={header.displayName}> {header.displayName} </th>)
@@ -60,8 +62,12 @@ export default class TeamsAggregateStatsTable extends React.Component {
 };
 
 TeamsAggregateStatsTable.propTypes = {
-  allTeamStats: PropTypes.arrayOf(PropTypes.object),
-  pointScheme: PropTypes.arrayOf(PropTypes.object),
+  allTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+  bracket: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
 };
 
 TeamsAggregateStatsTable.defaultProps = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import TeamStandingsRoot from './../containers/home/TeamStandings';
-import PhaseSelector from './PhaseSelector';
+import PhaseSelector from './../containers/phase-selector/PhaseSelector';
 
 export default class TournamentStatsWrapper extends React.Component {
 
@@ -15,7 +15,7 @@ export default class TournamentStatsWrapper extends React.Component {
   render() {
     return (
       <main>
-        <PhaseSelector />
+        <Route path='/t/:tournamentId' component={ PhaseSelector } />
         <Switch>
           <Route exact path='/t/:tournamentId/' component={ TeamStandingsRoot }/>
           <Route exact path='/t/:tournamentId/team-standings' component={ TeamStandingsRoot }/>

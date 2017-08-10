@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   pointScheme: state.globalState.pointScheme,
   brackets: state.teamStandings.brackets,
   requestingTeamStandings: state.teamStandings.requestingTeamStandings,
+  selectedPhaseId: state.globalState.selectedPhaseId,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

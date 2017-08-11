@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'react-bootstrap';
 
 const URL = '/t/{tournamentId}/{page}?phase={phaseId}';
@@ -30,6 +31,12 @@ export default class StandingsNavigation extends React.Component {
     } else {
       formattedUrl = formattedUrl.replace('?phase={phaseId}', '');
     }
-    return <Breadcrumb.Item key={link.link} href={formattedUrl}> { link.display } </Breadcrumb.Item>
+    const isMatch = this.props.location.pathname.indexOf(link.link) !== -1;
+    if (isMatch) {
+      return <Breadcrumb.Item key={link.link} active> { link.display } </Breadcrumb.Item>;
+    }
+    return <Breadcrumb.Item key={link.link}>
+            <Link to={formattedUrl}> { link.display } </Link>
+          </Breadcrumb.Item>;
   }
 };

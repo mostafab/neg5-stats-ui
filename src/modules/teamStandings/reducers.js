@@ -27,5 +27,14 @@ export default handleActions({
   [BRACKETS_RECEIVED]: (state, action) => ({
     ...state,
     brackets: action.brackets,
+    requestingBrackets: false,
+  }),
+  [BRACKETS_REQUESTED]: (state, action) => ({
+    ...state,
+    requestingBrackets: true,
+  }),
+  [BRACKETS_ERROR]: (state, action) => ({
+    ...state,
+    requestingBrackets: false,
   }),
 }, initialState);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 
-import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio } from './../../util/team-util';
+import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNumberOfTossupsByValue } from './../../util/team-util';
 
 import ObjectTableRow from '../util/ObjectTableRow';
 
@@ -31,13 +31,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
     const copy = Object.assign([], HEADERS);
     const values = pointScheme.map(tv => ({
       displayName: tv.value,
-      field: team => {
-        const value = team.tossupTotals.find(totals => totals.value === tv.value);
-        if (value) {
-          return value.total;
-        }
-        return 0;
-      },
+      field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
     return copy;

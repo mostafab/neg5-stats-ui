@@ -6,6 +6,14 @@ export const getPowersToNegRatio = team => round(team.totalPowers / team.totalNe
 
 export const getGetsToNegRatio = team => round(team.totalGets / team.totalNegs) || 0;
 
+export const getNumberOfTossupsByValue = (pointValue, team) => {
+  const pointValueTotalObject = team.tossupTotals.find(totals => totals.value === pointValue);
+  if (pointValueTotalObject) {
+    return pointValueTotalObject.total;
+  }
+  return 0;
+}
+
 export default {
   getPointsPerTossupHeard,
   getPowersToNegRatio,

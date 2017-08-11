@@ -6,7 +6,6 @@ import {
   getTournamentBrackets,
 } from '../../modules/teamStandings/actions';
 
-
 import TeamStandingsRoot from '../../components/teamStandings/TeamStandingsRoot';
 
 const mapStateToProps = state => ({

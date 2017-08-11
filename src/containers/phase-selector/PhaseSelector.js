@@ -6,6 +6,7 @@ import { updateUrlWithPhase } from '../../modules/tournamentStatsWrapper/actions
 
 const mapStateToProps = state => ({
   phases: state.globalState.phases,
+  selectedPhaseId: state.globalState.selectedPhaseId,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

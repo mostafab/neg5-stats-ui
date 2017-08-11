@@ -5,13 +5,14 @@ import { FormGroup, ControlLabel, FormControl, Row, Col } from 'react-bootstrap'
 export default class PhaseSelector extends React.Component {
 
   render() {
+    const selectedPhaseId = this.props.selectedPhaseId;
     return (
       <Row className='PhaseSelector'>
         <Col lg={4} md={6} sm={6}>
           <div style={{ padding: '50px' }}>
             <FormGroup>
               <ControlLabel>Select a Phase</ControlLabel>
-              <FormControl componentClass='select' placeholder='select' onChange={e => this.onChange(e)}>
+              <FormControl value={selectedPhaseId} componentClass='select' placeholder='select' onChange={e => this.onChange(e)}>
                 <option value=''>All Phases</option>
                 {
                   this.props.phases.map(phase => <option key={phase.id} value={phase.id}> { phase.name } </option>)

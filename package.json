@@ -10,6 +10,7 @@
     "bootswatch": "^3.3.7",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
+    "query-string": "^5.0.0",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.5.4",

@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getTournamentPhases } from '../../modules/tournamentStatsWrapper/actions';
+import { getTournamentPhases, setInitialPhaseOnLoad } from '../../modules/tournamentStatsWrapper/actions';
 
 import TournamentStatsWrapper from '../../components/TournamentStatsWrapper';
 
@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getTournamentPhases,
+  setInitialPhaseOnLoad,
 }, dispatch);
 
 export default connect(

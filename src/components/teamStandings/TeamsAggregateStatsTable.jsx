@@ -31,7 +31,13 @@ export default class TeamsAggregateStatsTable extends React.Component {
     const copy = Object.assign([], HEADERS);
     const values = pointScheme.map(tv => ({
       displayName: tv.value,
-      field: team => team.tossupTotals.find(totals => totals.value === tv.value).value,
+      field: team => {
+        const value = team.tossupTotals.find(totals => totals.value === tv.value);
+        if (value) {
+          return value.total;
+        }
+        return 0;
+      },
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
     return copy;

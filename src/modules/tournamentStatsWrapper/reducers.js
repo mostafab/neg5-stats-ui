@@ -7,6 +7,7 @@ import {
   PHASES_RECEIVED,
   PHASES_ERROR,
   PHASE_CHANGE,
+  INITIAL_PHASE_ON_LOAD
 } from './actions';
 
 const initialState = {
@@ -15,7 +16,6 @@ const initialState = {
   phaseQuery: '',
   requestingPointScheme: false,
   requestingPhases: false,
-  selectedPhaseId: '',
 };
 
 export default handleActions({
@@ -39,6 +39,10 @@ export default handleActions({
   [PHASE_CHANGE]: (state, action) => ({
     ...state,
     newUrl: action.newUrl,
+    selectedPhaseId: action.newSelectedPhaseId,
+  }),
+  [INITIAL_PHASE_ON_LOAD]: (state, action) => ({
+    ...state,
     selectedPhaseId: action.newSelectedPhaseId,
   }),
 }, initialState);

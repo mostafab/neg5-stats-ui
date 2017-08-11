@@ -15,6 +15,7 @@ export const PHASES_RECEIVED = `${ROOT}PHASES_RECEIVED`;
 export const PHASES_ERROR = `${ROOT}PHASES_ERROR`;
 
 export const PHASE_CHANGE = `${ROOT}PHASE_CHANGE`;
+export const INITIAL_PHASE_ON_LOAD = `${ROOT}INITIAL_PHASE_ON_LOAD`;
 
 export const getTournamentPhases = tournamentId =>
   async dispatch => {
@@ -43,5 +44,13 @@ export const updateUrlWithPhase = (tournamentId, newPhaseId, url) =>
       type: PHASE_CHANGE,
       newUrl,
       newSelectedPhaseId: newPhaseId,
+    });
+  }
+
+export const setInitialPhaseOnLoad = phaseId =>
+  async dispatch => {
+    dispatch({
+      type: PHASE_CHANGE,
+      newSelectedPhaseId: phaseId,
     });
   }

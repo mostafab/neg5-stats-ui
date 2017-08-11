@@ -5,9 +5,10 @@ export default class TeamStandingsRoot extends React.Component {
 
   componentDidMount() {
     const tournamentId = this.props.match.params.tournamentId;
-    console.log(this.props);
-    this.props.requestTeamStandings(tournamentId, this.props.selectedPhaseId);
     this.props.getTournamentBrackets(tournamentId);
+    if (typeof this.props.selectedPhaseId !== 'undefined') {
+      this.props.requestTeamStandings(tournamentId, this.props.selectedPhaseId);
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {

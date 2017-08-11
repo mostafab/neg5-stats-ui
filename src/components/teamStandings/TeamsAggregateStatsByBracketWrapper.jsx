@@ -5,6 +5,11 @@ import { groupBy } from 'lodash';
 
 import TeamsAggregateStatsTable from './TeamsAggregateStatsTable';
 
+const UNASSIGNED_TEAMS_BRACKET = {
+  name: 'Unassigned Teams',
+  id: 'null',
+};
+
 export default class TeamsAggregateStatsByBracketWrapper extends React.Component {
 
   render() {
@@ -17,6 +22,11 @@ export default class TeamsAggregateStatsByBracketWrapper extends React.Component
          {
           nonEmptyBrackets.map(bracket => 
             <TeamsAggregateStatsTable key={bracket.id} allTeamStats={groupedTeams[bracket.id]} pointScheme={pointScheme} bracket={bracket} /> )
+        }
+        {
+           teamsWithoutBracket.length > 0 ?
+            <TeamsAggregateStatsTable key={null} allTeamStats={teamsWithoutBracket} pointScheme={pointScheme} bracket={UNASSIGNED_TEAMS_BRACKET} />
+            : null
         }
       </div>
     )

@@ -22,6 +22,7 @@ export default class TeamStandingsRoot extends React.Component {
   render() {
     return (
       <div>
+        <h3> Team Standings </h3>
         <TeamStandingsContent allTeamStats={ this.props.allTeamStats } brackets={ this.props.brackets } />
       </div>
     )

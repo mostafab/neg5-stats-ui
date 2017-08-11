@@ -6,6 +6,8 @@ import {
   getTournamentBrackets,
 } from '../../modules/teamStandings/actions';
 
+import { setInitialPhaseOnLoad } from '../../modules/tournamentStatsWrapper/actions';
+
 import TeamStandingsRoot from '../../components/teamStandings/TeamStandingsRoot';
 
 const mapStateToProps = state => ({
@@ -19,6 +21,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   requestTeamStandings,
   getTournamentBrackets,
+  setInitialPhaseOnLoad,
 }, dispatch);
 
 export default connect(

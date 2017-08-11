@@ -9,7 +9,7 @@ export default class PhaseSelector extends React.Component {
     return (
       <Row className='PhaseSelector'>
         <Col lg={4} md={6} sm={6}>
-          <div style={{ padding: '50px' }}>
+          <div>
             <FormGroup>
               <ControlLabel>Select a Phase</ControlLabel>
               <FormControl value={selectedPhaseId} componentClass='select' placeholder='select' onChange={e => this.onChange(e)}>

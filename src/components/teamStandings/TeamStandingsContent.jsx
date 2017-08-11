@@ -24,7 +24,7 @@ export default class TeamStandingsContent extends React.Component {
     return (
       <Row>
         <Col lg={12} md={12} sm={12}>
-          <div style={{ padding: '50px' }}>
+          <div>
             { standingsComponent }
           </div>
         </Col>

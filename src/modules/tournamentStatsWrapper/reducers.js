@@ -16,6 +16,7 @@ const initialState = {
   phaseQuery: '',
   requestingPointScheme: false,
   requestingPhases: false,
+  selectedPhaseId: undefined,
 };
 
 export default handleActions({

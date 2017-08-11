@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
   requestingPointScheme: state.globalState.requestingPointScheme,
   phases: state.globalState.phases,
   requestingPhases: state.globalState.requestingPhases,
+  selectedPhaseId: state.globalState.selectedPhaseId,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

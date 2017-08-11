@@ -4,6 +4,7 @@ import queryString from 'query-string';
 
 import TeamStandingsRoot from './../containers/home/TeamStandings';
 import PhaseSelector from './../containers/phase-selector/PhaseSelector';
+import StandingsNavigation from './StandingsNavigation';
 
 export default class TournamentStatsWrapper extends React.Component {
 
@@ -17,9 +18,11 @@ export default class TournamentStatsWrapper extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
-      <main>
-        <Route path='/t/:tournamentId' component={ PhaseSelector } />
+      <main style={{ padding: '50px', paddingTop: '0px' }}>
+        <PhaseSelector match={ this.props.match } location={ this.props.location }/>
+        <StandingsNavigation tournamentId={this.props.match.params.tournamentId} phaseId={ this.props.selectedPhaseId }/>
         <Switch>
           <Route exact path='/t/:tournamentId/' component={ TeamStandingsRoot }/>
           <Route exact path='/t/:tournamentId/team-standings' component={ TeamStandingsRoot }/>

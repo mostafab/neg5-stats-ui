@@ -28,7 +28,11 @@ export const mapSingleTeamStats = teamStats => ({
   teamId: teamStats.team_id,
   teamName: teamStats.team_name,
   ties: teamStats.ties,
-  tossupTotals: teamStats.tossup_totals,
+  tossupTotals: teamStats.tossup_totals.map(tv => ({
+    value: tv.value,
+    total: tv.total,
+    answerType: tv.answer_type,
+  })),
   totalBouncebackPoints: teamStats.total_bounceback_points,
   totalNegs: teamStats.total_negs,
   totalOvertimeTossups: teamStats.total_overtime_tossups,

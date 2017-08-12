@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import TeamsAggregateStatsTable from './TeamsAggregateStatsTable';
 import TeamsAggregateStatsByBracketWrapper from './TeamsAggregateStatsByBracketWrapper';
 
-const POINT_SCHEME = [ { value: 10 }, { value: 15 } ];
+const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
 
 export default class TeamStandingsContent extends React.Component {
 

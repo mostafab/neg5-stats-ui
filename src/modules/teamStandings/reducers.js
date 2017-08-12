@@ -24,6 +24,10 @@ export default handleActions({
     allTeamStats: action.allTeamStats,
     requestingTeamStandings: false,
   }),
+  [TEAM_STANDINGS_ERROR]: (state, action) => ({
+    ...state,
+    requestingTeamStandings: false,
+  }),
   [BRACKETS_RECEIVED]: (state, action) => ({
     ...state,
     brackets: action.brackets,

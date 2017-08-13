@@ -1,14 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
-
 import ObjectTableRow from '../util/ObjectTableRow';
+
+const TEAM_URL = '/t/{tournamentId}/team-full?phase={phaseId}#{teamId}';
 
 const HEADERS = [
   { displayName: 'Rank', field: 'rank' },
-  { displayName: 'Team', field: 'teamName' },
+  { displayName: 'Team', field: (team, tournamentId, phaseId) => {
+    let url = TEAM_URL.replace('{tournamentId}', tournamentId)
+      .replace('{teamId}', team.teamId);
+    if (phaseId) {
+      url = url.replace('{phaseId}', phaseId);
+    } else {
+      url = url.replace('?phase={phaseId}', '');
+    }
+    return <Link to={url}> {team.teamName} </Link>;
+  }},
   { displayName: 'W', field: 'wins' },
   { displayName: 'L', field: 'losses' },
   { displayName: 'T', field: 'ties' },
@@ -34,6 +45,8 @@ export default class TeamsAggregateStatsTable extends React.Component {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     }),
+    phaseId: PropTypes.string.isRequired,
+    tournamentId: PropTypes.string.isRequired,
   };
 
   getTableHeaders() {
@@ -43,6 +56,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
+    copy.find(h => h.displayName === 'Team').args = [this.props.tournamentId, this.props.phaseId];
     return copy;
   }
 

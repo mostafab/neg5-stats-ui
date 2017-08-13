@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import TeamsAggregateStatsTable from './TeamsAggregateStatsTable';
 import TeamsAggregateStatsByBracketWrapper from './TeamsAggregateStatsByBracketWrapper';
 
-const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
-
 export default class TeamStandingsContent extends React.Component {
 
   static propTypes = {
@@ -17,23 +15,19 @@ export default class TeamStandingsContent extends React.Component {
     phaseId: PropTypes.string.isRequired,
   }
 
-  static defaultProps = {
-    brackets: [],
-    allTeamStats: [],
-    pointScheme: [],
-  }
-
   render() {
-    const { brackets, allTeamStats } = this.props;
+    const { brackets, allTeamStats, tournamentId, phaseId, pointScheme } = this.props;
     let standingsComponent;
     if (brackets.length === 0) {
       const allTeamsBracket = {
         id: 'allTeams',
         name: 'All Teams',
       };
-      standingsComponent = <TeamsAggregateStatsTable allTeamStats={allTeamStats} pointScheme={POINT_SCHEME} bracket={ allTeamsBracket } />
+      standingsComponent = <TeamsAggregateStatsTable allTeamStats={allTeamStats} pointScheme={pointScheme}
+        bracket={ allTeamsBracket } tournamentId={ tournamentId } phaseId={ phaseId }/>
     } else {
-      standingsComponent = <TeamsAggregateStatsByBracketWrapper allTeamStats={allTeamStats} pointScheme={POINT_SCHEME} brackets={brackets} />
+      standingsComponent = <TeamsAggregateStatsByBracketWrapper allTeamStats={allTeamStats} pointScheme={pointScheme}
+        brackets={brackets} tournamentId={ tournamentId } phaseId={ phaseId }/>
     }
     return (
       <Row>

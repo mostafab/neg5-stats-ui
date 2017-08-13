@@ -43,7 +43,38 @@ export const mapSingleTeamStats = teamStats => ({
   wins: teamStats.wins,
 });
 
+export const mapFullTeamStandings = allStats => allStats.map(mapSingleFullTeamStanding);
+
+export const mapSingleFullTeamStanding = standing => ({
+  teamName: standing.team_name,
+  teamId: standing.team_id,
+  matches: standing.matches.map(match => ({
+    bouncebackPoints: match.bounceback_points,
+    matchId: match.match_id,
+    opponentId: match.opponent_id,
+    opponentName: match.opponent_name,
+    opponentScore: match.opponent_score,
+    overtimeTossups: match.overtime_tossups,
+    ppb: match.ppb,
+    result: match.result,
+    round: match.round,
+    totalPoints: match.score,
+    tossupPoints: match.tossup_points,
+    tossupTotals: match.tossup_totals.map(tv => ({
+      value: tv.value,
+      total: tv.total,
+      answerType: tv.answer_type,
+    })),
+    totalTUH: match.tossups_heard,
+    totalGets: match.total_gets,
+    totalNegs: match.total_negs,
+    totalPowers: match.total_powers,
+  })),
+});
+
 export default {
   mapTeamStandings,
   mapSingleTeamStats,
+  mapFullTeamStandings,
+  mapSingleFullTeamStanding,
 };

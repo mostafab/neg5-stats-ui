@@ -10,14 +10,15 @@ export default class IndividualStandingsContent extends React.Component {
     individualStats: PropTypes.arrayOf(PropTypes.object).isRequired,
     phaseId: PropTypes.string.isRequired,
     tournamentId: PropTypes.string.isRequired,
+    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   render() {
-    const { individualStats, phaseId, tournamentId } = this.props;
+    const { individualStats, phaseId, tournamentId, pointScheme } = this.props;
     return (
       <Row>
         <Col lg={12} md={12} sm={12}>
-          <IndividualStatsTable individualStats={ individualStats } phaseId={ phaseId } tournamentId={ tournamentId }/>
+          <IndividualStatsTable individualStats={ individualStats } phaseId={ phaseId } tournamentId={ tournamentId } pointScheme={ pointScheme }/>
         </Col>
       </Row>
     )

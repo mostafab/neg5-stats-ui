@@ -4,6 +4,7 @@ import queryString from 'query-string';
 
 import TeamStandingsRoot from './../containers/home/TeamStandings';
 import IndividualStandingsRoot from './../containers/home/IndividualStandings';
+import TeamFullStandingsRoot from './../containers/home/TeamFullStandings';
 import PhaseSelector from './../containers/phase-selector/PhaseSelector';
 import StandingsNavigation from './StandingsNavigation';
 
@@ -29,6 +30,7 @@ export default class TournamentStatsWrapper extends React.Component {
           <Redirect exact from='/t/:tournamentId' to={redirectUrl} />
           <Route exact path='/t/:tournamentId/team-standings' component={ TeamStandingsRoot }/>
           <Route exact path='/t/:tournamentId/individuals' component={ IndividualStandingsRoot }/>
+          <Route exact path='/t/:tournamentId/team-full' component= { TeamFullStandingsRoot } />
         </Switch>
       </main>
     );

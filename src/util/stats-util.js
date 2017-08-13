@@ -36,10 +36,20 @@ export const getPlayerGetsToNegRatio = statsObj => {
   return round(totalGets / totalNegs, 2) || 0;
 }
 
+export const getTeamBonusesHeardInMatch = statsObj => {
+  return statsObj.totalGets - statsObj.overtimeTossups;
+}
+
+export const getTeamBonusPointsInMatch = statsObj => {
+  return statsObj.totalPoints - statsObj.tossupPoints - statsObj.bouncebackPoints;
+}
+
 export default {
   getPointsPerTossupHeard,
   getPowersToNegRatio,
   getGetsToNegRatio,
   getPlayerPowerToNegRatio,
   getPlayerGetsToNegRatio,
+  getTeamBonusesHeardInMatch,
+  getTeamBonusPointsInMatch,
 };

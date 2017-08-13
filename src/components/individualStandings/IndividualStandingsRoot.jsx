@@ -2,6 +2,8 @@ import React from 'react';
 
 import IndividualStandingsContent from './IndividualStandingsContent';
 
+const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
+
 export default class IndividualStandingsRoot extends React.Component {
   
   componentDidMount() {
@@ -9,7 +11,7 @@ export default class IndividualStandingsRoot extends React.Component {
     if (typeof this.props.selectedPhaseId !== 'undefined') {
       this.props.getIndividualStandings(tournamentId, this.props.selectedPhaseId);
     }
-  }
+  }  
 
   componentDidUpdate(prevProps, prevState) {
     const oldPhaseId = prevProps.selectedPhaseId;
@@ -24,7 +26,7 @@ export default class IndividualStandingsRoot extends React.Component {
     return (
       <div>
         <h3> Individual Standings </h3>
-        <IndividualStandingsContent individualStats={ individualStats } phaseId={ selectedPhaseId } tournamentId={ match.params.tournamentId }/>
+        <IndividualStandingsContent individualStats={ individualStats } phaseId={ selectedPhaseId } tournamentId={ match.params.tournamentId } pointScheme={POINT_SCHEME}/>
       </div>
     )
   }

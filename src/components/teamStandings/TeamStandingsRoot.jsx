@@ -1,6 +1,8 @@
 import React from 'react';
 import TeamStandingsContent from './TeamStandingsContent';
 
+const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
+
 export default class TeamStandingsRoot extends React.Component {
 
   componentDidMount() {
@@ -24,7 +26,7 @@ export default class TeamStandingsRoot extends React.Component {
     return (
       <div>
         <h3> Team Standings </h3>
-        <TeamStandingsContent allTeamStats={ allTeamStats } brackets={ brackets } tournamentId={ match.params.tournamentId } phaseId={ selectedPhaseId } />
+        <TeamStandingsContent allTeamStats={ allTeamStats } brackets={ brackets } tournamentId={ match.params.tournamentId } phaseId={ selectedPhaseId } pointScheme={POINT_SCHEME}/>
       </div>
     )
   }

@@ -1,6 +1,6 @@
 export const mapIndividualStandings = standings => standings.map(mapSingleIndividualStanding);
 
-export const mapSingleIndividualStanding = standing => ({
+export const mapSingleIndividualStanding = (standing, index) => ({
   gamesPlayed: standing.games_played,
   playerId: standing.player_id,
   playerName: standing.player_name,
@@ -15,6 +15,7 @@ export const mapSingleIndividualStanding = standing => ({
   })),
   totalTUH: standing.total_player_tuh,
   totalPoints: standing.total_points,
+  rank: index + 1,
 });
 
 export default {

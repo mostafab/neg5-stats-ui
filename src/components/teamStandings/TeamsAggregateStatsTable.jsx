@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 
-import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNumberOfTossupsByValue } from './../../util/team-util';
+import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
 
 import ObjectTableRow from '../util/ObjectTableRow';
 
@@ -27,9 +27,18 @@ const INDEX_TO_INSERT_POINT_SCHEME = 8;
 
 export default class TeamsAggregateStatsTable extends React.Component {
 
-  static getTableHeaders(pointScheme) {
+  static propTypes = {
+    allTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
+    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    bracket: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  };
+
+  getTableHeaders() {
     const copy = Object.assign([], HEADERS);
-    const values = pointScheme.map(tv => ({
+    const values = this.props.pointScheme.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
@@ -38,41 +47,26 @@ export default class TeamsAggregateStatsTable extends React.Component {
   }
 
   render() {
-    const { pointScheme, allTeamStats, bracket } = this.props;
-    const TABLE_HEADERS = TeamsAggregateStatsTable.getTableHeaders(pointScheme);
-    const bracketHeader = bracket ? <tr><th colSpan={TABLE_HEADERS.length}> { bracket.name } </th></tr> : null;
+    const { allTeamStats, bracket } = this.props;
+    const tableHeaders = this.getTableHeaders();
+    const bracketHeader = bracket ? <tr><th colSpan={tableHeaders.length}> { bracket.name } </th></tr> : null;
     return (
       <Table responsive condensed hover>
           <thead>
             { bracketHeader }
             <tr>
               {
-                TABLE_HEADERS.map(header => <th key={header.displayName}> {header.displayName} </th>)
+                tableHeaders.map(header => <th key={header.displayName}> {header.displayName} </th>)
               }
             </tr>
           </thead>
           <tbody>
             {
-              allTeamStats.map(team => <ObjectTableRow key={team.teamId} dataObject={team} headers={TABLE_HEADERS}/>)
+              allTeamStats.map(team => <ObjectTableRow key={team.teamId} dataObject={team} headers={tableHeaders}/>)
             }
           </tbody>
       </Table>
     );
   }
 };
-
-TeamsAggregateStatsTable.propTypes = {
-  allTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
-  bracket: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }),
-};
-
-TeamsAggregateStatsTable.defaultProps = {
-  allTeamStats: [],
-  pointScheme: [],
-};
-
 

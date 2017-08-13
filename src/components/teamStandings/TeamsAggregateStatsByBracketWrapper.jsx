@@ -12,6 +12,21 @@ const UNASSIGNED_TEAMS_BRACKET = {
 
 export default class TeamsAggregateStatsByBracketWrapper extends React.Component {
 
+  static propTypes = {
+    brackets: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })),
+    allTeamStats: PropTypes.arrayOf(PropTypes.object),
+    pointScheme: PropTypes.arrayOf(PropTypes.object),
+  };
+
+  static defaultProps = {
+    brackets: [],
+    allTeamStats: [],
+    pointScheme: [],
+  };
+
   render() {
     const { brackets, allTeamStats, pointScheme } = this.props;
     const groupedTeams = this.groupTeamsByBracket();
@@ -36,19 +51,4 @@ export default class TeamsAggregateStatsByBracketWrapper extends React.Component
     return groupBy(this.props.allTeamStats, team => team.divisionId);
   }
 
-};
-
-TeamsAggregateStatsByBracketWrapper.propTypes = {
-  brackets: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  })),
-  allTeamStats: PropTypes.arrayOf(PropTypes.object),
-  pointScheme: PropTypes.arrayOf(PropTypes.object),
-};
-
-TeamsAggregateStatsByBracketWrapper.defaultProps = {
-  brackets: [],
-  allTeamStats: [],
-  pointScheme: [],
 };

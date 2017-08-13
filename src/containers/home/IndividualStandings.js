@@ -10,6 +10,7 @@ import IndividualStandingsRoot from '../../components/individualStandings/Indivi
 const mapStateToProps = state => ({
   selectedPhaseId: state.globalState.selectedPhaseId,
   individualStats: state.individualStandings.individualStats,
+  requestingTeamStandings: state.individualStandings.requestingTeamStandings,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

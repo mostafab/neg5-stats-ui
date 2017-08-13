@@ -23,7 +23,7 @@ export default class TournamentStatsWrapper extends React.Component {
     const redirectUrl = `/t/${tournamentId}/team-standings${this.props.location.search}`;
     return (
       <main style={{ padding: '50px', paddingTop: '0px' }}>
-        <PhaseSelector match={ this.props.match } location={ this.props.location }/>
+        <PhaseSelector match={ this.props.match } location={ this.props.location } />
         <StandingsNavigation tournamentId={tournamentId} phaseId={ this.props.selectedPhaseId } location={ this.props.location }/>
         <Switch>
           <Redirect exact from='/t/:tournamentId' to={redirectUrl} />

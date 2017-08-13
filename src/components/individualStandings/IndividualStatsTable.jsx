@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import ObjectTableRow from '../util/ObjectTableRow';
 import { getPointsPerTossupHeard, getPlayerGetsToNegRatio, getPlayerPowerToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
 
-const PLAYER_URL = '/t/{tournamentId}/individuals-full?phase={phaseId}#{playerId}';
+const PLAYER_URL = '/t/{tournamentId}/player-full?phase={phaseId}#player_{playerId}';
 
 const HEADERS = [
     { displayName: 'Rank', field: 'rank' },

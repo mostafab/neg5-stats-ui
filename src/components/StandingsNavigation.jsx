@@ -8,7 +8,7 @@ const LINKS = [
   { display: 'Standings', link: 'team-standings' },
   { display: 'Individuals', link: 'individuals' },
   { display: 'Team Full', link: 'team-full' },
-  { display: 'Individual Full', link: 'individuals-full' },
+  { display: 'Individual Full', link: 'player-full' },
   { display: 'Round Report', link: 'round-report' }
 ]
 

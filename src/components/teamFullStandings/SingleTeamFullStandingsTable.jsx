@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 
+import ObjectTableRow from '../util/ObjectTableRow';
+import IndividualStatsTable from './../individualStandings/IndividualStatsTable';
+
 import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
   getNumberOfTossupsByValue, getTeamBonusesHeardInMatch,
   getTeamBonusPointsInMatch } from './../../util/stats-util';
-import ObjectTableRow from '../util/ObjectTableRow';
 
 const HEADERS = [
   { displayName: 'Round', field: 'round' },
@@ -30,6 +32,9 @@ export default class SingleTeamFullStandingsTable extends React.Component {
   static propTypes = {
     tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     fullTeamStats: PropTypes.object.isRequired,
+    players: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tournamentId: PropTypes.string.isRequired,
+    phaseId: PropTypes.string.isRequired,
   }
 
   getTableHeaders() {
@@ -43,11 +48,12 @@ export default class SingleTeamFullStandingsTable extends React.Component {
   }
 
   render() {
-    const { fullTeamStats } = this.props;
+    const { fullTeamStats, tossupValues, players, tournamentId, phaseId } = this.props;
     const tableHeaders = this.getTableHeaders();
     const teamHeader = <tr><th colSpan={tableHeaders.length}> { fullTeamStats.teamName } </th></tr>;
     return (
-      <Table responsive condensed hover id={`team_${fullTeamStats.teamId}`}>
+      <div>
+        <Table responsive condensed hover id={`team_${fullTeamStats.teamId}`}>
           <thead>
             { teamHeader }
             <tr>
@@ -61,7 +67,9 @@ export default class SingleTeamFullStandingsTable extends React.Component {
               fullTeamStats.matches.map(match => <ObjectTableRow key={match.matchId} dataObject={match} headers={tableHeaders}/>)
             }
           </tbody>
-      </Table>
+        </Table>
+        <IndividualStatsTable tournamentId={tournamentId} phaseId={phaseId} tossupValues={ tossupValues } individualStats={ players }/>
+      </div>
     )
   }
 };

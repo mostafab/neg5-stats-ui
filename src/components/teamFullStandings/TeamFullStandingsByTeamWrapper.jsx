@@ -8,16 +8,20 @@ export default class TeamFullStandingsByTeamWrapper extends React.Component {
   static propTypes = {
     tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     fullTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
+    individualStatsByTeam: PropTypes.object.isRequired,
+    tournamentId: PropTypes.string.isRequired,
+    phaseId: PropTypes.string.isRequired,
   }
 
   render() {
-    const { tossupValues, fullTeamStats } = this.props;
+    const { tossupValues, fullTeamStats, individualStatsByTeam, tournamentId, phaseId } = this.props;
     return (
       <div>
       {
         fullTeamStats
           .filter(team => team.matches.length > 0)
-          .map(team => <SingleTeamFullStandingsTable key={team.teamId} tossupValues={tossupValues} fullTeamStats={team} />)
+          .map(team => <SingleTeamFullStandingsTable key={team.teamId} tossupValues={tossupValues} phaseId={phaseId} fullTeamStats={team} tournamentId={tournamentId}
+            players={individualStatsByTeam[team.teamId] || [] }/>)
       }
       </div>
     )

@@ -1,4 +1,3 @@
-import tournamentClient from './../../client/tournament-client';
 import { getFullTeamStandings } from '../../client/stats-client';
 import { mapFullTeamStandings } from './../../mappers/team-standings-mapper';
 

@@ -11,7 +11,7 @@ export default class IndividualFullStandingsByPlayerWrapper extends React.Compon
   }
 
   render() {
-    const { playerStats, tossupValues } = this.props;
+    const { tossupValues } = this.props;
     return (
       <div>
         {

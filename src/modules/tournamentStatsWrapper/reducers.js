@@ -28,6 +28,10 @@ export default handleActions({
     ...state,
     tossupValues: action.tossupValues,
   }),
+  [POINT_SCHEME_ERROR]: (state, action) => ({
+    ...state,
+    requestingPointScheme: false,
+  }),
   [PHASES_REQUESTED]: (state, action) => ({
     ...state,
     requestingPhases: true,

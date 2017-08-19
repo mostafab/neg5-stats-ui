@@ -6,8 +6,7 @@ import { round } from 'lodash';
 import ObjectTableRow from '../util/ObjectTableRow';
 
 import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
-  getNumberOfTossupsByValue, getTeamBonusesHeardInMatch,
-  getTeamBonusPointsInMatch } from './../../util/stats-util';
+  getNumberOfTossupsByValue } from './../../util/stats-util';
 
 const HEADERS = [
   { displayName: 'Round', field: 'round' },

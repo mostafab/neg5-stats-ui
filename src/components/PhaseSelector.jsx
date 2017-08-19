@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl, Row, Col, InputGroup } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
 
 import LoadingStatsIndicator from './LoadingStatsIndicator';
 
 export default class PhaseSelector extends React.Component {
+
+  static propTypes = {
+    phases: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }
 
   render() {
     const selectedPhaseId = this.props.selectedPhaseId;

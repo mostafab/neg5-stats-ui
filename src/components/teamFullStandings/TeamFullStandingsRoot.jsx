@@ -8,6 +8,7 @@ export default class TeamFullStandingsRoot extends React.Component {
     const tournamentId = this.props.match.params.tournamentId;
     if (typeof this.props.selectedPhaseId !== 'undefined') {
       this.props.requestFullTeamStandings(tournamentId, this.props.selectedPhaseId);
+      this.props.getIndividualStandings(tournamentId, this.props.selectedPhaseId);
     }
   }
 
@@ -15,16 +16,20 @@ export default class TeamFullStandingsRoot extends React.Component {
     const oldPhaseId = prevProps.selectedPhaseId;
     const currentPhaseId = this.props.selectedPhaseId;
     if (oldPhaseId !== currentPhaseId) {
-      this.props.requestFullTeamStandings(this.props.match.params.tournamentId, currentPhaseId);
+      const tournamentId = this.props.match.params.tournamentId;
+      this.props.requestFullTeamStandings(tournamentId, currentPhaseId);
+      this.props.getIndividualStandings(tournamentId, this.props.selectedPhaseId);
     }
   }
 
   render() {
-    const { fullTeamStats, tossupValues } = this.props;
+    const { fullTeamStats, tossupValues, individualStatsByTeam, match, selectedPhaseId } = this.props;
+    const tournamentId = match.params.tournamentId;
     return (
       <div>
         <h3> Full Team Standings </h3>
-        <TeamFullStandingsContent fullTeamStats={fullTeamStats} tossupValues={tossupValues}/>
+        <TeamFullStandingsContent fullTeamStats={fullTeamStats} tossupValues={tossupValues} individualStatsByTeam={individualStatsByTeam}
+          tournamentId={tournamentId} phaseId={selectedPhaseId}/>
       </div>
     )
   }

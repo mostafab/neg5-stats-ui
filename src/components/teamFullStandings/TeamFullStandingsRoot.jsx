@@ -2,8 +2,6 @@ import React from 'react';
 
 import TeamFullStandingsContent from './TeamFullStandingsContent';
 
-const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
-
 export default class TeamFullStandingsRoot extends React.Component {
   
   componentDidMount() {

@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
     state.individualStandings.requestingIndividualStandings,
     state.teamFullStandings.requestingFullTeamStandings,
     state.individualFullStandings.requestingFullIndividualStandings,
+    state.roundReport.requestingRoundReport,
   ],
 });
 

@@ -6,6 +6,7 @@ const TEAM_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/team?phase={phase
 const INDIVIDUAL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/player?phase={phaseId}`;
 const TEAM_FULL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/teamfull?phase={phaseId}`;
 const INDIVIDUAL_FULL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/playerfull?phase={phaseId}`;
+const ROUND_REPORT_URL = `${HOST}/api/t/{tournamentId}/stats/roundreport?phase={phaseId}`;
 
 export const getTeamStandings = async (tournamentId, phaseId = '') => {
    try {
@@ -43,6 +44,15 @@ export const getFullTeamStandings = async (tournamentId, phaseId = '') => {
   }
 }
 
+export const getRoundReport = async (tournamentId, phaseId = '') => {
+  try {
+    const url = ROUND_REPORT_URL.replace('{tournamentId}', tournamentId).replace('{phaseId}', phaseId);
+    return get(url);
+  } catch (e) {
+    throw e;
+  }
+}
+
 const get = async (url, config = {}) => {
   try {
     const { data } = await axios.get(url, config);
@@ -57,5 +67,6 @@ export default {
   getIndividualStandings,
   getFullIndividualStandings,
   getFullTeamStandings,
+  getRoundReport,
 };
 

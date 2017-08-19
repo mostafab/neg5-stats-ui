@@ -6,6 +6,7 @@ import TeamStandingsRoot from './../containers/home/TeamStandings';
 import IndividualStandingsRoot from './../containers/home/IndividualStandings';
 import TeamFullStandingsRoot from './../containers/home/TeamFullStandings';
 import IndividualFullStandingsRoot from '../containers/home/IndividualFullStandings';
+import RoundReportRoot from '../containers/home/RoundReport';
 import PhaseSelector from './../containers/phase-selector/PhaseSelector';
 import StandingsNavigation from './StandingsNavigation';
 
@@ -34,6 +35,7 @@ export default class TournamentStatsWrapper extends React.Component {
           <Route exact path='/t/:tournamentId/individuals' component={ IndividualStandingsRoot }/>
           <Route exact path='/t/:tournamentId/team-full' component= { TeamFullStandingsRoot } />
           <Route exact path='/t/:tournamentId/player-full' component={ IndividualFullStandingsRoot } />
+          <Route exact path='/t/:tournamentId/round-report' component={ RoundReportRoot } />
         </Switch>
       </main>
     );

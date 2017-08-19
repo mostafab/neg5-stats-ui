@@ -2,8 +2,6 @@ import React from 'react';
 
 import IndividualStandingsContent from './IndividualStandingsContent';
 
-const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
-
 export default class IndividualStandingsRoot extends React.Component {
   
   componentDidMount() {

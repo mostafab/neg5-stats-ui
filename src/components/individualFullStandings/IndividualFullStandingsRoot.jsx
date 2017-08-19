@@ -2,8 +2,6 @@ import React from 'react';
 
 import IndividualFullStandingsContent from './IndividualFullStandingsContent';
 
-const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
-
 export default class IndividualFullStandingsRoot extends React.Component {
   
   componentDidMount() {

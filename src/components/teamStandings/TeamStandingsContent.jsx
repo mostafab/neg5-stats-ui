@@ -10,23 +10,23 @@ export default class TeamStandingsContent extends React.Component {
   static propTypes = {
     allTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
     brackets: PropTypes.arrayOf(PropTypes.object).isRequired,
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     tournamentId: PropTypes.string.isRequired,
     phaseId: PropTypes.string.isRequired,
   }
 
   render() {
-    const { brackets, allTeamStats, tournamentId, phaseId, pointScheme } = this.props;
+    const { brackets, allTeamStats, tournamentId, phaseId, tossupValues } = this.props;
     let standingsComponent;
     if (brackets.length === 0) {
       const allTeamsBracket = {
         id: 'allTeams',
         name: 'All Teams',
       };
-      standingsComponent = <TeamsAggregateStatsTable allTeamStats={allTeamStats} pointScheme={pointScheme}
+      standingsComponent = <TeamsAggregateStatsTable allTeamStats={allTeamStats} tossupValues={tossupValues}
         bracket={ allTeamsBracket } tournamentId={ tournamentId } phaseId={ phaseId }/>
     } else {
-      standingsComponent = <TeamsAggregateStatsByBracketWrapper allTeamStats={allTeamStats} pointScheme={pointScheme}
+      standingsComponent = <TeamsAggregateStatsByBracketWrapper allTeamStats={allTeamStats} tossupValues={tossupValues}
         brackets={brackets} tournamentId={ tournamentId } phaseId={ phaseId }/>
     }
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
+import { round } from 'lodash';
 
 import ObjectTableRow from '../util/ObjectTableRow';
 
@@ -11,7 +12,7 @@ import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
 const HEADERS = [
   { displayName: 'Round', field: 'round' },
   { displayName: 'Opponent', field: 'opponentTeamName' },
-  { displayName: 'GP', field: 'gamePlayed' },
+  { displayName: 'GP', field: match => round(match.gamePlayed, 2) },
   { displayName: 'TUH', field: 'totalTUH' },
   { displayName: 'P / TU', field: match => getPointsPerTossupHeard(match) },
   { displayName: 'P / N', field: match => getPowersToNegRatio(match) },
@@ -25,13 +26,13 @@ export default class SingleIndividualFullStandingsTable extends React.Component 
 
   static propTypes = {
     playerStats: PropTypes.object.isRequired,
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
 
   getTableHeaders() {
     const copy = Object.assign([], HEADERS);
-    const values = this.props.pointScheme.map(tv => ({
+    const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
@@ -42,7 +43,7 @@ export default class SingleIndividualFullStandingsTable extends React.Component 
   render() {
     const { playerStats } = this.props;
     const tableHeaders = this.getTableHeaders();
-    const playerHeader = <tr><th colSpan={tableHeaders.length}> { playerStats.playerName } </th></tr>;
+    const playerHeader = <tr><th colSpan={tableHeaders.length}> { playerStats.playerName } ({playerStats.teamName}) </th></tr>;
     return (
       <Table responsive condensed hover id={`player_${playerStats.playerId}`}>
           <thead>

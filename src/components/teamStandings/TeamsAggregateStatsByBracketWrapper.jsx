@@ -18,13 +18,13 @@ export default class TeamsAggregateStatsByBracketWrapper extends React.Component
       id: PropTypes.string.isRequired,
     })).isRequired,
     allTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     tournamentId: PropTypes.string.isRequired,
     phaseId: PropTypes.string.isRequired,
   };
 
   render() {
-    const { brackets, allTeamStats, pointScheme, phaseId, tournamentId } = this.props;
+    const { brackets, allTeamStats, tossupValues, phaseId, tournamentId } = this.props;
     const groupedTeams = this.groupTeamsByBracket();
     const nonEmptyBrackets = brackets.filter(bracket => groupedTeams[bracket.id]);
     const teamsWithoutBracket = groupedTeams['null'] || [];
@@ -32,12 +32,12 @@ export default class TeamsAggregateStatsByBracketWrapper extends React.Component
       <div>
          {
           nonEmptyBrackets.map(bracket => 
-            <TeamsAggregateStatsTable key={bracket.id} allTeamStats={groupedTeams[bracket.id]} pointScheme={pointScheme}
+            <TeamsAggregateStatsTable key={bracket.id} allTeamStats={groupedTeams[bracket.id]} tossupValues={tossupValues}
               bracket={bracket} tournamentId={tournamentId} phaseId={phaseId}/> )
         }
         {
            teamsWithoutBracket.length > 0 ?
-            <TeamsAggregateStatsTable key={null} allTeamStats={teamsWithoutBracket} pointScheme={pointScheme}
+            <TeamsAggregateStatsTable key={null} allTeamStats={teamsWithoutBracket} tossupValues={tossupValues}
               bracket={UNASSIGNED_TEAMS_BRACKET} tournamentId={tournamentId} phaseId={phaseId} />
             : null
         }

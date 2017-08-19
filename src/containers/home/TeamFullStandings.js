@@ -11,7 +11,7 @@ import TeamFullStandingsRoot from '../../components/teamFullStandings/TeamFullSt
 
 const mapStateToProps = state => ({
   fullTeamStats: state.teamFullStandings.fullTeamStats,
-  pointScheme: state.globalState.pointScheme,
+  tossupValues: state.globalState.tossupValues,
   requestingFullTeamStandings: state.teamFullStandings.requestingFullTeamStandings,
   selectedPhaseId: state.globalState.selectedPhaseId,
 });

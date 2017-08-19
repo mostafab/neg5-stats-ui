@@ -40,7 +40,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
 
   static propTypes = {
     allTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     bracket: PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -51,7 +51,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
 
   getTableHeaders() {
     const copy = Object.assign([], HEADERS);
-    const values = this.props.pointScheme.map(tv => ({
+    const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));

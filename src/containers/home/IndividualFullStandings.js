@@ -9,6 +9,7 @@ import IndividualFullStandingsRoot from '../../components/individualFullStanding
 
 const mapStateToProps = state => ({
   selectedPhaseId: state.globalState.selectedPhaseId,
+  tossupValues: state.globalState.tossupValues,
   fullIndividualStats: state.individualFullStandings.fullIndividualStats,
   requestingFullIndividualStandings: state.individualFullStandings.requestingFullIndividualStandings,
 });

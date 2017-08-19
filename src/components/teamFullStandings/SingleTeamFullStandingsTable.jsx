@@ -28,13 +28,13 @@ const INDEX_TO_INSERT_POINT_SCHEME = 5;
 export default class SingleTeamFullStandingsTable extends React.Component {
   
   static propTypes = {
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     fullTeamStats: PropTypes.object.isRequired,
   }
 
   getTableHeaders() {
     const copy = Object.assign([], HEADERS);
-    const values = this.props.pointScheme.map(tv => ({
+    const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));

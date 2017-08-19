@@ -2,6 +2,7 @@ import { push } from 'react-router-redux';
 
 import tournamentClient from './../../client/tournament-client';
 import { mapPhases } from './../../mappers/phase-mapper';
+import { mapTossupValues } from './../../mappers/point-scheme-mapper';
 import { getPageUrlFromStatsPageAndPhase } from './../../util/url-util';
 
 const ROOT = 'tournamentStatsWrapper/';
@@ -32,6 +33,25 @@ export const getTournamentPhases = tournamentId =>
     } catch (error) {
       dispatch({
         type: PHASES_ERROR,
+      });
+    }
+  };
+
+export const getTournamentTossupValues = tournamentId =>
+  async dispatch => {
+    dispatch({
+      type: POINT_SCHEME_REQUESTED,
+    });
+    try {
+      const pointScheme = await tournamentClient.getTournamentPointScheme(tournamentId);
+      const mapped = mapTossupValues(pointScheme);
+      dispatch({
+        type: POINT_SCHEME_RECEIVED,
+        tossupValues: mapped,
+      });
+    } catch (error) {
+      dispatch({
+        type: POINT_SCHEME_ERROR,
       });
     }
   };

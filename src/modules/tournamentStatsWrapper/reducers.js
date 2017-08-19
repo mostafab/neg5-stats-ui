@@ -11,7 +11,7 @@ import {
 } from './actions';
 
 const initialState = {
-  pointScheme: [],
+  tossupValues: [],
   phases: [],
   phaseQuery: '',
   requestingPointScheme: false,
@@ -23,6 +23,10 @@ export default handleActions({
   [POINT_SCHEME_REQUESTED]: (state, action) => ({
     ...state,
     requestingPointScheme: true,
+  }),
+  [POINT_SCHEME_RECEIVED]: (state, action) => ({
+    ...state,
+    tossupValues: action.tossupValues,
   }),
   [PHASES_REQUESTED]: (state, action) => ({
     ...state,

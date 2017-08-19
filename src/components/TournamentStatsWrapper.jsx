@@ -12,12 +12,13 @@ import StandingsNavigation from './StandingsNavigation';
 export default class TournamentStatsWrapper extends React.Component {
 
   componentDidMount() {
-    const { getTournamentPhases, match, location, setInitialPhaseOnLoad } = this.props;
+    const { getTournamentPhases, match, location, setInitialPhaseOnLoad, getTournamentTossupValues } = this.props;
     const queryParams = queryString.parse(location.search);
     const phaseId = queryParams.phase || '';
     const tournamentId = match.params.tournamentId;
     setInitialPhaseOnLoad(phaseId);
     getTournamentPhases(tournamentId);
+    getTournamentTossupValues(tournamentId);
   }
 
   render() {

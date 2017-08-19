@@ -7,16 +7,16 @@ import TeamFullStandingsByTeamWrapper from './TeamFullStandingsByTeamWrapper';
 export default class TeamFullStandingsContent extends React.Component {
   
   static propTypes = {
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     fullTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   render() {
-    const { pointScheme, fullTeamStats } = this.props;
+    const { tossupValues, fullTeamStats } = this.props;
     return (
       <Row>
         <Col lg={12} md={12} sm={12}>
-          <TeamFullStandingsByTeamWrapper pointScheme={pointScheme} fullTeamStats={fullTeamStats}/>
+          <TeamFullStandingsByTeamWrapper tossupValues={tossupValues} fullTeamStats={fullTeamStats}/>
         </Col>
       </Row>
     )

@@ -38,13 +38,13 @@ export default class IndividualStatsTable extends React.Component {
     individualStats: PropTypes.arrayOf(PropTypes.object).isRequired,
     phaseId: PropTypes.string.isRequired,
     tournamentId: PropTypes.string.isRequired,
-    pointScheme: PropTypes.array.isRequired,
+    tossupValues: PropTypes.array.isRequired,
   }
 
   getTableHeaders() {
     const copy = Object.assign([], HEADERS);
     copy.find(h => h.displayName === 'Player Name').args = [this.props.tournamentId, this.props.phaseId];
-    const values = this.props.pointScheme.map(tv => ({
+    const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));

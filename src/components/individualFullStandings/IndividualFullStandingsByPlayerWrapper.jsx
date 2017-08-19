@@ -7,17 +7,17 @@ export default class IndividualFullStandingsByPlayerWrapper extends React.Compon
 
   static propTypes = {
     fullIndividualStats: PropTypes.arrayOf(PropTypes.object).isRequired,
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   render() {
-    const { playerStats, pointScheme } = this.props;
+    const { playerStats, tossupValues } = this.props;
     return (
       <div>
         {
           this.props.fullIndividualStats
             .filter(player => player.matches.length > 0)
-            .map(player => <SingleIndividualFullStandingsTable key={ player.playerId } playerStats={ player } pointScheme={ pointScheme }/>)
+            .map(player => <SingleIndividualFullStandingsTable key={ player.playerId } playerStats={ player } tossupValues={ tossupValues }/>)
         }
       </div>
     )

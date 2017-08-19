@@ -6,18 +6,18 @@ import SingleTeamFullStandingsTable from './SingleTeamFullStandingsTable';
 export default class TeamFullStandingsByTeamWrapper extends React.Component {
 
   static propTypes = {
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     fullTeamStats: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   render() {
-    const { pointScheme, fullTeamStats } = this.props;
+    const { tossupValues, fullTeamStats } = this.props;
     return (
       <div>
       {
         fullTeamStats
           .filter(team => team.matches.length > 0)
-          .map(team => <SingleTeamFullStandingsTable key={team.teamId} pointScheme={pointScheme} fullTeamStats={team} />)
+          .map(team => <SingleTeamFullStandingsTable key={team.teamId} tossupValues={tossupValues} fullTeamStats={team} />)
       }
       </div>
     )

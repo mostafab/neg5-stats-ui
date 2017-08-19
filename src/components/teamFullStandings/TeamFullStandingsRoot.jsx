@@ -22,11 +22,11 @@ export default class TeamFullStandingsRoot extends React.Component {
   }
 
   render() {
-    const { fullTeamStats } = this.props;
+    const { fullTeamStats, tossupValues } = this.props;
     return (
       <div>
         <h3> Full Team Standings </h3>
-        <TeamFullStandingsContent fullTeamStats={fullTeamStats} pointScheme={POINT_SCHEME}/>
+        <TeamFullStandingsContent fullTeamStats={fullTeamStats} tossupValues={tossupValues}/>
       </div>
     )
   }

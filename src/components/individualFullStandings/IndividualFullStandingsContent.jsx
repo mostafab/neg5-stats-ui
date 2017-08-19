@@ -8,15 +8,15 @@ export default class IndividualFullStandingsContent extends React.Component {
 
   static propTypes = {
     fullIndividualStats: PropTypes.arrayOf(PropTypes.object).isRequired,
-    pointScheme: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   render() {
-    const { fullIndividualStats, pointScheme } = this.props;
+    const { fullIndividualStats, tossupValues } = this.props;
     return (
       <Row>
         <Col lg={12} md={12} sm={12}>
-          <IndividualFullStandingsByPlayerWrapper fullIndividualStats={ fullIndividualStats } pointScheme={ pointScheme }/>
+          <IndividualFullStandingsByPlayerWrapper fullIndividualStats={ fullIndividualStats } tossupValues={ tossupValues }/>
         </Col>
       </Row>
     )

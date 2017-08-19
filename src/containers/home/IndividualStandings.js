@@ -9,6 +9,7 @@ import IndividualStandingsRoot from '../../components/individualStandings/Indivi
 
 const mapStateToProps = state => ({
   selectedPhaseId: state.globalState.selectedPhaseId,
+  tossupValues: state.globalState.tossupValues,
   individualStats: state.individualStandings.individualStats,
   requestingTeamStandings: state.individualStandings.requestingTeamStandings,
 });

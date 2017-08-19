@@ -13,3 +13,17 @@ body {
 button:disabled {
   opacity: 0.5;
 }
+
+.navbar {
+  border-radius: 2px;
+}
+
+.LoadingCircle {
+  color: #22BEA0;
+  transition: .5s visibility;
+}
+
+.LoadingCircleWrapper {
+  background-color: transparent;
+  border: none;
+}

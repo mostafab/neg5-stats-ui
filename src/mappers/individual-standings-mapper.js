@@ -27,13 +27,13 @@ export const mapSingleFullIndividualStanding = standing => ({
   teamName: standing.team_name,
   matches: Object.assign([], standing.matches.map(match => ({
     gamePlayed: match.game_played,
-    gets: match.gets,
+    totalGets: match.gets,
     matchId: match.match_id,
     matchTossups: match.match_tossups,
-    negs: match.negs,
+    totalNegs: match.negs,
     opponentTeamId: match.opponent_team_id,
     opponentTeamName: match.opponent_team_name,
-    powers: match.powers,
+    totalPowers: match.powers,
     round: match.round,
     tossupTotals: match.tossup_totals.map(tv => ({
       answerType: tv.answer_type,

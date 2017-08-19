@@ -5,17 +5,17 @@ import { round } from 'lodash';
 
 import ObjectTableRow from '../util/ObjectTableRow';
 
-import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
+import { tournamentUsesNegs, getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
   getNumberOfTossupsByValue } from './../../util/stats-util';
-
+import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 const HEADERS = [
   { displayName: 'Round', field: 'round' },
   { displayName: 'Opponent', field: 'opponentTeamName' },
   { displayName: 'GP', field: match => round(match.gamePlayed, 2) },
   { displayName: 'TUH', field: 'totalTUH' },
   { displayName: 'P / TU', field: match => getPointsPerTossupHeard(match) },
-  { displayName: 'P / N', field: match => getPowersToNegRatio(match) },
-  { displayName: 'G / N', field: match => getGetsToNegRatio(match) },
+  { displayName: 'P / N', field: match => getPowersToNegRatio(match), measuresNeg: true },
+  { displayName: 'G / N', field: match => getGetsToNegRatio(match), measuresNeg: true },
   { displayName: 'Points', field: 'totalPoints' },
 ];
 
@@ -30,12 +30,15 @@ export default class SingleIndividualFullStandingsTable extends React.Component 
 
 
   getTableHeaders() {
-    const copy = Object.assign([], HEADERS);
+    let copy = Object.assign([], HEADERS);
     const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
+    if (!tournamentUsesNegs(this.props.tossupValues)) {
+      copy = removeHeadersRelatedToNegs(copy);
+    }
     return copy;
   }
 

@@ -4,7 +4,8 @@ import { Table } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import ObjectTableRow from '../util/ObjectTableRow';
-import { getPointsPerTossupHeard, getPlayerGetsToNegRatio, getPlayerPowerToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
+import { tournamentUsesNegs, getPointsPerTossupHeard, getPlayerGetsToNegRatio, getPlayerPowerToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
+import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 
 const PLAYER_URL = '/t/{tournamentId}/player-full?phase={phaseId}#player_{playerId}';
 
@@ -25,8 +26,8 @@ const HEADERS = [
     { displayName: 'TUH', field: 'totalTUH' },
     { displayName: 'Points', field: 'totalPoints' },
     { displayName: 'P / TUH', field: player => getPointsPerTossupHeard(player) },
-    { displayName: 'P / N', field: player => getPlayerPowerToNegRatio(player) },
-    { displayName: 'G / N', field: player => getPlayerGetsToNegRatio(player) },
+    { displayName: 'P / N', field: player => getPlayerPowerToNegRatio(player), measuresNeg: true },
+    { displayName: 'G / N', field: player => getPlayerGetsToNegRatio(player), measuresNeg: true },
     { displayName: 'PPG', field: 'ppg' },
 ];
 
@@ -42,13 +43,16 @@ export default class IndividualStatsTable extends React.Component {
   }
 
   getTableHeaders() {
-    const copy = Object.assign([], HEADERS);
+    let copy = Object.assign([], HEADERS);
     copy.find(h => h.displayName === 'Player Name').args = [this.props.tournamentId, this.props.phaseId];
     const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
+    if (!tournamentUsesNegs(this.props.tossupValues)) {
+      copy = removeHeadersRelatedToNegs(copy);
+    }
     return copy;
   }
 

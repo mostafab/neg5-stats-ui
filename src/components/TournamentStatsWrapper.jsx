@@ -31,6 +31,7 @@ export default class TournamentStatsWrapper extends React.Component {
         <StandingsNavigation tournamentId={tournamentId} phaseId={ this.props.selectedPhaseId } location={ this.props.location }/>
         <Switch>
           <Redirect exact from='/t/:tournamentId' to={redirectUrl} />
+          <Redirect exact from='/t/:tournamentId/stats' to={redirectUrl} />
           <Route exact path='/t/:tournamentId/team-standings' component={ TeamStandingsRoot }/>
           <Route exact path='/t/:tournamentId/individuals' component={ IndividualStandingsRoot }/>
           <Route exact path='/t/:tournamentId/team-full' component= { TeamFullStandingsRoot } />

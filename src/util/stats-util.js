@@ -48,6 +48,8 @@ export const getTossupPointsPerTossupsHeard = statsObj => {
   return round(statsObj.totalTossupPoints / statsObj.totalTUH, 2) || 0;
 }
 
+export const tournamentUsesNegs = tossupValues => tossupValues.some(tv => tv.answerType === 'Neg');
+
 export default {
   getPointsPerTossupHeard,
   getPowersToNegRatio,
@@ -57,4 +59,5 @@ export default {
   getTeamBonusesHeardInMatch,
   getTeamBonusPointsInMatch,
   getTossupPointsPerTossupsHeard,
+  tournamentUsesNegs,
 };

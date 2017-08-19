@@ -5,9 +5,10 @@ import { Table } from 'react-bootstrap';
 import ObjectTableRow from '../util/ObjectTableRow';
 import IndividualStatsTable from './../individualStandings/IndividualStatsTable';
 
-import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
+import { tournamentUsesNegs, getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
   getNumberOfTossupsByValue, getTeamBonusesHeardInMatch,
   getTeamBonusPointsInMatch } from './../../util/stats-util';
+import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 
 const HEADERS = [
   { displayName: 'Round', field: 'round' },
@@ -17,8 +18,8 @@ const HEADERS = [
   { displayName: 'PA', field: 'opponentScore' },
   { displayName: 'TUH', field: 'totalTUH' },
   { displayName: 'PPTH', field: match => getPointsPerTossupHeard(match) },
-  { displayName: 'P / N', field: match => getPowersToNegRatio(match) },
-  { displayName: 'G / N', field: match => getGetsToNegRatio(match) },
+  { displayName: 'P / N', field: match => getPowersToNegRatio(match), measuresNeg: true },
+  { displayName: 'G / N', field: match => getGetsToNegRatio(match), measuresNeg: true },
   { displayName: 'Bonuses Heard', field: match => getTeamBonusesHeardInMatch(match) },
   { displayName: 'Bonus Points', field: match => getTeamBonusPointsInMatch(match) },
   { displayName: 'Bounceback Points', field: 'bouncebackPoints' },
@@ -38,12 +39,15 @@ export default class SingleTeamFullStandingsTable extends React.Component {
   }
 
   getTableHeaders() {
-    const copy = Object.assign([], HEADERS);
+    let copy = Object.assign([], HEADERS);
     const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
+    if (!tournamentUsesNegs(this.props.tossupValues)) {
+      copy = removeHeadersRelatedToNegs(copy);
+    }
     return copy;
   }
 

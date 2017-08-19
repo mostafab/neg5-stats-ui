@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 
-import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
+import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNumberOfTossupsByValue, tournamentUsesNegs } from './../../util/stats-util';
+import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 import ObjectTableRow from '../util/ObjectTableRow';
 
 const TEAM_URL = '/t/{tournamentId}/team-full?phase={phaseId}#team_{teamId}';
@@ -29,8 +30,8 @@ const HEADERS = [
   { displayName: 'Margin', field: 'margin' },
   { displayName: 'TUH', field: 'totalTUH' },
   { displayName: 'PPTH', field: team => getPointsPerTossupHeard(team) },
-  { displayName: 'P / N', field: team => getPowersToNegRatio(team) },
-  { displayName: 'G / N', field: team => getGetsToNegRatio(team) },
+  { displayName: 'P / N', field: team => getPowersToNegRatio(team), measuresNeg: true },
+  { displayName: 'G / N', field: team => getGetsToNegRatio(team), measuresNeg: true },
   { displayName: 'PPB', field: 'ppb' },
 ];
 
@@ -50,13 +51,16 @@ export default class TeamsAggregateStatsTable extends React.Component {
   };
 
   getTableHeaders() {
-    const copy = Object.assign([], HEADERS);
+    let copy = Object.assign([], HEADERS);
     const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
     copy.find(h => h.displayName === 'Team').args = [this.props.tournamentId, this.props.phaseId];
+    if (!tournamentUsesNegs(this.props.tossupValues)) {
+      copy = removeHeadersRelatedToNegs(copy);
+    }
     return copy;
   }
 

@@ -15,7 +15,9 @@ export default class TeamFullStandingsByTeamWrapper extends React.Component {
     return (
       <div>
       {
-        fullTeamStats.map(team => <SingleTeamFullStandingsTable key={team.teamId} pointScheme={pointScheme} fullTeamStats={team} />)
+        fullTeamStats
+          .filter(team => team.matches.length > 0)
+          .map(team => <SingleTeamFullStandingsTable key={team.teamId} pointScheme={pointScheme} fullTeamStats={team} />)
       }
       </div>
     )

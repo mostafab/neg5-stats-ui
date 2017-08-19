@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl, Row, Col } from 'react-bootstrap';
+import FontAwesome from 'react-fontawesome';
 
 export default class PhaseSelector extends React.Component {
 
@@ -18,6 +19,7 @@ export default class PhaseSelector extends React.Component {
                   this.props.phases.map(phase => <option key={phase.id} value={phase.id}> { phase.name } </option>)
                 }
               </FormControl>
+              {/* <FontAwesome name='spinner' size='2x' spin/> */}
             </FormGroup>
           </div>
         </Col>

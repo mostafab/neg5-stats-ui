@@ -13,11 +13,11 @@ const App = () => (
   <BrowserRouter>
     <div>
       <TopNavbar />
-        <Switch>
-          <Route exact path='/' component={ Main } />
-          <Route exact path='/t' component={Main}/>
-          <Route path='/t/:tournamentId' component={ TournamentStatsWrapper }/>
-        </Switch>
+      <Switch>
+        <Route exact path='/' component={ Main } />
+        <Route exact path='/t' component={Main}/>
+        <Route path='/t/:tournamentId' component={ TournamentStatsWrapper }/>
+      </Switch>
     </div>
   </BrowserRouter>
 );

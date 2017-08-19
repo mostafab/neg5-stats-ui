@@ -25,7 +25,7 @@ export const mapSingleFullIndividualStanding = standing => ({
   playerName: standing.player_name,
   teamId: standing.team_id,
   teamName: standing.team_name,
-  matches: standing.matches.map(match => ({
+  matches: Object.assign([], standing.matches.map(match => ({
     gamePlayed: match.game_played,
     gets: match.gets,
     matchId: match.match_id,
@@ -42,7 +42,7 @@ export const mapSingleFullIndividualStanding = standing => ({
     })),
     totalTUH: match.tossups_heard,
     totalPoints: match.total_points,
-  })),
+  }))).sort((matchOne, matchTwo) => matchOne.round - matchTwo.round),
 });
 
 export default {

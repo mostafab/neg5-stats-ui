@@ -48,7 +48,7 @@ export const mapFullTeamStandings = allStats => allStats.map(mapSingleFullTeamSt
 export const mapSingleFullTeamStanding = standing => ({
   teamName: standing.team_name,
   teamId: standing.team_id,
-  matches: standing.matches.map(match => ({
+  matches: Object.assign([], standing.matches.map(match => ({
     bouncebackPoints: match.bounceback_points,
     matchId: match.match_id,
     opponentId: match.opponent_id,
@@ -69,7 +69,7 @@ export const mapSingleFullTeamStanding = standing => ({
     totalGets: match.total_gets,
     totalNegs: match.total_negs,
     totalPowers: match.total_powers,
-  })),
+  }))).sort((matchOne, matchTwo) => matchOne.round - matchTwo.round), // Sort matches by round
 });
 
 export default {

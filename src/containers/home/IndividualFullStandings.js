@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
   tossupValues: state.globalState.tossupValues,
   fullIndividualStats: state.individualFullStandings.fullIndividualStats,
   requestingFullIndividualStandings: state.individualFullStandings.requestingFullIndividualStandings,
+  numTimesStatsReceived: state.individualFullStandings.numTimesStatsReceived,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

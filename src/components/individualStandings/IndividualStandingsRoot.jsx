@@ -11,7 +11,7 @@ export default class IndividualStandingsRoot extends React.Component {
     if (typeof this.props.selectedPhaseId !== 'undefined') {
       this.props.getIndividualStandings(tournamentId, this.props.selectedPhaseId);
     }
-  }  
+  }
 
   componentDidUpdate(prevProps, prevState) {
     const oldPhaseId = prevProps.selectedPhaseId;
@@ -23,7 +23,6 @@ export default class IndividualStandingsRoot extends React.Component {
 
   render() {
     const { individualStats, selectedPhaseId, match, tossupValues } = this.props;
-    console.log(tossupValues);
     return (
       <div>
         <h3> Individual Standings </h3>

@@ -5,6 +5,7 @@ import { INDIVIDUAL_STANDINGS_ERROR, INDIVIDUAL_STANDINGS_RECEIVED, INDIVIDUAL_S
 const initialState = {
   requestingIndividualStandings: false,
   individualStats: [],
+  numTimesStatsReceived: 0,
 };
 
 export default handleActions({
@@ -16,6 +17,7 @@ export default handleActions({
     ...state,
     individualStats: action.individualStats,
     requestingIndividualStandings: false,
+    numTimesStatsReceived: state.numTimesStatsReceived + 1,
   }),
   [INDIVIDUAL_STANDINGS_ERROR]: (state, action) => ({
     ...state,

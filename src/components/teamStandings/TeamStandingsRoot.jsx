@@ -1,12 +1,11 @@
 import React from 'react';
 import TeamStandingsContent from './TeamStandingsContent';
 
-const POINT_SCHEME = [ { value: 10 }, { value: 15 }, { value: -5 } ];
-
 export default class TeamStandingsRoot extends React.Component {
   
   componentDidMount() {
     const tournamentId = this.props.match.params.tournamentId;
+    const numTimesStatsReceived = this.props.numTimesStatsReceived;
     this.props.getTournamentBrackets(tournamentId);
     if (typeof this.props.selectedPhaseId !== 'undefined') {
       this.props.requestTeamStandings(tournamentId, this.props.selectedPhaseId);

@@ -12,6 +12,7 @@ const initialState = {
   requestingTeamStandings: false,
   allTeamStats: [],
   brackets: [],
+  numTimesStatsReceived: 0,
 };
 
 export default handleActions({
@@ -23,6 +24,7 @@ export default handleActions({
     ...state,
     allTeamStats: action.allTeamStats,
     requestingTeamStandings: false,
+    numTimesStatsReceived: state.numTimesStatsReceived + 1,
   }),
   [TEAM_STANDINGS_ERROR]: (state, action) => ({
     ...state,

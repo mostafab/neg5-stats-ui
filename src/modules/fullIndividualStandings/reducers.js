@@ -8,6 +8,7 @@ import {
 const initialState = {
   requestingFullIndividualStandings: false,
   fullIndividualStats: [],
+  numTimesStatsReceived: 0,
 };
 
 export default handleActions({
@@ -19,6 +20,7 @@ export default handleActions({
     ...state,
     fullIndividualStats: action.fullIndividualStats,
     requestingFullIndividualStandings: false,
+    numTimesStatsReceived: state.numTimesStatsReceived + 1,
   }),
   [INDIVIDUAL_FULL_STANDINGS_ERROR]: (state, action) => ({
     ...state,

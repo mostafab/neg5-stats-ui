@@ -8,6 +8,7 @@ import {
 const initialState = {
   requestingFullTeamStandings: false,
   fullTeamStats: [],
+  numTimesStatsReceived: 0,
 };
 
 export default handleActions({
@@ -19,6 +20,7 @@ export default handleActions({
     ...state,
     fullTeamStats: action.fullTeamStats,
     requestingFullTeamStandings: false,
+    numTimesStatsReceived: state.numTimesStatsReceived + 1,
   }),
   [TEAM_FULL_STANDINGS_ERROR]: (state, action) => ({
     ...state,

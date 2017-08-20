@@ -13,7 +13,6 @@ router.get('/findRecent', async (request, response) => {
 });
 
 router.get('/byDateRange', async (request, response) => {
-  console.log(request.query);
   try {
     response.send({ result: await getTournamentsBetweenDates(request.query.startDate, request.query.endDate) });
   } catch (error) {

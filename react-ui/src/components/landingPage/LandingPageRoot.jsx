@@ -22,7 +22,10 @@ export default class LandingPageWrapper extends React.Component {
     if (oldStartDate && oldEndDate) {
       const startDateFormatted = oldStartDate.format(DATE_FORMAT);
       const endDateFormatted = oldEndDate.format(DATE_FORMAT);
-      resultMessage = <h4>There are <b>{ recentTournaments.length }</b> tournament(s) between { startDateFormatted } and { endDateFormatted } </h4>;
+      const len = recentTournaments.length;
+      resultMessage = <h4>
+        There { len === 1 ? 'is' : 'are' } <b>{ recentTournaments.length }</b> { len === 1 ? 'tournament' : 'tournaments' } between { startDateFormatted } and { endDateFormatted }
+        </h4>;
     }
     return resultMessage;
   }

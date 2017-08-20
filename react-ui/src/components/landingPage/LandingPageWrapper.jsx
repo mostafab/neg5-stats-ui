@@ -13,7 +13,7 @@ export default class LandingPageWrapper extends React.Component {
   }
   
   render() {
-    const { recentTournaments, searchForm } = this.props;
+    const { recentTournaments, searchForm, changeFocusedDate, changeDates } = this.props;
     return ( 
       <div className='LandingPageWrapper'>
         <Grid>
@@ -23,7 +23,7 @@ export default class LandingPageWrapper extends React.Component {
               <p>
                 This is the new home for all things Neg 5 stats. You can search for a specific tournament or find stats for past and upcoming tournaments below.
               </p>
-              <TournamentSearchForm searchForm={ searchForm } />
+              <TournamentSearchForm searchForm={ searchForm } changeFocusedDate={changeFocusedDate} changeDates={changeDates}/>
             </Jumbotron>
           </Row>
           <TournamentPanelsWrapper tournaments={ this.props.recentTournaments } panelsPerRow={PANELS_PER_ROW}/>

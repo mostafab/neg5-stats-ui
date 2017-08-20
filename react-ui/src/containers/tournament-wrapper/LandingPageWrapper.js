@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import LandingPageWrapper from '../../components/landingPage/LandingPageWrapper';
 
-import { getRecentTournaments } from '../../modules/landingPage/actions';
+import { getRecentTournaments, changeFocusedDate, changeDates } from '../../modules/landingPage/actions';
 
 const mapStateToProps = state => ({
   recentTournaments: state.landingPage.recentTournaments,
@@ -12,6 +12,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getRecentTournaments,
+  changeFocusedDate,
+  changeDates,
 }, dispatch);
 
 export default connect(

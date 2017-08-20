@@ -7,26 +7,29 @@ export default class TournamentSearchForm extends React.Component {
   
   static propTypes = {
     searchForm: PropTypes.object,
+    changeDates: PropTypes.func.isRequired,
+    changeFocusedDate: PropTypes.func.isRequired,
   }
 
   onDatesChanged(startDate, endDate) {
-
+    this.props.changeDates(startDate, endDate);
   }
 
   onFocusChange(focusedInput) {
-    console.log(focusedInput);
+    this.props.changeFocusedDate(focusedInput);
   }
 
   render() {
-    const { startDate, endDate } = this.props.searchForm;
+    const { startDate, endDate, focusedInput } = this.props.searchForm;
     return (
       <div>
         <DateRangePicker
-                startDate={startDate} // momentPropTypes.momentObj or null,
-                endDate={endDate} // momentPropTypes.momentObj or null,
-                onDatesChange={({ startDate, endDate }) => this.onDatesChanged(startDate, endDate)} // PropTypes.func.isRequired,
-                focusedInput={this.props.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                onFocusChange={focusedInput => this.onFocusChange(focusedInput)} // PropTypes.func.isRequired,
+          startDate={startDate} // momentPropTypes.momentObj or null,
+          endDate={endDate} // momentPropTypes.momentObj or null,
+          isOutsideRange={() => false}
+          onDatesChange={({ startDate, endDate }) => this.onDatesChanged(startDate, endDate)} // PropTypes.func.isRequired,
+          focusedInput={ focusedInput } // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+          onFocusChange={newFocusedInput => this.onFocusChange(newFocusedInput)} // PropTypes.func.isRequired,
           />
           <Button className='SubmitButton' bsStyle="primary"> Search </Button>
       </div>

@@ -11,6 +11,13 @@ const PORT = process.env.PORT || 3000;
 // Priority serve any static files.
 app.use('/neg5.stats.web-server/', express.static(path.resolve(__dirname, '../react-ui/build')));
 
+// Enable CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Answer API requests.
 app.use('/api/t/:tournamentId/stats', statsApiRouter);
 app.use('/api/t', tournamentApiRouter);

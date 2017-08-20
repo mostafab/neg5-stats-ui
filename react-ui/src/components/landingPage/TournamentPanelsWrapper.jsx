@@ -29,7 +29,7 @@ export default class TournamentPanelsWrapper extends React.Component {
             <Row className='TournamentsSummaryRow' key={i}>
               {
                 chunk.map(tournament =>
-                  <Col className='TournamentSummaryCol' key={tournament.id} lg={colWidth}>
+                  <Col className='TournamentSummaryCol' key={tournament.id} lg={colWidth} md={colWidth} sm={12}>
                     <TournamentSummaryPanel tournament={ tournament }/>
                   </Col>
                 )

@@ -15,8 +15,9 @@ export default class TournamentSummaryPanel extends React.Component {
     const link = <Link to={url}> { name } </Link>;
     return (
       <Panel header={ link }>
-        <b> { location } </b>
-        <b> { questionSet } </b>
+        <p> { location } </p>
+        <p> { questionSet } </p>
+        { date ? <p> { date.toDateString()} </p> : null }
       </Panel>
     )
   }

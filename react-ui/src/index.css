@@ -19,6 +19,10 @@ button:disabled {
   opacity: 0.5;
 }
 
+a.panel-title {
+  color: #18bc9c;
+}
+
 .navbar {
   border-radius: 2px;
 }
@@ -33,10 +37,19 @@ button:disabled {
   border: none;
 }
 
-.TournamentsSummaryRow > .TournamentSummaryCol:first-child {
-  padding-left: 0px;
+@media (min-width: 992px) {
+  .TournamentsSummaryRow > .TournamentSummaryCol:first-child {
+    padding-left: 0px;
+  }
+  
+  .TournamentsSummaryRow > .TournamentSummaryCol:last-child {
+    padding-right: 0px;
+  }
 }
 
-.TournamentsSummaryRow > .TournamentSummaryCol:last-child {
-  padding-right: 0px;
+@media (max-width: 991px) {
+  .TournamentsSummaryRow > .TournamentSummaryCol {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }

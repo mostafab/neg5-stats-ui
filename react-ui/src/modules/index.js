@@ -5,6 +5,7 @@ import individualStandings from './individualStandings/reducers';
 import teamFullStandings from './fullTeamStandings/reducers';
 import individualFullStandings from './fullIndividualStandings/reducers';
 import roundReport from './roundReport/reducers';
+import landingPage from './landingPage/reducers';
 import globalState from './tournamentStatsWrapper/reducers';
 
 export default combineReducers({
@@ -14,6 +15,7 @@ export default combineReducers({
   teamFullStandings,
   individualFullStandings,
   roundReport,
+  landingPage,
   globalState,
 });
 

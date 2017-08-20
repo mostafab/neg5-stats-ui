@@ -1,11 +1,12 @@
 import React from 'react';
 import { Navbar, FormGroup, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default () => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href='https://neg5.org' rel='noopener noreferrer' target='_blank'>Neg 5 Stats</a>
+        <Link to='/'> Neg 5 Stats </Link>
       </Navbar.Brand>
     </Navbar.Header>
     <Navbar.Collapse>

@@ -32,3 +32,11 @@ button:disabled {
   background-color: transparent;
   border: none;
 }
+
+.TournamentsSummaryRow > .TournamentSummaryCol:first-child {
+  padding-left: 0px;
+}
+
+.TournamentsSummaryRow > .TournamentSummaryCol:last-child {
+  padding-right: 0px;
+}

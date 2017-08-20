@@ -11,6 +11,8 @@ const initialState = {
     focusedInput: null,
     startDate: moment().subtract(ONE_MONTH_AGO_IN_MONTHS, 'months'),
     endDate: moment(),
+    oldStartDate: null,
+    oldEndDate: null,
   }
 };
 
@@ -23,6 +25,11 @@ export default handleActions({
     ...state,
     recentTournaments: action.recentTournaments,
     requestingTournaments: false,
+    searchForm: {
+      ...state.searchForm,
+      oldStartDate: state.searchForm.startDate,
+      oldEndDate: state.searchForm.endDate,
+    },
   }),
   [RECENT_TOURNAMENTS_ERROR]: (state, action) => ({
     ...state,

@@ -17,11 +17,11 @@ export default class LandingPageWrapper extends React.Component {
   
   render() {
     const { recentTournaments, searchForm, changeFocusedDate, changeDates, getTournamentsBetweenDates } = this.props;
-    const { startDate, endDate } = searchForm;
+    const { oldStartDate, oldEndDate } = searchForm;
     let resultMessage =  null;
-    if (startDate && endDate) {
-      const startDateFormatted = searchForm.startDate.format(DATE_FORMAT);
-      const endDateFormatted = searchForm.endDate.format(DATE_FORMAT);
+    if (oldStartDate && oldEndDate) {
+      const startDateFormatted = oldStartDate.format(DATE_FORMAT);
+      const endDateFormatted = oldEndDate.format(DATE_FORMAT);
       resultMessage = <h4>There are <b>{ recentTournaments.length }</b> tournament(s) between { startDateFormatted } and { endDateFormatted } </h4>;
     }
     return ( 

@@ -28,5 +28,5 @@ app.get('*', (request, response) => {
 });
 
 app.listen(PORT, function () {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`[neg5-stats-web] Web Server Listening on port ${PORT}`);
 });

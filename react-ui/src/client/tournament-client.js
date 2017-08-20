@@ -7,6 +7,7 @@ const PHASES_URL = `${HOST}/api/t/{tournamentId}/phases`;
 const BRACKETS_URL = `${HOST}/api/t/{tournamentId}/brackets`;
 const POINT_SCHEME_URL = `${HOST}/api/t/{tournamentId}/point-scheme`;
 const RECENT_TOURNAMENTS_URL = `${HOST}/api/t/findRecent?days={days}`;
+const BETWEEN_DATES_TOURNAMENT_URL = `${HOST}/api/t/byDateRange`;
 
 export const getTournamentPhases = async (tournamentId) => {
   try {
@@ -48,9 +49,25 @@ export const getRecentTournaments = async (daysSince) => {
   }
 }
 
+export const getTournamentsInRange = async (startDate, endDate) => {
+  try {
+    const url = BETWEEN_DATES_TOURNAMENT_URL;
+    const { data } = await axios.get(url, {
+      params: {
+        startDate,
+        endDate,
+      },
+    });
+    return data.result;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   getTournamentPhases,
   getTournamentBrackets,
   getTournamentPointScheme,
   getRecentTournaments,
+  getTournamentsInRange,
 };

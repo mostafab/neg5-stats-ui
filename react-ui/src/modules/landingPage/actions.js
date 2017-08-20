@@ -43,3 +43,22 @@ export const getRecentTournaments = (daysSince = 30) =>
       });
     }
   };
+
+export const getTournamentsBetweenDates = (startDate = new Date(), endDate = new Date()) =>
+  async dispatch => {
+    dispatch({
+      type: RECENT_TOURNAMENTS_REQUESTED,
+    });
+    try {
+      const tournaments = await tournamentClient.getTournamentsInRange(startDate, endDate);
+      const mapped = mapTournaments(tournaments);
+      dispatch({
+        type: RECENT_TOURNAMENTS_RECEIVED,
+        recentTournaments: mapped,
+      });
+    } catch (error) {
+      dispatch({
+        type: RECENT_TOURNAMENTS_ERROR,
+      });
+    }
+  };

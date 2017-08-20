@@ -9,6 +9,7 @@ export default class TournamentSearchForm extends React.Component {
     searchForm: PropTypes.object,
     changeDates: PropTypes.func.isRequired,
     changeFocusedDate: PropTypes.func.isRequired,
+    getTournamentsBetweenDates: PropTypes.func.isRequired,
   }
 
   onDatesChanged(startDate, endDate) {
@@ -17,6 +18,13 @@ export default class TournamentSearchForm extends React.Component {
 
   onFocusChange(focusedInput) {
     this.props.changeFocusedDate(focusedInput);
+  }
+
+  onClick() {
+    const { startDate, endDate } = this.props.searchForm;
+    if (startDate && endDate) {
+      this.props.getTournamentsBetweenDates(startDate.toDate(), endDate.toDate());
+    }
   }
 
   render() {
@@ -31,7 +39,7 @@ export default class TournamentSearchForm extends React.Component {
           focusedInput={ focusedInput } // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={newFocusedInput => this.onFocusChange(newFocusedInput)} // PropTypes.func.isRequired,
           />
-          <Button className='SubmitButton' bsStyle="primary"> Search </Button>
+          <Button className='SubmitButton' bsStyle="primary" onClick={() => this.onClick()}> Search </Button>
       </div>
     )
   }

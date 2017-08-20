@@ -5,7 +5,7 @@ import TournamentPanelsWrapper from './TournamentPanelsWrapper';
 import TournamentSearchForm from './TournamentSearchForm'; 
 
 const PANELS_PER_ROW = 3;
-const DAYS_SINCE = 30;
+const DAYS_SINCE = 700;
 
 export default class LandingPageWrapper extends React.Component {
   

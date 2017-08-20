@@ -43,9 +43,9 @@ const getDifferenceInTimeBetweenNowAndTournamentDate = tournament => {
   }
 
   const values = [ 
-    { name: 'months', total: 0 },
-    { name: 'weeks', total: 0 },
-    { name: 'days', total: 0 },
+    { name: 'months', total: 0, singular: 'month' },
+    { name: 'weeks', total: 0, singular: 'week' },
+    { name: 'days', total: 0, singular: 'day' },
   ];
   values.forEach(value => {
     const timeToGo = future.diff(past, value.name); // Find difference in each unit of time and increase the older time by that much each iteration.
@@ -54,7 +54,7 @@ const getDifferenceInTimeBetweenNowAndTournamentDate = tournament => {
   });
   
   const timeString = values.filter(value => value.total > 0)
-    .map(value => `${value.total} ${value.name}`)
+    .map(value => `${value.total} ${value.total === 1 ? value.singular : value.name }`)
     .join(', ');
 
   return timeString + ` ${suffix}`;

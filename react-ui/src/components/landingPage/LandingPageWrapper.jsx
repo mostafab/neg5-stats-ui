@@ -5,11 +5,12 @@ import TournamentPanelsWrapper from './TournamentPanelsWrapper';
 import TournamentSearchForm from './TournamentSearchForm'; 
 
 const PANELS_PER_ROW = 3;
+const DAYS_SINCE = 30;
 
 export default class LandingPageWrapper extends React.Component {
   
   componentDidMount() {
-    this.props.getRecentTournaments(365);
+    this.props.getRecentTournaments(DAYS_SINCE);
   }
   
   render() {

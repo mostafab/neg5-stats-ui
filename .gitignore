@@ -14,3 +14,4 @@ react-ui/build
 .DS_Store
 .env
 npm-debug.log
+server/.env

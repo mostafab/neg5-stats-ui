@@ -1,5 +1,8 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+
+import './config';
+import apiRouter from './api/router';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,13 +11,10 @@ const PORT = process.env.PORT || 3000;
 app.use('/neg5.stats.web-server/', express.static(path.resolve(__dirname, '../react-ui/build')));
 
 // Answer API requests.
-app.get('/api', function (req, res) {
-  res.set('Content-Type', 'application/json');
-  res.send('{"message":"Hello from the custom server!"}');
-});
+app.use('/api', apiRouter);
 
 // All remaining requests return the React app, so it can handle routing.
-app.get('*', function(request, response) {
+app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
 

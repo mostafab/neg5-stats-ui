@@ -10,7 +10,7 @@ export default class TournamentSummaryPanel extends React.Component {
   }
   
   render() {
-    const { name, id, location, date, questionSet } = this.props.tournament;
+    const { name, id, location, date, questionSet, timeDifference } = this.props.tournament;
     const url = `/t/${id}`;
     const link = <Link to={url}> { name } </Link>;
     return (
@@ -18,6 +18,7 @@ export default class TournamentSummaryPanel extends React.Component {
         <p> { location } </p>
         <p> { questionSet } </p>
         { date ? <p> { date.toDateString()} </p> : null }
+        { date ? <p> { timeDifference } </p> : null }
       </Panel>
     )
   }

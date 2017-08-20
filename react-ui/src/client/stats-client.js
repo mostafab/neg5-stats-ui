@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const HOST = '';
+import config from './../config';
+
+const HOST = config.REACT_APP_BASE_STATS_API_URL;
 
 const TEAM_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/team-standings?phase={phaseId}`;
 const INDIVIDUAL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/individuals?phase={phaseId}`;

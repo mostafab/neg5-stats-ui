@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from './../config';
 
-const HOST = '';
+const HOST = config.REACT_APP_BASE_TOURNAMENT_API_URL;
 
 const PHASES_URL = `${HOST}/api/t/{tournamentId}/phases`;
 const BRACKETS_URL = `${HOST}/api/t/{tournamentId}/brackets`;

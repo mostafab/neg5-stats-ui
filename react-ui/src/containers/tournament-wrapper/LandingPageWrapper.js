@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import LandingPageWrapper from '../../components/landingPage/LandingPageWrapper';
+import LandingPageRoot from '../../components/landingPage/LandingPageRoot';
 
 import { getRecentTournaments, changeFocusedDate, changeDates, getTournamentsBetweenDates } from '../../modules/landingPage/actions';
 
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LandingPageWrapper);
+)(LandingPageRoot);

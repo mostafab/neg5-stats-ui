@@ -14,9 +14,9 @@ export default class LandingPageWrapper extends React.Component {
     const { startDate, endDate } = this.props.searchForm;
     this.props.getTournamentsBetweenDates(startDate.toDate(), endDate.toDate());
   }
-  
-  render() {
-    const { recentTournaments, searchForm, changeFocusedDate, changeDates, getTournamentsBetweenDates } = this.props;
+
+  createResultMessage() {
+    const { searchForm, recentTournaments } = this.props;
     const { oldStartDate, oldEndDate } = searchForm;
     let resultMessage =  null;
     if (oldStartDate && oldEndDate) {
@@ -24,6 +24,12 @@ export default class LandingPageWrapper extends React.Component {
       const endDateFormatted = oldEndDate.format(DATE_FORMAT);
       resultMessage = <h4>There are <b>{ recentTournaments.length }</b> tournament(s) between { startDateFormatted } and { endDateFormatted } </h4>;
     }
+    return resultMessage;
+  }
+  
+  render() {
+    const { recentTournaments, searchForm, changeFocusedDate, changeDates, getTournamentsBetweenDates } = this.props;
+    const { oldStartDate, oldEndDate } = searchForm;
     return ( 
       <div className='LandingPageWrapper'>
         <Grid>
@@ -35,7 +41,7 @@ export default class LandingPageWrapper extends React.Component {
               </p>
               <TournamentSearchForm searchForm={ searchForm } changeFocusedDate={changeFocusedDate} changeDates={changeDates}
                 getTournamentsBetweenDates={getTournamentsBetweenDates}/>
-              { resultMessage }
+              { this.createResultMessage() }
             </Jumbotron>
           </Row>
           <TournamentPanelsWrapper tournaments={ this.props.recentTournaments } panelsPerRow={PANELS_PER_ROW}/>

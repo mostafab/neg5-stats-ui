@@ -6,7 +6,9 @@
     "node": "6.11.x"
   },
   "scripts": {
-    "start": "babel-node server/",
+    "start": "npm run build && npm run serve",
+    "build": "babel server/ -d server-dist",
+    "serve": "node server-dist/",
     "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "start-dev": "nodemon --watch server --exec babel-node server/"
   },
@@ -16,6 +18,7 @@
   ],
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-polyfill": "^6.26.0",
     "dotenv": "^4.0.0",
     "express": "^4.14.1"
   },

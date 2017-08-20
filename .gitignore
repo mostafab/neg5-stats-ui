@@ -9,6 +9,8 @@ coverage
 
 # production
 react-ui/build
+build-server
+server-dist
 
 # misc
 .DS_Store

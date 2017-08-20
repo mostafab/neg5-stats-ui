@@ -8,6 +8,7 @@ import App from './containers/app';
 import 'bootswatch/flatly/bootstrap.min.css';
 import 'sanitize.css/sanitize.css';
 import 'font-awesome/css/font-awesome.min.css';
+import 'react-dates/lib/css/_datepicker.css';
 import './index.css';
 
 const target = document.querySelector('#root');

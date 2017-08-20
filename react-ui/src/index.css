@@ -37,6 +37,11 @@ a.panel-title {
   border: none;
 }
 
+.SubmitButton {
+  border-radius: 2px;
+  padding: 12px 18px;
+}
+
 @media (min-width: 992px) {
   .TournamentsSummaryRow > .TournamentSummaryCol:first-child {
     padding-left: 0px;

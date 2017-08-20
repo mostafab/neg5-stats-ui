@@ -1,8 +1,9 @@
 import React from 'react';
-import { Grid, Row, Col, Jumbotron, Button, Panel } from 'react-bootstrap';
-import TournamentPanelsWrapper from './TournamentPanelsWrapper';
+import { Grid, Row, Jumbotron } from 'react-bootstrap';
 
-const BOOTSTRAP_MAX_COLS = 12;
+import TournamentPanelsWrapper from './TournamentPanelsWrapper';
+import TournamentSearchForm from './TournamentSearchForm'; 
+
 const PANELS_PER_ROW = 3;
 
 export default class LandingPageWrapper extends React.Component {
@@ -12,7 +13,7 @@ export default class LandingPageWrapper extends React.Component {
   }
   
   render() {
-    const { recentTournaments } = this.props;
+    const { recentTournaments, searchForm } = this.props;
     return ( 
       <div className='LandingPageWrapper'>
         <Grid>
@@ -20,8 +21,9 @@ export default class LandingPageWrapper extends React.Component {
             <Jumbotron>
               <h1>Welcome to the Neg 5 stats repository!</h1>
               <p>
-                This is the new home for all things Neg 5 stats. You can search for a specific tournament or find stats for recent and upcoming tournaments below.
+                This is the new home for all things Neg 5 stats. You can search for a specific tournament or find stats for past and upcoming tournaments below.
               </p>
+              <TournamentSearchForm searchForm={ searchForm } />
             </Jumbotron>
           </Row>
           <TournamentPanelsWrapper tournaments={ this.props.recentTournaments } panelsPerRow={PANELS_PER_ROW}/>

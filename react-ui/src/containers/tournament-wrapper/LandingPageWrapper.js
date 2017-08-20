@@ -7,6 +7,7 @@ import { getRecentTournaments } from '../../modules/landingPage/actions';
 
 const mapStateToProps = state => ({
   recentTournaments: state.landingPage.recentTournaments,
+  searchForm: state.landingPage.searchForm,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -2,7 +2,8 @@ import express from 'express';
 import path from 'path';
 
 import './config';
-import apiRouter from './api/router';
+import statsApiRouter from './api/stats-router';
+import tournamentApiRouter from './api/tournament-router';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +12,8 @@ const PORT = process.env.PORT || 3000;
 app.use('/neg5.stats.web-server/', express.static(path.resolve(__dirname, '../react-ui/build')));
 
 // Answer API requests.
-app.use('/api', apiRouter);
+app.use('/api/t/:tournamentId/stats', statsApiRouter);
+app.use('/api/t', tournamentApiRouter);
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', (request, response) => {

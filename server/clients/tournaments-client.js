@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const HOST = '';
+const HOST = process.env.TOURNAMENT_API_HOST;
 
 const PHASES_URL = `${HOST}/api/t/{tournamentId}/phases`;
-const BRACKETS_URL = `${HOST}/api/t/{tournamentId}/brackets`;
-const POINT_SCHEME_URL = `${HOST}/api/t/{tournamentId}/point-scheme`;
+const BRACKETS_URL = `${HOST}/api/t/{tournamentId}/divisions`;
+const POINT_SCHEME_URL = `${HOST}/api/t/{tournamentId}/pointscheme`;
 const RECENT_TOURNAMENTS_URL = `${HOST}/api/t/findRecent?days={days}`;
 
 export const getTournamentPhases = async (tournamentId) => {
@@ -20,6 +20,7 @@ export const getTournamentPhases = async (tournamentId) => {
 export const getTournamentBrackets = async (tournamentId) => {
   try {
     const url = BRACKETS_URL.replace('{tournamentId}', tournamentId);
+    console.log(url);
     const { data } = await axios.get(url);
     return data.result;
   } catch (error) {
@@ -37,7 +38,7 @@ export const getTournamentPointScheme = async (tournamentId) => {
   }
 }
 
-export const getRecentTournaments = async (daysSince) => {
+export const getRecentTournaments = async (daysSince = 30) => {
   try {
     const url = RECENT_TOURNAMENTS_URL.replace('{days}', daysSince);
     const { data } = await axios.get(url);

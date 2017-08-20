@@ -15,5 +15,10 @@ if (!process.env.SERVER_ENV) {
   if (!STATS_HOST) {
     throw new Error(`No STATS_HOST_${ENV} environment variable found for given SERVER_ENV: ${ENV}`);
   }
+  const TOURNAMENT_API_HOST = process.env[`TOURNAMENT_API_HOST_${ENV}`];
+  if (!TOURNAMENT_API_HOST) {
+    throw new Error(`No TOURNAMENT_API_HOST_${ENV} environment variable found for given SERVER_ENV: ${ENV}`);
+  }
   process.env.STATS_HOST = STATS_HOST;
+  process.env.TOURNAMENT_API_HOST = TOURNAMENT_API_HOST;
 })();

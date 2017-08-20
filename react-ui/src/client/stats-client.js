@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const HOST = 'http://localhost:8080';
+const HOST = '';
 
-const TEAM_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/team?phase={phaseId}`;
-const INDIVIDUAL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/player?phase={phaseId}`;
-const TEAM_FULL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/teamfull?phase={phaseId}`;
-const INDIVIDUAL_FULL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/playerfull?phase={phaseId}`;
-const ROUND_REPORT_URL = `${HOST}/api/t/{tournamentId}/stats/roundreport?phase={phaseId}`;
+const TEAM_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/team-standings?phase={phaseId}`;
+const INDIVIDUAL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/individuals?phase={phaseId}`;
+const TEAM_FULL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/team-full?phase={phaseId}`;
+const INDIVIDUAL_FULL_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/player-full?phase={phaseId}`;
+const ROUND_REPORT_URL = `${HOST}/api/t/{tournamentId}/stats/round-report?phase={phaseId}`;
 
 export const getTeamStandings = async (tournamentId, phaseId = '') => {
    try {

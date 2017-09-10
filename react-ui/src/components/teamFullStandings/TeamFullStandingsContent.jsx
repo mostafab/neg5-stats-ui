@@ -17,7 +17,7 @@ export default class TeamFullStandingsContent extends React.Component {
   render() {
     const { tossupValues, tournamentId, phaseId, fullTeamStats, individualStatsByTeam } = this.props;
     return (
-      <Row>
+      <Row className='TeamFullStandingsContent'>
         <Col lg={12} md={12} sm={12}>
           <TeamFullStandingsByTeamWrapper tournamentId={tournamentId} phaseId={phaseId} tossupValues={tossupValues} fullTeamStats={fullTeamStats}
             individualStatsByTeam={individualStatsByTeam}/>

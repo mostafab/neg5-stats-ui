@@ -30,7 +30,7 @@ export default class TournamentSearchForm extends React.Component {
   render() {
     const { startDate, endDate, focusedInput } = this.props.searchForm;
     return (
-      <div>
+      <div className='TournamentSearchForm'>
         <DateRangePicker
           startDate={startDate} // momentPropTypes.momentObj or null,
           endDate={endDate} // momentPropTypes.momentObj or null,

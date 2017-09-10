@@ -59,7 +59,7 @@ export default class IndividualStatsTable extends React.Component {
   render() {
     const tableHeaders = this.getTableHeaders();
     return (
-      <Table responsive condensed hover>
+      <Table responsive condensed hover className='IndividualStatsTable'>
           <thead>
             <tr>
               {

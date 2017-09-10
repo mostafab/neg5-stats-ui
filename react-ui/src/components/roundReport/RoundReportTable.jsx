@@ -28,7 +28,7 @@ export default class RoundReportTable extends React.Component {
   render() {
     const tableHeaders = this.getTableHeaders();
     return (
-      <Table responsive condensed hover>
+      <Table responsive condensed hover className='RoundReportTable'>
           <thead>
             <tr>
               {

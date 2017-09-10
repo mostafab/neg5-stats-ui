@@ -69,7 +69,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
     const tableHeaders = this.getTableHeaders();
     const bracketHeader = bracket ? <tr><th colSpan={tableHeaders.length}> { bracket.name } </th></tr> : null;
     return (
-      <Table responsive condensed hover>
+      <Table responsive condensed hover className='TeamsAggregateStatsTable'>
           <thead>
             { bracketHeader }
             <tr>

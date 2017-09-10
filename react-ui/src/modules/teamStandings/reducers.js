@@ -35,7 +35,7 @@ export default handleActions({
     brackets: action.brackets,
     requestingBrackets: false,
   }),
-  [BRACKETS_REQUESTED]: (state, action) => ({
+  [BRACKETS_REQUESTED]: (state) => ({
     ...state,
     requestingBrackets: true,
   }),

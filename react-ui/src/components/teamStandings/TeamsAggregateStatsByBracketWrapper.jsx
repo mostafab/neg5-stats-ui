@@ -29,7 +29,7 @@ export default class TeamsAggregateStatsByBracketWrapper extends React.Component
     const nonEmptyBrackets = brackets.filter(bracket => groupedTeams[bracket.id]);
     const teamsWithoutBracket = groupedTeams['null'] || [];
     return (
-      <div>
+      <div className='TeamsAggregateStatsByBracketWrapper'>
          {
           nonEmptyBrackets.map(bracket => 
             <TeamsAggregateStatsTable key={bracket.id} allTeamStats={groupedTeams[bracket.id]} tossupValues={tossupValues}

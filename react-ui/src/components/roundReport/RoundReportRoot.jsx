@@ -23,7 +23,7 @@ export default class RoundReportRoot extends React.Component {
   render() {
     const { roundReportStats } = this.props;
     return (
-      <div>
+      <div className='RoundReportRoot'>
         <h3> Round Report </h3>
         <RoundReportContent roundReportStats={ roundReportStats } />
       </div>

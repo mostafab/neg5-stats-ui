@@ -22,7 +22,7 @@ export default class IndividualFullStandingsRoot extends React.Component {
   render() {
     const { fullIndividualStats, tossupValues } = this.props;
     return (
-      <div>
+      <div className='IndividualFullStandingsRoot'>
         <h3> Full Player Standings </h3>
         <IndividualFullStandingsContent fullIndividualStats={fullIndividualStats} tossupValues={tossupValues}/>
       </div>

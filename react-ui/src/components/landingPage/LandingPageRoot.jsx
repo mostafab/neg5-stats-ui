@@ -5,7 +5,6 @@ import TournamentPanelsWrapper from './TournamentPanelsWrapper';
 import TournamentSearchForm from './TournamentSearchForm'; 
 
 const PANELS_PER_ROW = 3;
-const DAYS_SINCE = 700;
 const DATE_FORMAT = 'MMMM Do, YYYY';
 
 export default class LandingPageWrapper extends React.Component {
@@ -31,8 +30,7 @@ export default class LandingPageWrapper extends React.Component {
   }
   
   render() {
-    const { recentTournaments, searchForm, changeFocusedDate, changeDates, getTournamentsBetweenDates } = this.props;
-    const { oldStartDate, oldEndDate } = searchForm;
+    const { searchForm, changeFocusedDate, changeDates, getTournamentsBetweenDates } = this.props;
     return ( 
       <div className='LandingPageWrapper'>
         <Grid>

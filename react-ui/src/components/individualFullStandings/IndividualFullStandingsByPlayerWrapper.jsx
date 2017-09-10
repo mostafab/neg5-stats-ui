@@ -13,7 +13,7 @@ export default class IndividualFullStandingsByPlayerWrapper extends React.Compon
   render() {
     const { tossupValues } = this.props;
     return (
-      <div>
+      <div className='IndividualFullStandingsByPlayerWrapper'>
         {
           this.props.fullIndividualStats
             .filter(player => player.matches.length > 0)

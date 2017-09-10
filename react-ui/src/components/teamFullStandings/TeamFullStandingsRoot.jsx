@@ -26,7 +26,7 @@ export default class TeamFullStandingsRoot extends React.Component {
     const { fullTeamStats, tossupValues, individualStatsByTeam, match, selectedPhaseId } = this.props;
     const tournamentId = match.params.tournamentId;
     return (
-      <div>
+      <div className='TeamFullStandingsRoot'>
         <h3> Full Team Standings </h3>
         <TeamFullStandingsContent fullTeamStats={fullTeamStats} tossupValues={tossupValues} individualStatsByTeam={individualStatsByTeam}
           tournamentId={tournamentId} phaseId={selectedPhaseId}/>

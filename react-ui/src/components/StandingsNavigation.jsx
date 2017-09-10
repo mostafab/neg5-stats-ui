@@ -15,7 +15,7 @@ const LINKS = [
 export default class StandingsNavigation extends React.Component {
   render() {
     return (
-      <Breadcrumb>
+      <Breadcrumb className='StandingsNavigation'>
         {
           LINKS.map(link => this.createLink(link))
         }

@@ -5,6 +5,8 @@ import { Col, Row } from 'react-bootstrap';
 
 import TournamentSummaryPanel from './TournamentSummaryPanel';
 
+import './TournamentPanelsWrapper.css';
+
 const BOOTSTRAP_MAX_COLS = 12;
 
 export default class TournamentPanelsWrapper extends React.Component {
@@ -23,7 +25,7 @@ export default class TournamentPanelsWrapper extends React.Component {
     const chunks = chunk(tournaments, panelsPerRow);
     const colWidth = floor(BOOTSTRAP_MAX_COLS / panelsPerRow);
     return (
-      <div>
+      <div className='TournamentPanelsWrapper'>
         {
           chunks.map((chunk, i) =>
             <Row className='TournamentsSummaryRow' key={i}>

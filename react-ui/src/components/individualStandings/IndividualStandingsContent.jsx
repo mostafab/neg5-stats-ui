@@ -16,7 +16,7 @@ export default class IndividualStandingsContent extends React.Component {
   render() {
     const { individualStats, phaseId, tournamentId, tossupValues } = this.props;
     return (
-      <Row>
+      <Row className='IndividualStandingsContent'>
         <Col lg={12} md={12} sm={12}>
           <IndividualStatsTable individualStats={ individualStats } phaseId={ phaseId } tournamentId={ tournamentId } tossupValues={ tossupValues }/>
         </Col>

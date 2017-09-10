@@ -22,7 +22,7 @@ export default class IndividualStandingsRoot extends React.Component {
   render() {
     const { individualStats, selectedPhaseId, match, tossupValues } = this.props;
     return (
-      <div>
+      <div className='IndividualStandingsRoot'>
         <h3> Individual Standings </h3>
         <IndividualStandingsContent individualStats={ individualStats } phaseId={ selectedPhaseId } tournamentId={ match.params.tournamentId } tossupValues={tossupValues}/>
       </div>

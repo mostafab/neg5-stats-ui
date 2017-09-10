@@ -33,7 +33,7 @@ export default class ObjectTableRow extends Component {
   render() {
     const { headers } = this.props;
     return (
-      <tr>
+      <tr className='ObjectTableRow'>
         {
           headers.map(header => this.mapFunction(header))
         }

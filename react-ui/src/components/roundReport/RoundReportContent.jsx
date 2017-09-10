@@ -13,7 +13,7 @@ export default class RoundReportContent extends React.Component {
   render() {
     const { roundReportStats } = this.props;
     return (
-      <Row>
+      <Row className='RoundReportContent'>
         <Col lg={12} md={12} sm={12}>
           <RoundReportTable roundReportStats={ roundReportStats }/>
         </Col>

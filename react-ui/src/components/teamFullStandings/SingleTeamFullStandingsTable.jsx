@@ -56,7 +56,7 @@ export default class SingleTeamFullStandingsTable extends React.Component {
     const tableHeaders = this.getTableHeaders();
     const teamHeader = <tr><th colSpan={tableHeaders.length}> { fullTeamStats.teamName } </th></tr>;
     return (
-      <div>
+      <div className='SingleTeamFullStandingsTable'>
         <Table responsive condensed hover id={`team_${fullTeamStats.teamId}`}>
           <thead>
             { teamHeader }

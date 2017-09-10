@@ -14,7 +14,7 @@ export default class IndividualFullStandingsContent extends React.Component {
   render() {
     const { fullIndividualStats, tossupValues } = this.props;
     return (
-      <Row>
+      <Row className='IndividualFullStandingsContent'>
         <Col lg={12} md={12} sm={12}>
           <IndividualFullStandingsByPlayerWrapper fullIndividualStats={ fullIndividualStats } tossupValues={ tossupValues }/>
         </Col>

@@ -30,7 +30,7 @@ export default class TeamStandingsContent extends React.Component {
         brackets={brackets} tournamentId={ tournamentId } phaseId={ phaseId }/>
     }
     return (
-      <Row>
+      <Row className='TeamStandingsContent'>
         <Col lg={12} md={12} sm={12}>
           <div>
             { standingsComponent }

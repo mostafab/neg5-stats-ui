@@ -16,7 +16,7 @@ export default class TeamFullStandingsByTeamWrapper extends React.Component {
   render() {
     const { tossupValues, fullTeamStats, individualStatsByTeam, tournamentId, phaseId } = this.props;
     return (
-      <div>
+      <div className='TeamFullStandingsByTeamWrapper'>
       {
         fullTeamStats
           .filter(team => team.matches.length > 0)

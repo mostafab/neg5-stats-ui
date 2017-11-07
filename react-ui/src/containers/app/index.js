@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom'
 
-import TopNavbar from './../../components/TopNavbar';
+import TopNavbar from './Navbar';
 import TournamentStatsWrapper from '../tournament-wrapper/TournamentWrapper';
 import LandingPageRoot from './../tournament-wrapper/LandingPageWrapper';
 

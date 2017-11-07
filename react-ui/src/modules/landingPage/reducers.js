@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
 import moment from 'moment';
 import { RECENT_TOURNAMENTS_ERROR, RECENT_TOURNAMENTS_RECEIVED, RECENT_TOURNAMENTS_REQUESTED,
-  CHANGED_FOCUSED_DATE, CHANGED_START_OR_END_DATES } from './actions';
+  CHANGED_FOCUSED_DATE, CHANGED_START_OR_END_DATES, TOURNAMENT_SEARCH_QUERY_CHANGE, TOURNAMENT_SEARCH_QUERY_SUBMITTED,
+  TOURNAMENT_SEARCH_QUERY_FAILURE, TOURNAMENT_SEARCH_QUERY_SUCCESS } from './actions';
 
 const ONE_MONTH_AGO_IN_MONTHS = 1;
 
@@ -13,6 +14,11 @@ const initialState = {
     endDate: moment(),
     oldStartDate: null,
     oldEndDate: null,
+  },
+  tournamentSearchForm: {
+    query: '',
+    tournaments: [],
+    error: null,
   }
 };
 
@@ -50,4 +56,28 @@ export default handleActions({
       endDate: action.endDate,
     },
   }),
+  [TOURNAMENT_SEARCH_QUERY_CHANGE]: (state, action) => ({
+    ...state,
+    tournamentSearchForm: {
+      ...state.tournamentSearchForm,
+      query: action.query,
+    },
+  }),
+  [TOURNAMENT_SEARCH_QUERY_SUBMITTED]: (state, action) => ({
+    ...state,
+    searchingForTournaments: true,
+  }),
+  [TOURNAMENT_SEARCH_QUERY_SUCCESS]: (state, action) => ({
+    ...state,
+    searchingForTournaments: false,
+    tournamentSearchForm: {
+      ...state.tournamentSearchForm,
+      tournaments: action.tournaments,
+    }
+  }),
+  [TOURNAMENT_SEARCH_QUERY_FAILURE]: (state, action) => ({
+    ...state,
+    searchingForTournaments: false,
+    error: action.error,
+  })
 }, initialState);

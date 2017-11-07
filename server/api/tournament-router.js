@@ -1,12 +1,20 @@
 import { Router } from 'express';
 import { getRecentTournaments, getTournamentBrackets, getTournamentPhases,
-  getTournamentPointScheme, getTournamentsBetweenDates } from './../clients/tournaments-client';
+  getTournamentPointScheme, getTournamentsBetweenDates, getTournamentsByName } from './../clients/tournaments-client';
 
 const router = Router({ mergeParams: true });
 
 router.get('/findRecent', async (request, response) => {
   try {
     response.send({ result: await getRecentTournaments(request.query.days) });
+  } catch (error) {
+    response.status(500).send({ error: error.message });
+  }
+});
+
+router.get('/byName', async (request, response) => {
+  try {
+    response.send({ result: await getTournamentsByName(request.query.searchQuery )});
   } catch (error) {
     response.status(500).send({ error: error.message });
   }

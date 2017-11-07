@@ -7,13 +7,14 @@ import ObjectTableRow from '../util/ObjectTableRow';
 import { tournamentUsesNegs, getPointsPerTossupHeard, getPlayerGetsToNegRatio, getPlayerPowerToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
 import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 
-const PLAYER_URL = '/t/{tournamentId}/player-full?phase={phaseId}#player_{playerId}';
+const PLAYER_URL = '/t/{tournamentId}/{slug}/player-full?phase={phaseId}#player_{playerId}';
 
 const HEADERS = [
     { displayName: 'Rank', field: 'rank' },
-    { displayName: 'Player Name', field: (player, tournamentId, phaseId) => {
+    { displayName: 'Player Name', field: (player, tournamentId, slug, phaseId) => {
       let formattedUrl = PLAYER_URL.replace('{tournamentId}', tournamentId)
-        .replace('{playerId}', player.playerId);
+        .replace('{playerId}', player.playerId)
+        .replace('{slug}', slug);
       if (phaseId) {
         formattedUrl = formattedUrl.replace('{phaseId}', phaseId); 
       } else {
@@ -40,11 +41,12 @@ export default class IndividualStatsTable extends React.Component {
     phaseId: PropTypes.string.isRequired,
     tournamentId: PropTypes.string.isRequired,
     tossupValues: PropTypes.array.isRequired,
+    slug: PropTypes.string.isRequired,
   }
 
   getTableHeaders() {
     let copy = Object.assign([], HEADERS);
-    copy.find(h => h.displayName === 'Player Name').args = [this.props.tournamentId, this.props.phaseId];
+    copy.find(h => h.displayName === 'Player Name').args = [this.props.tournamentId, this.props.slug, this.props.phaseId];
     const values = this.props.tossupValues.map(tv => ({
       displayName: tv.value,
       field: team => getNumberOfTossupsByValue(tv.value, team),

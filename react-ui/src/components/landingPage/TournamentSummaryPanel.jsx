@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import slugUtil from './../../util/slug';
+
 export default class TournamentSummaryPanel extends React.Component {
   
   static propTypes = {
@@ -11,7 +13,7 @@ export default class TournamentSummaryPanel extends React.Component {
   
   render() {
     const { name, id, location, date, questionSet, timeDifference } = this.props.tournament;
-    const url = `/t/${id}`;
+    const url = `/t/${id}/${slugUtil.slugify(name)}`;
     const link = <Link to={url}> { name } </Link>;
     return (
       <Panel header={ link } className='TournamentSummaryPanel'>

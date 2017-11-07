@@ -24,19 +24,20 @@ export default class TournamentStatsWrapper extends React.Component {
 
   render() {
     const tournamentId = this.props.match.params.tournamentId;
-    const redirectUrl = `/t/${tournamentId}/team-standings${this.props.location.search}`;
+    const slug = this.props.match.params.slug;
+    const redirectUrl = `/t/${tournamentId}/${slug}/team-standings${this.props.location.search}`;
     return (
       <main className='TournamentStatsWrapper'>
         <PhaseSelector match={ this.props.match } location={ this.props.location } />
-        <StandingsNavigation tournamentId={tournamentId} phaseId={ this.props.selectedPhaseId } location={ this.props.location }/>
+        <StandingsNavigation tournamentId={tournamentId} phaseId={ this.props.selectedPhaseId } location={ this.props.location } slug={slug}/>
         <Switch>
-          <Redirect exact from='/t/:tournamentId' to={redirectUrl} />
-          <Redirect exact from='/t/:tournamentId/stats' to={redirectUrl} />
-          <Route exact path='/t/:tournamentId/team-standings' component={ TeamStandingsRoot }/>
-          <Route exact path='/t/:tournamentId/individuals' component={ IndividualStandingsRoot }/>
-          <Route exact path='/t/:tournamentId/team-full' component= { TeamFullStandingsRoot } />
-          <Route exact path='/t/:tournamentId/player-full' component={ IndividualFullStandingsRoot } />
-          <Route exact path='/t/:tournamentId/round-report' component={ RoundReportRoot } />
+          <Redirect exact from='/t/:tournamentId/:slug' to={redirectUrl} />
+          <Redirect exact from='/t/:tournamentId/:slug/stats' to={redirectUrl} />
+          <Route exact path='/t/:tournamentId/:slug/team-standings' component={ TeamStandingsRoot }/>
+          <Route exact path='/t/:tournamentId/:slug/individuals' component={ IndividualStandingsRoot }/>
+          <Route exact path='/t/:tournamentId/:slug/team-full' component= { TeamFullStandingsRoot } />
+          <Route exact path='/t/:tournamentId/:slug/player-full' component={ IndividualFullStandingsRoot } />
+          <Route exact path='/t/:tournamentId/:slug/round-report' component={ RoundReportRoot } />
         </Switch>
       </main>
     );

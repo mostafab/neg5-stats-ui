@@ -14,13 +14,13 @@ export default class TeamFullStandingsByTeamWrapper extends React.Component {
   }
 
   render() {
-    const { tossupValues, fullTeamStats, individualStatsByTeam, tournamentId, phaseId } = this.props;
+    const { tossupValues, fullTeamStats, individualStatsByTeam, tournamentId, phaseId, slug } = this.props;
     return (
       <div className='TeamFullStandingsByTeamWrapper'>
       {
         fullTeamStats
           .filter(team => team.matches.length > 0)
-          .map(team => <SingleTeamFullStandingsTable key={team.teamId} tossupValues={tossupValues} phaseId={phaseId} fullTeamStats={team} tournamentId={tournamentId}
+          .map(team => <SingleTeamFullStandingsTable slug={slug} key={team.teamId} tossupValues={tossupValues} phaseId={phaseId} fullTeamStats={team} tournamentId={tournamentId}
             players={individualStatsByTeam[team.teamId] || [] }/>)
       }
       </div>

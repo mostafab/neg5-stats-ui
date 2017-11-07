@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'react-bootstrap';
 
-const URL = '/t/{tournamentId}/{page}?phase={phaseId}';
+const URL = '/t/{tournamentId}/{slug}/{page}?phase={phaseId}';
 
 const LINKS = [
   { display: 'Standings', link: 'team-standings' },
@@ -26,6 +26,7 @@ export default class StandingsNavigation extends React.Component {
   createLink(link) {
     let formattedUrl = URL.replace('{tournamentId}', this.props.tournamentId)
               .replace('{page}', link.link)
+              .replace('{slug}', this.props.slug)
     if (this.props.phaseId) {
       formattedUrl = formattedUrl.replace('{phaseId}', this.props.phaseId)
     } else {

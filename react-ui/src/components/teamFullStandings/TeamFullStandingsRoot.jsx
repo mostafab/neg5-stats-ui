@@ -28,7 +28,7 @@ export default class TeamFullStandingsRoot extends React.Component {
     return (
       <div className='TeamFullStandingsRoot'>
         <h3> Full Team Standings </h3>
-        <TeamFullStandingsContent fullTeamStats={fullTeamStats} tossupValues={tossupValues} individualStatsByTeam={individualStatsByTeam}
+        <TeamFullStandingsContent slug={match.params.slug} fullTeamStats={fullTeamStats} tossupValues={tossupValues} individualStatsByTeam={individualStatsByTeam}
           tournamentId={tournamentId} phaseId={selectedPhaseId}/>
       </div>
     )

@@ -11,14 +11,15 @@ export default class IndividualStandingsContent extends React.Component {
     phaseId: PropTypes.string.isRequired,
     tournamentId: PropTypes.string.isRequired,
     tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
+    slug: PropTypes.string.isRequired,
   }
 
   render() {
-    const { individualStats, phaseId, tournamentId, tossupValues } = this.props;
+    const { individualStats, phaseId, tournamentId, tossupValues, slug } = this.props;
     return (
       <Row className='IndividualStandingsContent'>
         <Col lg={12} md={12} sm={12}>
-          <IndividualStatsTable individualStats={ individualStats } phaseId={ phaseId } tournamentId={ tournamentId } tossupValues={ tossupValues }/>
+          <IndividualStatsTable slug={slug} individualStats={ individualStats } phaseId={ phaseId } tournamentId={ tournamentId } tossupValues={ tossupValues }/>
         </Col>
       </Row>
     )

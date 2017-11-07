@@ -36,6 +36,7 @@ export default class SingleTeamFullStandingsTable extends React.Component {
     players: PropTypes.arrayOf(PropTypes.object).isRequired,
     tournamentId: PropTypes.string.isRequired,
     phaseId: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
   }
 
   getTableHeaders() {
@@ -52,7 +53,7 @@ export default class SingleTeamFullStandingsTable extends React.Component {
   }
 
   render() {
-    const { fullTeamStats, tossupValues, players, tournamentId, phaseId } = this.props;
+    const { fullTeamStats, tossupValues, players, tournamentId, phaseId, slug } = this.props;
     const tableHeaders = this.getTableHeaders();
     const teamHeader = <tr><th colSpan={tableHeaders.length}> { fullTeamStats.teamName } </th></tr>;
     return (
@@ -72,7 +73,7 @@ export default class SingleTeamFullStandingsTable extends React.Component {
             }
           </tbody>
         </Table>
-        <IndividualStatsTable tournamentId={tournamentId} phaseId={phaseId} tossupValues={ tossupValues } individualStats={ players }/>
+        <IndividualStatsTable slug={slug} tournamentId={tournamentId} phaseId={phaseId} tossupValues={ tossupValues } individualStats={ players }/>
       </div>
     )
   }

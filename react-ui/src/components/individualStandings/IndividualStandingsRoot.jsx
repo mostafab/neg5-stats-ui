@@ -24,7 +24,7 @@ export default class IndividualStandingsRoot extends React.Component {
     return (
       <div className='IndividualStandingsRoot'>
         <h3> Individual Standings </h3>
-        <IndividualStandingsContent individualStats={ individualStats } phaseId={ selectedPhaseId } tournamentId={ match.params.tournamentId } tossupValues={tossupValues}/>
+        <IndividualStandingsContent slug={match.params.slug} individualStats={ individualStats } phaseId={ selectedPhaseId } tournamentId={ match.params.tournamentId } tossupValues={tossupValues}/>
       </div>
     )
   }

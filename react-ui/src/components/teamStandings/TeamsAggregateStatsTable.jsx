@@ -7,13 +7,14 @@ import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNum
 import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 import ObjectTableRow from '../util/ObjectTableRow';
 
-const TEAM_URL = '/t/{tournamentId}/team-full?phase={phaseId}#team_{teamId}';
+const TEAM_URL = '/t/{tournamentId}/{slug}/team-full?phase={phaseId}#team_{teamId}';
 
 const HEADERS = [
   { displayName: 'Rank', field: 'rank' },
-  { displayName: 'Team', field: (team, tournamentId, phaseId) => {
+  { displayName: 'Team', field: (team, tournamentId, slug, phaseId) => {
     let url = TEAM_URL.replace('{tournamentId}', tournamentId)
-      .replace('{teamId}', team.teamId);
+      .replace('{teamId}', team.teamId)
+      .replace('{slug}', slug)
     if (phaseId) {
       url = url.replace('{phaseId}', phaseId);
     } else {
@@ -48,6 +49,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
     }),
     phaseId: PropTypes.string.isRequired,
     tournamentId: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
   };
 
   getTableHeaders() {
@@ -57,7 +59,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
-    copy.find(h => h.displayName === 'Team').args = [this.props.tournamentId, this.props.phaseId];
+    copy.find(h => h.displayName === 'Team').args = [this.props.tournamentId, this.props.slug, this.props.phaseId];
     if (!tournamentUsesNegs(this.props.tossupValues)) {
       copy = removeHeadersRelatedToNegs(copy);
     }

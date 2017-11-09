@@ -1,5 +1,9 @@
+import { push } from 'react-router-redux';
+
 import tournamentClient from './../../client/tournament-client';
 import { mapTournaments } from './../../mappers/tournaments-mapper';
+
+import { getTournamentUrlFromTournament } from './../../util/url-util';
 
 const ROOT = 'landingPage/';
 
@@ -83,7 +87,6 @@ export const onTournamentSearchQuerySubmitted = query =>
       });
       try {
         const mapped = mapTournaments( await tournamentClient.getTournamentsByName(query));
-        console.log(mapped);
         dispatch({
           type: TOURNAMENT_SEARCH_QUERY_SUCCESS,
           tournaments: mapped,
@@ -94,5 +97,11 @@ export const onTournamentSearchQuerySubmitted = query =>
           error: err,
         })
       }
+    }
+
+export const tournamentSelectedFromChoices = tournament =>
+    dispatch => {
+      const tournamentUrl = getTournamentUrlFromTournament(tournament);
+      dispatch(push(tournamentUrl));
     }
       

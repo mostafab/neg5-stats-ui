@@ -29,6 +29,14 @@ a.panel-title {
   border-radius: 2px;
 }
 
+.navbar-default .navbar-brand {
+  color: #18bc9c;
+}
+
+.navbar-default input[type='text'] {
+  min-width: 200px;
+}
+
 .LoadingCircle {
   color: #22BEA0;
   transition: .5s visibility;
@@ -42,4 +50,17 @@ a.panel-title {
 .SubmitButton {
   border-radius: 2px;
   padding: 12px 18px;
+}
+
+.TopNavbar {
+  background-color: transparent;
+}
+
+
+a.dropdown-item:hover {
+  background: #ECF0F1;
+}
+
+a.dropdown-item > .tournament-result > a:hover {
+  text-decoration: none;
 }

@@ -13,7 +13,6 @@ const App = () => (
         <Route exact path='/' component={ LandingPageRoot } />
         <Route exact path='/t' component={ LandingPageRoot }/>
         <Route path='/t/:tournamentId/:slug' component={ TournamentStatsWrapper }/>
-        {/* <Route path='/t/:tournamentId' component={ TournamentStatsWrapper }/> */}
       </Switch>
     </div>
   </BrowserRouter>

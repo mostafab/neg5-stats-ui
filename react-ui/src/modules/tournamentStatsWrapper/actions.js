@@ -2,10 +2,15 @@ import { push } from 'react-router-redux';
 
 import tournamentClient from './../../client/tournament-client';
 import { mapPhases } from './../../mappers/phase-mapper';
+import { mapSingleTournament } from './../../mappers/tournaments-mapper';
 import { mapTossupValues } from './../../mappers/point-scheme-mapper';
 import { getPageUrlFromStatsPageAndPhase } from './../../util/url-util';
 
 const ROOT = 'tournamentStatsWrapper/';
+
+export const TOURNAMENT_INFO_REQUESTED = `${ROOT}TOURNAMENT_INFO_REQUESTED`;
+export const TOURNAMENT_INFO_RECEIVED = `${ROOT}TOURNAMENT_INFO_RECEIVED`;
+export const TOURNAMENT_INFO_FAILURE = `${ROOT}TOURNAMENT_INFO_FAILURE`;
 
 export const POINT_SCHEME_REQUESTED = `${ROOT}POINT_SCHEME_REQUESTED`;
 export const POINT_SCHEME_RECEIVED = `${ROOT}POINT_SCHEME_RECEIVED`;
@@ -17,6 +22,26 @@ export const PHASES_ERROR = `${ROOT}PHASES_ERROR`;
 
 export const PHASE_CHANGE = `${ROOT}PHASE_CHANGE`;
 export const INITIAL_PHASE_ON_LOAD = `${ROOT}INITIAL_PHASE_ON_LOAD`;
+
+export const getTournamentInformation = tournamentId =>
+  async dispatch => {
+    dispatch({
+      type: TOURNAMENT_INFO_REQUESTED,
+    })
+    try {
+      const result = await tournamentClient.getTournamentInfo(tournamentId);
+      const tournamentInfo =  mapSingleTournament(result.tournament);
+      dispatch({
+        type: TOURNAMENT_INFO_RECEIVED,
+        tournamentInfo,
+      })
+    } catch (error) {
+      dispatch({
+        type: TOURNAMENT_INFO_FAILURE,
+        error,
+      })
+    }
+  }
 
 export const getTournamentPhases = tournamentId =>
   async dispatch => {

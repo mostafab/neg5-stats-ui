@@ -25,7 +25,8 @@
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
     "dotenv": "^4.0.0",
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "morgan": "^1.9.0"
   },
   "repository": {
     "type": "git",

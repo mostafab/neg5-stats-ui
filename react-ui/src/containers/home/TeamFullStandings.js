@@ -19,6 +19,7 @@ const mapStateToProps = state => ({
   numTimesStatsReceived: state.teamFullStandings.numTimesStatsReceived,
   requestingFullTeamStandings: state.teamFullStandings.requestingFullTeamStandings,
   selectedPhaseId: state.globalState.selectedPhaseId,
+  tournamentInfo: state.globalState.loadedTournament,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

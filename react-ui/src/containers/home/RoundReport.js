@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   numTimesStatsReceived: state.roundReport.numTimesStatsReceived,
   requestingRoundReport: state.roundReport.requestingRoundReport,
   selectedPhaseId: state.globalState.selectedPhaseId,
+  tournamentInfo: state.globalState.loadedTournament,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

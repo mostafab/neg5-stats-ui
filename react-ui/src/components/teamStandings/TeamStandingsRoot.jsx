@@ -20,10 +20,14 @@ export default class TeamStandingsRoot extends React.Component {
   }
 
   render() {
-    const { allTeamStats, brackets, match, selectedPhaseId, tossupValues } = this.props;
+    const { allTeamStats, brackets, match, selectedPhaseId, tossupValues, tournamentInfo } = this.props;
+    let title = `Team Standings`;
+    if (tournamentInfo) {
+      title = `${tournamentInfo.name} Team Standings`;
+    }
     return (
       <div className='TeamStandingsRoot'>
-        <h3> Team Standings </h3>
+        <h3> { title } </h3>
         <TeamStandingsContent allTeamStats={ allTeamStats } brackets={ brackets }
           tournamentId={ match.params.tournamentId } phaseId={ selectedPhaseId }
           tossupValues={tossupValues} slug={match.params.slug}/>

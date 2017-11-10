@@ -7,7 +7,8 @@ import {
   PHASES_RECEIVED,
   PHASES_ERROR,
   PHASE_CHANGE,
-  INITIAL_PHASE_ON_LOAD
+  INITIAL_PHASE_ON_LOAD,
+  TOURNAMENT_INFO_RECEIVED
 } from './actions';
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   requestingPointScheme: false,
   requestingPhases: false,
   selectedPhaseId: undefined,
+  loadedTournament: {},
 };
 
 export default handleActions({
@@ -53,5 +55,9 @@ export default handleActions({
   [INITIAL_PHASE_ON_LOAD]: (state, action) => ({
     ...state,
     selectedPhaseId: action.newSelectedPhaseId,
+  }),
+  [TOURNAMENT_INFO_RECEIVED]: (state, action) => ({
+    ...state,
+    loadedTournament: action.tournamentInfo,
   }),
 }, initialState);

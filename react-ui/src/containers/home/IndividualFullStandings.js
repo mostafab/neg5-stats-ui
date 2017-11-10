@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
   fullIndividualStats: state.individualFullStandings.fullIndividualStats,
   requestingFullIndividualStandings: state.individualFullStandings.requestingFullIndividualStandings,
   numTimesStatsReceived: state.individualFullStandings.numTimesStatsReceived,
+  tournamentInfo: state.globalState.loadedTournament,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

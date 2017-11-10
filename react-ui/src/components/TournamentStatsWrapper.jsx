@@ -13,13 +13,20 @@ import StandingsNavigation from './StandingsNavigation';
 export default class TournamentStatsWrapper extends React.Component {
 
   componentDidMount() {
-    const { getTournamentPhases, match, location, setInitialPhaseOnLoad, getTournamentTossupValues } = this.props;
+    const { match, location, setInitialPhaseOnLoad } = this.props;
     const queryParams = queryString.parse(location.search);
     const phaseId = queryParams.phase || '';
     const tournamentId = match.params.tournamentId;
     setInitialPhaseOnLoad(phaseId);
-    getTournamentPhases(tournamentId);
-    getTournamentTossupValues(tournamentId);
+    this._loadTournamentData(tournamentId);
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevTournamentId = prevProps.match.params.tournamentId;
+    const currentTournamentId = this.props.match.params.tournamentId;
+    if (prevTournamentId !== currentTournamentId) {
+      this._loadTournamentData(currentTournamentId);
+    }
   }
 
   render() {
@@ -41,5 +48,12 @@ export default class TournamentStatsWrapper extends React.Component {
         </Switch>
       </main>
     );
+  }
+
+  _loadTournamentData(tournamentId) {
+    const { getTournamentPhases, getTournamentTossupValues, getTournamentInformation } = this.props;
+    getTournamentPhases(tournamentId);
+    getTournamentTossupValues(tournamentId);
+    getTournamentInformation(tournamentId);
   }
 };

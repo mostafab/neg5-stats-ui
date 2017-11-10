@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Navbar, FormGroup, MenuItem, Dropdown } from 'react-bootstrap';
+import { Navbar, FormGroup } from 'react-bootstrap';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { Link } from 'react-router-dom';
 
-import slugUtil from './../util/slug';
+import { getTournamentUrlFromTournament } from './../util/url-util';
 
 export default class TopNavbar extends Component {
 
@@ -19,11 +19,11 @@ export default class TopNavbar extends Component {
     }
   }
 
-  _onChange = inputValue => {
+  _onChange(inputValue) {
     this.props.onTournamentSearchChange(inputValue.trim());
   }
 
-  _onSearch = () => {
+  _onSearch() {
     const query = this.props.tournamentSearchForm.query;
     if (query.length > 2) {
       this.props.onTournamentSearchQuerySubmitted(query);
@@ -31,9 +31,7 @@ export default class TopNavbar extends Component {
   }
 
   _renderMenuItemChildren(option, index) {
-    const slugged = slugUtil.slugify(option.name);
-    const link = `/t/${option.id}/${slugged}`;
-
+    const link = getTournamentUrlFromTournament(option);
     return (
       <div key={index} className='tournament-result'>
         <Link to={link}>

@@ -18,6 +18,9 @@ export default class RoundReportRoot extends React.Component {
       const tournamentId = this.props.match.params.tournamentId;
       this.props.getRoundReport(tournamentId, this.props.selectedPhaseId);
     }
+    if (this.props.tournamentInfo.name) {
+      document.title = `${this.props.tournamentInfo.name} Round Report | Neg 5 Stats`;
+    }
   }
 
   render() {

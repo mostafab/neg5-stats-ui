@@ -17,6 +17,9 @@ export default class IndividualStandingsRoot extends React.Component {
     if (oldPhaseId !== currentPhaseId) {
       this.props.getIndividualStandings(this.props.match.params.tournamentId, currentPhaseId);
     }
+    if (this.props.tournamentInfo.name) {
+      document.title = `${this.props.tournamentInfo.name} Individual Standings | Neg 5 Stats`;
+    }
   }
 
   render() {

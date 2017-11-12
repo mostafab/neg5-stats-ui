@@ -33,6 +33,10 @@ a.panel-title {
   color: #18bc9c;
 }
 
+.rbt-input:hover {
+  cursor: text;
+}
+
 .navbar-default input[type='text'] {
   min-width: 200px;
 }

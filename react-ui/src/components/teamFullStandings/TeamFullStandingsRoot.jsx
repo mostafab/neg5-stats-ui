@@ -20,6 +20,9 @@ export default class TeamFullStandingsRoot extends React.Component {
       this.props.requestFullTeamStandings(tournamentId, currentPhaseId);
       this.props.getIndividualStandings(tournamentId, this.props.selectedPhaseId);
     }
+    if (this.props.tournamentInfo.name) {
+      document.title = `${this.props.tournamentInfo.name} Full Team Standings | Neg 5 Stats`;
+    }
   }
 
   render() {

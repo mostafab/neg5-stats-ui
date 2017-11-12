@@ -30,7 +30,6 @@ router.get('/byDateRange', async (request, response) => {
 });
 
 router.get('/:tournamentId/info', async (request, response) => {
-  console.log('hit endpoint');
   try {
     response.send({ result: await getTournamentInfo(request.params.tournamentId) })
   } catch (error) {

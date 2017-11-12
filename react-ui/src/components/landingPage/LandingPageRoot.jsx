@@ -10,6 +10,7 @@ const DATE_FORMAT = 'MMMM Do, YYYY';
 export default class LandingPageWrapper extends React.Component {
   
   componentDidMount() {
+    document.title = 'Neg 5 Stats';
     const { startDate, endDate } = this.props.searchForm;
     this.props.getTournamentsBetweenDates(startDate.toDate(), endDate.toDate());
   }

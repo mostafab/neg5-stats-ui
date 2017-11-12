@@ -30,7 +30,7 @@ export const getTournamentInformation = tournamentId =>
     })
     try {
       const result = await tournamentClient.getTournamentInfo(tournamentId);
-      const tournamentInfo =  mapSingleTournament(result.tournament);
+      const tournamentInfo =  mapSingleTournament(result);
       dispatch({
         type: TOURNAMENT_INFO_RECEIVED,
         tournamentInfo,

@@ -5,16 +5,23 @@ export default class TeamStandingsRoot extends React.Component {
   
   componentDidMount() {
     const tournamentId = this.props.match.params.tournamentId;
-    this.props.getTournamentBrackets(tournamentId);
-    if (typeof this.props.selectedPhaseId !== 'undefined') {
+    if (this.props.numTimesStatsReceived < 1) {
+      this.props.getTournamentBrackets(tournamentId);
+    }
+    if (typeof this.props.selectedPhaseId !== 'undefined' && this.props.numTimesStatsReceived < 1) {
       this.props.requestTeamStandings(tournamentId, this.props.selectedPhaseId);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const oldTournamentId = prevProps.tournamentInfo.id;
+    const newTournamentId = this.props.tournamentInfo.id;
     const oldPhaseId = prevProps.selectedPhaseId;
     const currentPhaseId = this.props.selectedPhaseId;
-    if (oldPhaseId !== currentPhaseId) {
+    if (oldTournamentId && oldTournamentId !== newTournamentId) { // We've switched tournaments
+      this.props.requestTeamStandings(this.props.tournamentInfo.id, '');
+      this.props.getTournamentBrackets(newTournamentId);
+    } else if (oldPhaseId !== currentPhaseId) { // We've switched phases
       this.props.requestTeamStandings(this.props.match.params.tournamentId, currentPhaseId);
     }
     if (this.props.tournamentInfo.name) {
@@ -26,7 +33,7 @@ export default class TeamStandingsRoot extends React.Component {
     const { allTeamStats, brackets, match, selectedPhaseId, tossupValues, tournamentInfo } = this.props;
     let title = `Team Standings`;
     if (tournamentInfo) {
-      title = `${tournamentInfo.name} Team Standings`;
+      title = `${tournamentInfo.name || ''} Team Standings`;
     }
     return (
       <div className='TeamStandingsRoot'>

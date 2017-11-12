@@ -4,6 +4,7 @@ import {
   ROUND_REPORT_RECEIVED,
   ROUND_REPORT_REQUESTED
 } from './actions';
+import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from './../common/common-reducers';
 
 const initialState = {
   requestingRoundReport: false,
@@ -26,4 +27,5 @@ export default handleActions({
     ...state,
     requestingRoundReport: false,
   }),
+  ...resetLazyLoadStatsOnTournamentOrPhaseChanged,
 }, initialState);

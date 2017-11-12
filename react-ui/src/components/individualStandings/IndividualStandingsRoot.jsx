@@ -6,7 +6,7 @@ export default class IndividualStandingsRoot extends React.Component {
   
   componentDidMount() {
     const tournamentId = this.props.match.params.tournamentId;
-    if (typeof this.props.selectedPhaseId !== 'undefined') {
+    if (typeof this.props.selectedPhaseId !== 'undefined' && this.props.numTimesStatsReceived < 1) {
       this.props.getIndividualStandings(tournamentId, this.props.selectedPhaseId);
     }
   }
@@ -23,10 +23,10 @@ export default class IndividualStandingsRoot extends React.Component {
   }
 
   render() {
-    const { individualStats, selectedPhaseId, match, tossupValues } = this.props;
+    const { individualStats, selectedPhaseId, match, tossupValues, tournamentInfo } = this.props;
     return (
       <div className='IndividualStandingsRoot'>
-        <h3> Individual Standings </h3>
+        <h3> {tournamentInfo.name || ''} Individual Standings </h3>
         <IndividualStandingsContent slug={match.params.slug} individualStats={ individualStats } phaseId={ selectedPhaseId } tournamentId={ match.params.tournamentId } tossupValues={tossupValues}/>
       </div>
     )

@@ -11,17 +11,18 @@ export default class TeamFullStandingsByTeamWrapper extends React.Component {
     individualStatsByTeam: PropTypes.object.isRequired,
     tournamentId: PropTypes.string.isRequired,
     phaseId: PropTypes.string.isRequired,
+    bouncebacks: PropTypes.bool.isRequired,
   }
 
   render() {
-    const { tossupValues, fullTeamStats, individualStatsByTeam, tournamentId, phaseId, slug } = this.props;
+    const { tossupValues, fullTeamStats, individualStatsByTeam, tournamentId, phaseId, slug, bouncebacks } = this.props;
     return (
       <div className='TeamFullStandingsByTeamWrapper'>
       {
         fullTeamStats
           .filter(team => team.matches.length > 0)
           .map(team => <SingleTeamFullStandingsTable slug={slug} key={team.teamId} tossupValues={tossupValues} phaseId={phaseId} fullTeamStats={team} tournamentId={tournamentId}
-            players={individualStatsByTeam[team.teamId] || [] }/>)
+            players={individualStatsByTeam[team.teamId] || [] } bouncebacks={bouncebacks}/>)
       }
       </div>
     )

@@ -5,6 +5,8 @@ import {
   INDIVIDUAL_FULL_STANDINGS_REQUESTED
 } from './actions';
 
+import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from './../common/common-reducers';
+
 const initialState = {
   requestingFullIndividualStandings: false,
   fullIndividualStats: [],
@@ -26,4 +28,5 @@ export default handleActions({
     ...state,
     requestingFullIndividualStandings: false,
   }),
+  ...resetLazyLoadStatsOnTournamentOrPhaseChanged,
 }, initialState);

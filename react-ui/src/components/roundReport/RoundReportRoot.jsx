@@ -6,7 +6,7 @@ export default class RoundReportRoot extends React.Component {
   
   componentDidMount() {
     const tournamentId = this.props.match.params.tournamentId;
-    if (typeof this.props.selectedPhaseId !== 'undefined') {
+    if (typeof this.props.selectedPhaseId !== 'undefined' && this.props.numTimesStatsReceived < 1) {
       this.props.getRoundReport(tournamentId, this.props.selectedPhaseId);
     }
   }
@@ -24,10 +24,10 @@ export default class RoundReportRoot extends React.Component {
   }
 
   render() {
-    const { roundReportStats } = this.props;
+    const { roundReportStats, tournamentInfo } = this.props;
     return (
       <div className='RoundReportRoot'>
-        <h3> Round Report </h3>
+        <h3> {tournamentInfo.name || ''} Round Report </h3>
         <RoundReportContent roundReportStats={ roundReportStats } />
       </div>
     )

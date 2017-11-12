@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 import { INDIVIDUAL_STANDINGS_ERROR, INDIVIDUAL_STANDINGS_RECEIVED, INDIVIDUAL_STANDINGS_REQUESTED } from './actions';
+import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from './../common/common-reducers';
 
 const initialState = {
   requestingIndividualStandings: false,
@@ -23,4 +24,5 @@ export default handleActions({
     ...state,
     requestingIndividualStandings: false,
   }),
+  ...resetLazyLoadStatsOnTournamentOrPhaseChanged,
 }, initialState);

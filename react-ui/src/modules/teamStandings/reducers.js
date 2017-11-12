@@ -8,6 +8,8 @@ import {
   BRACKETS_ERROR,
 } from './actions';
 
+import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from './../common/common-reducers';
+
 const initialState = {
   requestingTeamStandings: false,
   allTeamStats: [],
@@ -43,4 +45,5 @@ export default handleActions({
     ...state,
     requestingBrackets: false,
   }),
+  ...resetLazyLoadStatsOnTournamentOrPhaseChanged,
 }, initialState);

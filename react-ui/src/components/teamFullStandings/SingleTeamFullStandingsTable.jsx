@@ -37,6 +37,7 @@ export default class SingleTeamFullStandingsTable extends React.Component {
     tournamentId: PropTypes.string.isRequired,
     phaseId: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
+    bouncebacks: PropTypes.bool.isRequired,
   }
 
   getTableHeaders() {
@@ -48,6 +49,9 @@ export default class SingleTeamFullStandingsTable extends React.Component {
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
     if (!tournamentUsesNegs(this.props.tossupValues)) {
       copy = removeHeadersRelatedToNegs(copy);
+    }
+    if (!this.props.bouncebacks) {
+      copy = copy.filter(header => header.field !== 'bouncebackPoints');
     }
     return copy;
   }

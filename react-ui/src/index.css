@@ -41,6 +41,10 @@ a.panel-title {
   min-width: 200px;
 }
 
+.LandingPageWrapper {
+  padding: 10px;
+}
+
 .LoadingCircle {
   color: #22BEA0;
   transition: .5s visibility;
@@ -58,6 +62,11 @@ a.panel-title {
 
 .TopNavbar {
   background-color: transparent;
+}
+
+.SearchBar {
+  padding-left: 0;
+  margin-top: 10px;
 }
 
 

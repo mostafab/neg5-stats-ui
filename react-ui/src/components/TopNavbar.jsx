@@ -49,15 +49,13 @@ export default class TopNavbar extends Component {
             <Link to='/'> Neg 5 Stats </Link>
           </Navbar.Brand>
         </Navbar.Header>
-        <Navbar.Collapse>
-          <Navbar.Form pullLeft>
-            <FormGroup>
-              <AsyncTypeahead align='left' promptText='Find a tournament.' minLength={3} onSearch={() => this._onSearch()} labelKey={this.labelKey}
-                onInputChange={e => this._onChange(e)} options={this.props.tournamentSearchForm.tournaments}
-                renderMenuItemChildren={(option, props, index) => this._renderMenuItemChildren(option, index)} />
-            </FormGroup>
-          </Navbar.Form>
-        </Navbar.Collapse>
+        <Navbar.Form pullRight>
+        <FormGroup>
+          <AsyncTypeahead placeholder='Search for a tournament' align='left' promptText='Find a tournament.' minLength={3} onSearch={() => this._onSearch()} labelKey={this.labelKey}
+            onInputChange={e => this._onChange(e)} options={this.props.tournamentSearchForm.tournaments}
+            renderMenuItemChildren={(option, props, index) => this._renderMenuItemChildren(option, index)} />
+        </FormGroup>
+      </Navbar.Form>
       </Navbar>
     )
   }

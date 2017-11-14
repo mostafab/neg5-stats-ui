@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
+import httpsEnforce from 'express-sslify';
 
 import './config';
 import statsApiRouter from './api/stats-router';
@@ -9,7 +10,12 @@ import tournamentApiRouter from './api/tournament-router';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(morgan());
+if (process.env.NODE_ENV === 'production') {
+  app.use(httpsEnforce.HTTPS( { trustProtoHeader: true }));
+}
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan());
+}
 
 // Priority serve any static files.
 app.use('/neg5.stats.web-server/', express.static(path.resolve(__dirname, '../react-ui/build')));

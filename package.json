@@ -26,6 +26,7 @@
     "babel-register": "^6.26.0",
     "dotenv": "^4.0.0",
     "express": "^4.14.1",
+    "express-sslify": "^1.2.0",
     "morgan": "^1.9.0",
     "node-cache": "^4.1.1"
   },

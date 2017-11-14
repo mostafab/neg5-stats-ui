@@ -7,6 +7,7 @@ import { onTournamentSearchChange, onTournamentSearchQuerySubmitted, tournamentS
 
 const mapStateToProps = state => ({
   tournamentSearchForm: state.landingPage.tournamentSearchForm,
+  searchingForTournaments: state.landingPage.searchingForTournaments,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

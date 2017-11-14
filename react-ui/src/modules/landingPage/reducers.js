@@ -19,7 +19,8 @@ const initialState = {
     query: '',
     tournaments: [],
     error: null,
-  }
+  },
+  searchingForTournaments: false,
 };
 
 export default handleActions({

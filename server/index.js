@@ -9,6 +9,7 @@ import tournamentApiRouter from './api/tournament-router';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const ONE_WEEK_MS = 1000 * 60 * 60 * 24 * 7; 
 
 if (process.env.NODE_ENV === 'production') {
   app.use(httpsEnforce.HTTPS( { trustProtoHeader: true }));
@@ -18,7 +19,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Priority serve any static files.
-app.use('/neg5.stats.web-server/', express.static(path.resolve(__dirname, '../react-ui/build')));
+const cacheTime = process.env.NODE_ENV === 'production' ? ONE_WEEK_MS : 0;
+app.use('/neg5.stats.web-server/', express.static(path.resolve(__dirname, '../react-ui/build'), { maxAge: cacheTime }));
 
 // Enable CORS
 app.use((req, res, next) => {

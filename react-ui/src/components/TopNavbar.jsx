@@ -53,7 +53,8 @@ export default class TopNavbar extends Component {
         <FormGroup>
           <AsyncTypeahead delay={300} isLoading={this.props.searchingForTournaments} placeholder='Search for a tournament' align='left' promptText='Find a tournament.' minLength={3} onSearch={() => this._onSearch()} labelKey={this.labelKey}
             onInputChange={e => this._onChange(e)} options={this.props.tournamentSearchForm.tournaments}
-            renderMenuItemChildren={(option, props, index) => this._renderMenuItemChildren(option, index)} />
+            renderMenuItemChildren={(option, props, index) => this._renderMenuItemChildren(option, index)}
+            filterBy={['name', 'id']}/>
         </FormGroup>
       </Navbar.Form>
       </Navbar>

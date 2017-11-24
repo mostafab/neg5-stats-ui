@@ -10,8 +10,8 @@ const initialState = {
   recentTournaments: [],
   searchForm: {
     focusedInput: null,
-    startDate: moment().subtract(ONE_MONTH_AGO_IN_MONTHS, 'months'),
-    endDate: moment(),
+    startDate: moment().subtract(ONE_MONTH_AGO_IN_MONTHS, 'months').startOf('day'),
+    endDate: moment().startOf('day'),
     oldStartDate: null,
     oldEndDate: null,
   },
@@ -21,6 +21,7 @@ const initialState = {
     error: null,
   },
   searchingForTournaments: false,
+  numTimesTournamentsRequested: 0,
 };
 
 export default handleActions({
@@ -32,6 +33,7 @@ export default handleActions({
     ...state,
     recentTournaments: action.recentTournaments,
     requestingTournaments: false,
+    numTimesTournamentsRequested: state.numTimesTournamentsRequested + 1,
     searchForm: {
       ...state.searchForm,
       oldStartDate: state.searchForm.startDate,

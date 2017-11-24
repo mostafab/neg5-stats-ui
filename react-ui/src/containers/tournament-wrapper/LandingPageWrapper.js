@@ -8,6 +8,7 @@ import { getRecentTournaments, changeFocusedDate, changeDates, getTournamentsBet
 const mapStateToProps = state => ({
   recentTournaments: state.landingPage.recentTournaments,
   searchForm: state.landingPage.searchForm,
+  numTimesTournamentsRequested: state.landingPage.numTimesTournamentsRequested,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

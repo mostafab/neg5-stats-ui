@@ -14,7 +14,7 @@ export const requestFullIndividualStandings = (tournamentId, phaseId) =>
     });
     try {
       const individualStats = await getFullIndividualStandings(tournamentId, phaseId);
-      const mapped = mapFullIndividualStandings(individualStats.stats); 
+      const mapped = mapFullIndividualStandings(individualStats.players); 
       dispatch({
         type: INDIVIDUAL_FULL_STANDINGS_RECEIVED,
         fullIndividualStats: mapped,

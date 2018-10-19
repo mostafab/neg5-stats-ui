@@ -4,7 +4,7 @@ import { Table } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import ObjectTableRow from '../util/ObjectTableRow';
-import { tournamentUsesNegs, getPointsPerTossupHeard, getPlayerGetsToNegRatio, getPlayerPowerToNegRatio, getNumberOfTossupsByValue } from './../../util/stats-util';
+import { getNumberOfTossupsByValue } from './../../util/stats-util';
 import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 
 const PLAYER_URL = '/t/{tournamentId}/{slug}/player-full?phase={phaseId}#player_{playerId}';
@@ -26,9 +26,9 @@ const HEADERS = [
     { displayName: 'GP', field: 'gamesPlayed' },
     { displayName: 'TUH', field: 'totalTUH' },
     { displayName: 'Points', field: 'totalPoints' },
-    { displayName: 'P / TUH', field: player => getPointsPerTossupHeard(player) },
-    { displayName: 'P / N', field: player => getPlayerPowerToNegRatio(player), measuresNeg: true },
-    { displayName: 'G / N', field: player => getPlayerGetsToNegRatio(player), measuresNeg: true },
+    { displayName: 'P / TUH', field: 'pointsPerTossup' },
+    { displayName: 'P / N', field: 'powersToNegRatio', measuresNeg: true },
+    { displayName: 'G / N', field: 'getsToNegRatio', measuresNeg: true },
     { displayName: 'PPG', field: 'ppg' },
 ];
 
@@ -42,6 +42,7 @@ export default class IndividualStatsTable extends React.Component {
     tournamentId: PropTypes.string.isRequired,
     tossupValues: PropTypes.array.isRequired,
     slug: PropTypes.string.isRequired,
+    usesNegs: PropTypes.bool,
   }
 
   getTableHeaders() {
@@ -52,7 +53,7 @@ export default class IndividualStatsTable extends React.Component {
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
-    if (!tournamentUsesNegs(this.props.tossupValues)) {
+    if (!this.props.usesNegs) {
       copy = removeHeadersRelatedToNegs(copy);
     }
     return copy;

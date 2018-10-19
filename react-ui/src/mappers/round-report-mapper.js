@@ -1,16 +1,19 @@
+import { orderBy } from 'lodash';
+
 export const mapRoundReport = standings => {
   const mapped = Object.assign([], standings.map(mapSingleRound));
-  return mapped.sort((first, second) => first.round - second.round);
+  return orderBy(mapped, ['round']);
 }
 
 export const mapSingleRound = standing => ({
   round: standing.round,
-  averagePPG: standing.ppg_round_average,
+  averagePPG: standing.averagePointsPerGame,
   totalBouncebacks: standing.round_cumulative_bouncebacks,
-  totalGets: standing.round_cumulative_gets,
-  totalOvertime: standing.round_cumulative_overtime,
+  tossupCounts: standing.tossupAnswerCounts,
   totalScore: standing.round_cumulative_score,
-  totalTossupPoints: standing.round_cumulative_tossup_points,
-  ppb: standing.round_ppb,
-  totalTUH: standing.round_tossups_heard,
+  totalTossupPoints: standing.tossupPoints,
+  ppb: standing.averagePointsPerBonus,
+  totalTUH: standing.tossupsHeard,
+  numMatches: standing.numMatches,
+  tossupPointsPerTossupHeard: standing.tossupPointsPerTossupHeard,
 });

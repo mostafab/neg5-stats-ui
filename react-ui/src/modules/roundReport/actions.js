@@ -14,8 +14,7 @@ export const getRoundReport = (tournamentId, phaseId) =>
         type: ROUND_REPORT_REQUESTED,
       });
       const roundReport = await statsClient.getRoundReport(tournamentId, phaseId);
-      const mappedStandings = mapRoundReport(roundReport.stats);
-      // console.log(mappedStandings);
+      const mappedStandings = mapRoundReport(roundReport.rounds);
       dispatch({
         type: ROUND_REPORT_RECEIVED,
         roundReportStats: mappedStandings,

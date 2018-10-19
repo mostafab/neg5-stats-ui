@@ -14,7 +14,7 @@ export const getIndividualStandings = (tournamentId, phaseId) =>
         type: INDIVIDUAL_STANDINGS_REQUESTED,
       });
       const standings = await statsClient.getIndividualStandings(tournamentId, phaseId);
-      const mappedStandings = mapIndividualStandings(standings.stats);
+      const mappedStandings = mapIndividualStandings(standings.playerStandings);
       dispatch({
         type: INDIVIDUAL_STANDINGS_RECEIVED,
         individualStats: mappedStandings,

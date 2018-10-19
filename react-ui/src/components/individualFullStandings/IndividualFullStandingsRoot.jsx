@@ -23,11 +23,11 @@ export default class IndividualFullStandingsRoot extends React.Component {
   }
 
   render() {
-    const { fullIndividualStats, tossupValues, tournamentInfo } = this.props;
+    const { fullIndividualStats, tossupValues, tournamentInfo, usesNegs } = this.props;
     return (
       <div className='IndividualFullStandingsRoot'>
         <h3> { tournamentInfo.name || ''} Full Player Standings </h3>
-        <IndividualFullStandingsContent fullIndividualStats={fullIndividualStats} tossupValues={tossupValues}/>
+        <IndividualFullStandingsContent fullIndividualStats={fullIndividualStats} tossupValues={tossupValues} usesNegs={usesNegs}/>
       </div>
     )
   }

@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
-import { round } from 'lodash';
 
 import ObjectTableRow from '../util/ObjectTableRow';
 
-import { tournamentUsesNegs, getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
-  getNumberOfTossupsByValue } from './../../util/stats-util';
+import { getNumberOfTossupsByValue } from './../../util/stats-util';
 import { removeHeadersRelatedToNegs } from './../../util/headers-util';
+
 const HEADERS = [
   { displayName: 'Round', field: 'round' },
   { displayName: 'Opponent', field: 'opponentTeamName' },
-  { displayName: 'GP', field: match => round(match.gamePlayed, 2) },
+  { displayName: 'GP', field: 'gamePlayed' },
   { displayName: 'TUH', field: 'totalTUH' },
-  { displayName: 'P / TU', field: match => getPointsPerTossupHeard(match) },
-  { displayName: 'P / N', field: match => getPowersToNegRatio(match), measuresNeg: true },
-  { displayName: 'G / N', field: match => getGetsToNegRatio(match), measuresNeg: true },
+  { displayName: 'P / TU', field: 'pointsPerTossupHeard' },
+  { displayName: 'P / N', field: 'powersToNegRatio', measuresNeg: true },
+  { displayName: 'G / N', field: 'getsToNegRatio', measuresNeg: true },
   { displayName: 'Points', field: 'totalPoints' },
 ];
 
@@ -26,6 +25,7 @@ export default class SingleIndividualFullStandingsTable extends React.Component 
   static propTypes = {
     playerStats: PropTypes.object.isRequired,
     tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
+    usesNegs: PropTypes.bool,
   }
 
 
@@ -36,7 +36,7 @@ export default class SingleIndividualFullStandingsTable extends React.Component 
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
-    if (!tournamentUsesNegs(this.props.tossupValues)) {
+    if (!this.props.usesNegs) {
       copy = removeHeadersRelatedToNegs(copy);
     }
     return copy;
@@ -58,7 +58,8 @@ export default class SingleIndividualFullStandingsTable extends React.Component 
           </thead>
           <tbody>
             {
-              playerStats.matches.map(match => <ObjectTableRow key={match.matchId} dataObject={match} headers={tableHeaders}/>)
+              playerStats.matches.map(match =>
+                <ObjectTableRow key={`${playerStats.playerId}_${match.opponentTeamId}_${match.round}`} dataObject={match} headers={tableHeaders}/>)
             }
           </tbody>
       </Table>

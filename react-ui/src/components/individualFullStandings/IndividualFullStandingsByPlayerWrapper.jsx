@@ -11,13 +11,13 @@ export default class IndividualFullStandingsByPlayerWrapper extends React.Compon
   }
 
   render() {
-    const { tossupValues } = this.props;
+    const { tossupValues, usesNegs } = this.props;
     return (
       <div className='IndividualFullStandingsByPlayerWrapper'>
         {
           this.props.fullIndividualStats
             .filter(player => player.matches.length > 0)
-            .map(player => <SingleIndividualFullStandingsTable key={ player.playerId } playerStats={ player } tossupValues={ tossupValues }/>)
+            .map(player => <SingleIndividualFullStandingsTable key={ player.playerId } playerStats={ player } tossupValues={ tossupValues } usesNegs={usesNegs}/>)
         }
       </div>
     )

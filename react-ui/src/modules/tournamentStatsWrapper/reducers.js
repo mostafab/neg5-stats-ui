@@ -8,8 +8,11 @@ import {
   PHASES_ERROR,
   PHASE_CHANGE,
   INITIAL_PHASE_ON_LOAD,
-  TOURNAMENT_INFO_RECEIVED
+  TOURNAMENT_INFO_RECEIVED,
+  TEAMS_RECEIVED
 } from './actions';
+
+import { usesNeg } from './../../util/stats-util';
 
 const initialState = {
   tossupValues: [],
@@ -19,6 +22,8 @@ const initialState = {
   requestingPhases: false,
   selectedPhaseId: undefined,
   loadedTournament: {},
+  teams: {},
+  players: {},
 };
 
 export default handleActions({
@@ -29,6 +34,7 @@ export default handleActions({
   [POINT_SCHEME_RECEIVED]: (state, action) => ({
     ...state,
     tossupValues: action.tossupValues,
+    usesNegs: usesNeg(action.tossupValues),
   }),
   [POINT_SCHEME_ERROR]: (state, action) => ({
     ...state,
@@ -59,5 +65,10 @@ export default handleActions({
   [TOURNAMENT_INFO_RECEIVED]: (state, action) => ({
     ...state,
     loadedTournament: action.tournamentInfo,
+  }),
+  [TEAMS_RECEIVED]: (state, action) => ({
+    ...state,
+    teams: action.teams,
+    players: action.players,
   }),
 }, initialState);

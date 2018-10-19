@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 
 import ObjectTableRow from '../util/ObjectTableRow';
-import { getTossupPointsPerTossupsHeard } from './../../util/stats-util';
 
 const HEADERS = [
   { displayName: 'Round', field: 'round' },
   { displayName: 'Average PPG', field: 'averagePPG' },
   { displayName: 'TU Pts', field: 'totalTossupPoints' },
   { displayName: 'TUH', field: 'totalTUH' },
-  { displayName: 'TU Pts / TUH', field: round => getTossupPointsPerTossupsHeard(round) },
+  { displayName: 'TU Pts / TUH', field: 'tossupPointsPerTossupHeard' },
   { displayName: 'Average PPB', field: 'ppb' },
 ];
 
-export default class RoundReportTable extends React.Component {
+export default class RoundReportTable extends Component {
 
   static propTypes = {
     roundReportStats: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -37,7 +36,7 @@ export default class RoundReportTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-              { this.props.roundReportStats.map(round => <ObjectTableRow key={round.round} dataObject={round} headers={tableHeaders} />) }
+            { this.props.roundReportStats.map(round => <ObjectTableRow key={round.round} dataObject={round} headers={tableHeaders} />) }
           </tbody>
       </Table>
     );

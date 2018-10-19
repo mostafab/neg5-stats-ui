@@ -1,22 +1,21 @@
 export const mapIndividualStandings = standings => standings.map(mapSingleIndividualStanding);
 
-export const mapSingleIndividualStanding = (standing, index) => ({
-  gamesPlayed: standing.games_played,
-  playerId: standing.player_id,
-  playerName: standing.player_name,
-  ppg: standing.points_per_game,
-  pointsPerTossup: standing.points_per_tossup,
-  teamId: standing.team_id,
-  teamName: standing.team_name,
-  tossupTotals: standing.tossup_totals.map(tv => ({
-    value: tv.value,
-    total: tv.total,
-    answerType: tv.answer_type,
-  })),
-  totalTUH: standing.total_player_tuh,
-  totalPoints: standing.total_points,
-  rank: index + 1,
-});
+export const mapSingleIndividualStanding = (standing, index) => {
+  return {
+    gamesPlayed: standing.gamesPlayed,
+    playerId: standing.playerId,
+    ppg: standing.pointsPerGame,
+    pointsPerTossup: standing.pointsPerTossupHeard,
+    tossupTotals: standing.tossupAnswerCounts.map(tv => ({
+      value: tv.value,
+      total: tv.total,
+    })),
+    totalTUH: standing.tossupsHeard,
+    totalPoints: standing.totalPoints,
+    powersToNegRatio: standing.powersToNegRatio,
+    getsToNegRatio: standing.getsToNegRatio,
+  }
+}
 
 export const mapFullIndividualStandings = standings => standings.map(mapSingleFullIndividualStanding);
 

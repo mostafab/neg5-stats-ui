@@ -1,8 +1,15 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 import IndividualStandingsContent from './IndividualStandingsContent';
 
 export default class IndividualStandingsRoot extends React.Component {
+
+  static getPropTypes() {
+    return {
+      selectedPhaseId: propTypes.string,
+    }
+  }
   
   componentDidMount() {
     const tournamentId = this.props.match.params.tournamentId;
@@ -23,11 +30,17 @@ export default class IndividualStandingsRoot extends React.Component {
   }
 
   render() {
-    const { individualStats, selectedPhaseId, match, tossupValues, tournamentInfo } = this.props;
+    const { individualStats, selectedPhaseId, match, tossupValues, tournamentInfo, usesNegs } = this.props;
     return (
       <div className='IndividualStandingsRoot'>
         <h3> {tournamentInfo.name || ''} Individual Standings </h3>
-        <IndividualStandingsContent slug={match.params.slug} individualStats={ individualStats } phaseId={ selectedPhaseId } tournamentId={ match.params.tournamentId } tossupValues={tossupValues}/>
+        <IndividualStandingsContent
+          slug={match.params.slug}
+          individualStats={ individualStats }
+          phaseId={ selectedPhaseId }
+          tournamentId={ match.params.tournamentId }
+          usesNegs={usesNegs}
+          tossupValues={tossupValues}/>
       </div>
     )
   }

@@ -13,6 +13,8 @@ const mapStateToProps = state => ({
   requestingPhases: state.globalState.requestingPhases,
   selectedPhaseId: state.globalState.selectedPhaseId,
   loadedTournament: state.globalState.loadedTournament,
+  teams: state.globalState.teams,
+  usesNegs: state.globalState.usesNegs,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

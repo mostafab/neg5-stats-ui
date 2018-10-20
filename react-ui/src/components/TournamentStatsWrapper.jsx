@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import queryString from 'query-string';
 
@@ -10,7 +10,7 @@ import RoundReportRoot from '../containers/home/RoundReport';
 import PhaseSelector from './../containers/phase-selector/PhaseSelector';
 import StandingsNavigation from './StandingsNavigation';
 
-export default class TournamentStatsWrapper extends React.Component {
+export default class TournamentStatsWrapper extends Component {
 
   componentDidMount() {
     const { match, location, setInitialPhaseOnLoad } = this.props;
@@ -51,9 +51,7 @@ export default class TournamentStatsWrapper extends React.Component {
   }
 
   _loadTournamentData(tournamentId) {
-    const { getTournamentPhases, getTournamentTossupValues, getTournamentInformation } = this.props;
-    getTournamentPhases(tournamentId);
-    getTournamentTossupValues(tournamentId);
+    const { getTournamentInformation } = this.props;
     getTournamentInformation(tournamentId);
   }
 };

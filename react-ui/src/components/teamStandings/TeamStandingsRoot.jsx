@@ -5,9 +5,6 @@ export default class TeamStandingsRoot extends React.Component {
   
   componentDidMount() {
     const tournamentId = this.props.match.params.tournamentId;
-    if (this.props.numTimesStatsReceived < 1) {
-      this.props.getTournamentBrackets(tournamentId);
-    }
     if (typeof this.props.selectedPhaseId !== 'undefined' && this.props.numTimesStatsReceived < 1) {
       this.props.requestTeamStandings(tournamentId, this.props.selectedPhaseId);
     }
@@ -20,7 +17,6 @@ export default class TeamStandingsRoot extends React.Component {
     const currentPhaseId = this.props.selectedPhaseId;
     if (oldTournamentId && oldTournamentId !== newTournamentId) { // We've switched tournaments
       this.props.requestTeamStandings(this.props.tournamentInfo.id, '');
-      this.props.getTournamentBrackets(newTournamentId);
     } else if (oldPhaseId !== currentPhaseId) { // We've switched phases
       this.props.requestTeamStandings(this.props.match.params.tournamentId, currentPhaseId);
     }

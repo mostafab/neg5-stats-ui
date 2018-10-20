@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import {
   requestTeamStandings,
-  getTournamentBrackets,
 } from '../../modules/teamStandings/actions';
 
 import { setInitialPhaseOnLoad } from '../../modules/tournamentStatsWrapper/actions';
@@ -22,7 +21,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   requestTeamStandings,
-  getTournamentBrackets,
   setInitialPhaseOnLoad,
 }, dispatch);
 

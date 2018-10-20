@@ -5,8 +5,11 @@ import teamClient from './../../client/team-client';
 import { mapPhases } from './../../mappers/phase-mapper';
 import { mapSingleTournament } from './../../mappers/tournaments-mapper';
 import { mapTossupValues } from './../../mappers/point-scheme-mapper';
+import { mapBrackets } from './../../mappers/brackets-mapper';
 import { getPageUrlFromStatsPageAndPhase } from './../../util/url-util';
 import { groupTeamsAndPlayers } from '../../util/stats-util';
+
+import { BRACKETS_RECEIVED } from './../teamStandings/actions';
 
 const ROOT = 'tournamentStatsWrapper/';
 
@@ -34,8 +37,11 @@ export const getTournamentInformation = tournamentId =>
     })
     try {
       const result = await tournamentClient.getTournamentInfo(tournamentId);
-      const teamsAndPlayers = groupTeamsAndPlayers(await teamClient.getTeams(tournamentId));
       const tournamentInfo =  mapSingleTournament(result);
+      const teamsAndPlayers = groupTeamsAndPlayers(await teamClient.getTeams(tournamentId));
+      const phases = mapPhases(result.phases);
+      const tossupValues = mapTossupValues(result.tossupValues);
+      const brackets = mapBrackets(result.divisions);
       dispatch({
         type: TOURNAMENT_INFO_RECEIVED,
         tournamentInfo,
@@ -45,6 +51,18 @@ export const getTournamentInformation = tournamentId =>
         teams: teamsAndPlayers.teams,
         players: teamsAndPlayers.players,
       })
+      dispatch({
+        type: PHASES_RECEIVED,
+        phases,
+      });
+      dispatch({
+        type: POINT_SCHEME_RECEIVED,
+        tossupValues,
+      });
+      dispatch({
+        type: BRACKETS_RECEIVED,
+        brackets,
+      })
     } catch (error) {
       dispatch({
         type: TOURNAMENT_INFO_FAILURE,
@@ -52,44 +70,6 @@ export const getTournamentInformation = tournamentId =>
       })
     }
   }
-
-export const getTournamentPhases = tournamentId =>
-  async dispatch => {
-    dispatch({
-      type: PHASES_REQUESTED,
-    });
-    try {
-      const phases = await tournamentClient.getTournamentPhases(tournamentId);
-      const mappedPhases = mapPhases(phases);
-      dispatch({
-        type: PHASES_RECEIVED,
-        phases: mappedPhases,
-      });
-    } catch (error) {
-      dispatch({
-        type: PHASES_ERROR,
-      });
-    }
-  };
-
-export const getTournamentTossupValues = tournamentId =>
-  async dispatch => {
-    dispatch({
-      type: POINT_SCHEME_REQUESTED,
-    });
-    try {
-      const pointScheme = await tournamentClient.getTournamentPointScheme(tournamentId);
-      const mapped = mapTossupValues(pointScheme);
-      dispatch({
-        type: POINT_SCHEME_RECEIVED,
-        tossupValues: mapped,
-      });
-    } catch (error) {
-      dispatch({
-        type: POINT_SCHEME_ERROR,
-      });
-    }
-  };
 
 export const updateUrlWithPhase = (tournamentId, newPhaseId, url) =>
   async dispatch => {

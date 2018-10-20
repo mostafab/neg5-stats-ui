@@ -12,7 +12,7 @@ export default class TeamStandingsContent extends React.Component {
     brackets: PropTypes.arrayOf(PropTypes.object).isRequired,
     tossupValues: PropTypes.arrayOf(PropTypes.object).isRequired,
     tournamentId: PropTypes.string.isRequired,
-    phaseId: PropTypes.string.isRequired,
+    phaseId: PropTypes.string,
     slug: PropTypes.string.isRequired,
   }
 

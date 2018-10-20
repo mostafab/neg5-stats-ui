@@ -47,7 +47,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     }),
-    phaseId: PropTypes.string.isRequired,
+    phaseId: PropTypes.string,
     tournamentId: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
   };

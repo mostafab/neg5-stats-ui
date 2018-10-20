@@ -1,9 +1,10 @@
-export const mapBrackets = brackets => brackets.map(mapSingleBracket);
+import { orderBy } from 'lodash';
+
+export const mapBrackets = brackets => orderBy(brackets.map(mapSingleBracket), ['name'])
 
 export const mapSingleBracket = bracket => ({
-  id: bracket.division_id,
-  name: bracket.division_name,
-  tournamentId: bracket.tournament_id,
-  phaseId: bracket.phase_id,
-  phaseName: bracket.phase_name,
+  id: bracket.id,
+  name: bracket.name,
+  tournamentId: bracket.tournamentId,
+  phaseId: bracket.phaseId,
 });

@@ -14,7 +14,7 @@ export const requestFullTeamStandings = (tournamentId, phaseId) =>
     });
     try {
       const teamStandings = await getFullTeamStandings(tournamentId, phaseId);
-      const mappedStandings = mapFullTeamStandings(teamStandings.stats);
+      const mappedStandings = mapFullTeamStandings(teamStandings.teams);
       dispatch({
         type: TEAM_FULL_STANDINGS_RECEIVED,
         fullTeamStats: mappedStandings,

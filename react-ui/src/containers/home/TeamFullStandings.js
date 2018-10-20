@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { groupBy } from 'lodash';
+import { groupBy, orderBy } from 'lodash';
 
 import {
   requestFullTeamStandings,
@@ -14,13 +14,14 @@ import { enrichIndividualStats } from '../../util/stats-util';
 import TeamFullStandingsRoot from '../../components/teamFullStandings/TeamFullStandingsRoot';
 
 const mapStateToProps = state => ({
-  fullTeamStats: state.teamFullStandings.fullTeamStats,
+  fullTeamStats: enrichTeamFullStats(state.teamFullStandings.fullTeamStats, state.globalState.teams),
   individualStatsByTeam: partitionIndividualStatsByTeam(state),
   tossupValues: state.globalState.tossupValues,
   numTimesStatsReceived: state.teamFullStandings.numTimesStatsReceived,
   requestingFullTeamStandings: state.teamFullStandings.requestingFullTeamStandings,
   selectedPhaseId: state.globalState.selectedPhaseId,
   tournamentInfo: state.globalState.loadedTournament,
+  usesNegs: state.globalState.usesNegs,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -40,6 +41,30 @@ function partitionIndividualStatsByTeam(state) {
     return player.teamId;
   });
   return groups;
+}
+
+function enrichTeamFullStats(stats, teams) {
+  return orderBy(stats.map(teamStats => {
+    let teamName = null;
+    const thisTeam = teams[teamStats.teamId];
+    if (thisTeam) {
+      teamName = thisTeam.name;
+    }
+    return {
+      ...teamStats,
+      teamName,
+      matches: orderBy(teamStats.matches.map(match => {
+        let opponentTeamName = null;
+        if (teams[match.opponentId]) {
+          opponentTeamName = teams[match.opponentId].name;
+        }
+        return {
+          ...match,
+          opponentName: opponentTeamName,
+        }
+      }), ['round'])
+    };
+  }), ['teamName'])
 }
 
 export default connect(

@@ -5,9 +5,7 @@ import { Table } from 'react-bootstrap';
 import ObjectTableRow from '../util/ObjectTableRow';
 import IndividualStatsTable from './../individualStandings/IndividualStatsTable';
 
-import { tournamentUsesNegs, getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio,
-  getNumberOfTossupsByValue, getTeamBonusesHeardInMatch,
-  getTeamBonusPointsInMatch } from './../../util/stats-util';
+import { getNumberOfTossupsByValue } from './../../util/stats-util';
 import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 
 const HEADERS = [
@@ -17,11 +15,11 @@ const HEADERS = [
   { displayName: 'PF', field: 'totalPoints' },
   { displayName: 'PA', field: 'opponentScore' },
   { displayName: 'TUH', field: 'totalTUH' },
-  { displayName: 'PPTH', field: match => getPointsPerTossupHeard(match) },
-  { displayName: 'P / N', field: match => getPowersToNegRatio(match), measuresNeg: true },
-  { displayName: 'G / N', field: match => getGetsToNegRatio(match), measuresNeg: true },
-  { displayName: 'Bonuses Heard', field: match => getTeamBonusesHeardInMatch(match) },
-  { displayName: 'Bonus Points', field: match => getTeamBonusPointsInMatch(match) },
+  { displayName: 'PPTH', field: 'pointsPerTossupHeard' },
+  { displayName: 'P / N', field: 'powersToNegRatio', measuresNeg: true },
+  { displayName: 'G / N', field: 'getsToNegRatio', measuresNeg: true },
+  { displayName: 'Bonuses Heard', field: 'bonusesHeard' },
+  { displayName: 'Bonus Points', field: 'bonusPoints' },
   { displayName: 'Bounceback Points', field: 'bouncebackPoints' },
   { displayName: 'PPB', field: 'ppb' },
 ];
@@ -38,6 +36,7 @@ export default class SingleTeamFullStandingsTable extends React.Component {
     phaseId: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     bouncebacks: PropTypes.bool.isRequired,
+    usesNegs: PropTypes.bool,
   }
 
   getTableHeaders() {
@@ -47,7 +46,7 @@ export default class SingleTeamFullStandingsTable extends React.Component {
       field: team => getNumberOfTossupsByValue(tv.value, team),
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
-    if (!tournamentUsesNegs(this.props.tossupValues)) {
+    if (!this.props.usesNegs) {
       copy = removeHeadersRelatedToNegs(copy);
     }
     if (!this.props.bouncebacks) {
@@ -73,11 +72,14 @@ export default class SingleTeamFullStandingsTable extends React.Component {
           </thead>
           <tbody>
             {
-              fullTeamStats.matches.map(match => <ObjectTableRow key={match.matchId} dataObject={match} headers={tableHeaders}/>)
+              fullTeamStats.matches.map(match => <ObjectTableRow
+                  key={`${fullTeamStats.teamId}_${match.opponentId}_${match.round}`}
+                  dataObject={match}
+                  headers={tableHeaders}/>)
             }
           </tbody>
         </Table>
-        <IndividualStatsTable slug={slug} tournamentId={tournamentId} phaseId={phaseId} tossupValues={ tossupValues } individualStats={ players }/>
+        <IndividualStatsTable slug={slug} tournamentId={tournamentId} phaseId={phaseId} tossupValues={tossupValues} individualStats={ players }/>
       </div>
     )
   }

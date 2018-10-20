@@ -26,13 +26,13 @@ export default class TeamFullStandingsRoot extends React.Component {
   }
 
   render() {
-    const { fullTeamStats, tossupValues, individualStatsByTeam, match, selectedPhaseId, tournamentInfo } = this.props;
+    const { fullTeamStats, tossupValues, individualStatsByTeam, match, selectedPhaseId, tournamentInfo, usesNegs } = this.props;
     const tournamentId = match.params.tournamentId;
     return (
       <div className='TeamFullStandingsRoot'>
         <h3> { tournamentInfo.name || ''} Full Team Standings </h3>
         <TeamFullStandingsContent slug={match.params.slug} fullTeamStats={fullTeamStats} tossupValues={tossupValues} individualStatsByTeam={individualStatsByTeam}
-          tournamentId={tournamentId} phaseId={selectedPhaseId} bouncebacks={tournamentInfo.bouncebacks || false}/>
+          tournamentId={tournamentId} phaseId={selectedPhaseId} bouncebacks={tournamentInfo.bouncebacks || false} usesNegs={usesNegs}/>
       </div>
     )
   }

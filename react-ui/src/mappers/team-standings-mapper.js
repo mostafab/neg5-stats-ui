@@ -46,30 +46,27 @@ export const mapSingleTeamStats = teamStats => ({
 export const mapFullTeamStandings = allStats => allStats.map(mapSingleFullTeamStanding);
 
 export const mapSingleFullTeamStanding = standing => ({
-  teamName: standing.team_name,
-  teamId: standing.team_id,
+  teamId: standing.teamId,
   matches: Object.assign([], standing.matches.map(match => ({
-    bouncebackPoints: match.bounceback_points,
-    matchId: match.match_id,
-    opponentId: match.opponent_id,
-    opponentName: match.opponent_name,
-    opponentScore: match.opponent_score,
-    overtimeTossups: match.overtime_tossups,
-    ppb: match.ppb,
+    bouncebackPoints: match.bouncebackPoints,
+    opponentId: match.opponentTeamId,
+    opponentScore: match.opponentPoints,
+    ppb: match.pointsPerBonus,
     result: match.result,
     round: match.round,
-    totalPoints: match.score,
-    tossupPoints: match.tossup_points,
-    tossupTotals: match.tossup_totals.map(tv => ({
+    totalPoints: match.points,
+    tossupTotals: match.tossupAnswerCounts.map(tv => ({
       value: tv.value,
       total: tv.total,
-      answerType: tv.answer_type,
+      answerType: tv.answerType,
     })),
-    totalTUH: match.tossups_heard,
-    totalGets: match.total_gets,
-    totalNegs: match.total_negs,
-    totalPowers: match.total_powers,
-  }))).sort((matchOne, matchTwo) => matchOne.round - matchTwo.round), // Sort matches by round
+    totalTUH: match.tossupsHeard,
+    powersToNegRatio: match.powersToNegRatio,
+    getsToNegRatio: match.getsToNegRatio,
+    bonusPoints: match.bonusPoints,
+    bonusesHeard: match.bonusesHeard,
+    pointsPerTossupHeard: match.pointsPerTossupHeard,
+  }))),
 });
 
 export default {

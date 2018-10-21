@@ -1,5 +1,3 @@
-import { parseInt } from 'lodash';
-
 /**
  * Maps the response payload from the server to a data object
  * the front-end uses. 
@@ -13,34 +11,25 @@ export const mapTeamStandings = allTeamStats => allTeamStats.map(mapSingleTeamSt
  * @param {Object} teamStats 
  */
 export const mapSingleTeamStats = teamStats => ({
-  divisionId: teamStats.division_id,
-  divisionName: teamStats.division_name,
-  losses: teamStats.losses,
-  margin: teamStats.margin,
-  matchesPlayed: teamStats.num_games,
-  phaseId: teamStats.phase_id,
-  papg: teamStats.papg,
-  ppg: teamStats.ppg,
-  ppb: teamStats.ppb,
-  rank: parseInt(teamStats.rank),
-  totalGets: teamStats.raw_total_gets,
-  totalTossupPoints: teamStats.raw_total_tossup_points,
-  teamId: teamStats.team_id,
-  teamName: teamStats.team_name,
-  ties: teamStats.ties,
-  tossupTotals: teamStats.tossup_totals.map(tv => ({
+  losses: teamStats.record.losses,
+  margin: teamStats.marginOfVictory,
+  papg: teamStats.pointsAgainstPerGame,
+  ppg: teamStats.pointsPerGame,
+  ppb: teamStats.pointsPerBonus,
+  teamId: teamStats.teamId,
+  // teamName: teamStats.team_name,
+  ties: teamStats.record.ties,
+  tossupTotals: teamStats.tossupAnswerCounts.map(tv => ({
     value: tv.value,
     total: tv.total,
-    answerType: tv.answer_type,
+    answerType: tv.answerType,
   })),
-  totalBouncebackPoints: teamStats.total_bounceback_points,
-  totalNegs: teamStats.total_negs,
-  totalOvertimeTossups: teamStats.total_overtime_tossups,
-  totalPoints: teamStats.total_points,
-  totalPowers: teamStats.total_powers,
-  totalTUH: teamStats.total_tuh,
-  winPercentage: teamStats.win_percentage,
-  wins: teamStats.wins,
+  totalTUH: teamStats.tossupsHeard,
+  winPercentage: teamStats.record.winPercentage,
+  wins: teamStats.record.wins,
+  getsToNegRatio: teamStats.getsToNegRatio,
+  powersToNegRatio: teamStats.powersToNegRatio,
+  pointsPerTossupHeard: teamStats.pointsPerTossupHeard,
 });
 
 export const mapFullTeamStandings = allStats => allStats.map(mapSingleFullTeamStanding);

@@ -4,7 +4,7 @@ import config from './../config';
 
 const HOST = config.REACT_APP_BASE_STATS_API_URL;
 
-const TEAM_STANDINGS_URL = `${HOST}/api/t/{tournamentId}/stats/team-standings?phase={phaseId}`;
+const TEAM_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/team-standings`;
 const INDIVIDUAL_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/individual-standings`;
 const TEAM_FULL_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/team-full-standings`;
 const INDIVIDUAL_FULL_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/individual-full-standings`;
@@ -12,8 +12,11 @@ const ROUND_REPORT_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/roun
 
 export const getTeamStandings = async (tournamentId, phaseId = '') => {
    try {
-    const url = TEAM_STANDINGS_URL.replace('{tournamentId}', tournamentId).replace('{phaseId}', phaseId);
-    return get(url);
+    let url = TEAM_STANDINGS_URL.replace('{tournamentId}', tournamentId);
+    if (phaseId) {
+      url += `?phase=${phaseId}`;
+    }
+    return (await axios.get(url)).data;
    } catch (e) {
     throw e;
    }
@@ -66,15 +69,6 @@ export const getRoundReport = async (tournamentId, phaseId = '') => {
     throw e;
   }
 }
-
-const get = async (url, config = {}) => {
-  try {
-    const { data } = await axios.get(url, config);
-    return data.result;
-  } catch (err) {
-    throw err;
-  }
-} 
 
 export default {
   getTeamStandings,

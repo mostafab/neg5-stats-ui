@@ -16,4 +16,5 @@ export const mapSingleTournament = tournament => ({
   questionSet: tournament.question_set,
   date: tournament.tournament_date ? new Date(tournament.tournament_date) : null,
   bouncebacks: tournament.usesBouncebacks,
+  currentPhaseId: tournament.currentPhaseId,
 });

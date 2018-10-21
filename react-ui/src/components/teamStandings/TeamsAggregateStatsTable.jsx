@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 
-import { getGetsToNegRatio, getPointsPerTossupHeard, getPowersToNegRatio, getNumberOfTossupsByValue, tournamentUsesNegs } from './../../util/stats-util';
+import { getNumberOfTossupsByValue } from './../../util/stats-util';
 import { removeHeadersRelatedToNegs } from './../../util/headers-util';
 import ObjectTableRow from '../util/ObjectTableRow';
 
@@ -25,14 +25,14 @@ const HEADERS = [
   { displayName: 'W', field: 'wins' },
   { displayName: 'L', field: 'losses' },
   { displayName: 'T', field: 'ties' },
-  { displayName: 'Win Pct', field: 'winPercentage' },
+  { displayName: 'Win %', field: 'winPercentage' },
   { displayName: 'PPG', field: 'ppg' },
   { displayName: 'PAPG', field: 'papg' },
   { displayName: 'Margin', field: 'margin' },
   { displayName: 'TUH', field: 'totalTUH' },
-  { displayName: 'PPTH', field: team => getPointsPerTossupHeard(team) },
-  { displayName: 'P / N', field: team => getPowersToNegRatio(team), measuresNeg: true },
-  { displayName: 'G / N', field: team => getGetsToNegRatio(team), measuresNeg: true },
+  { displayName: 'PPTH', field: 'pointsPerTossupHeard' },
+  { displayName: 'P / N', field: 'powersToNegRatio', measuresNeg: true },
+  { displayName: 'G / N', field: 'getsToNegRatio', measuresNeg: true },
   { displayName: 'PPB', field: 'ppb' },
 ];
 
@@ -60,7 +60,7 @@ export default class TeamsAggregateStatsTable extends React.Component {
     }));
     copy.splice(INDEX_TO_INSERT_POINT_SCHEME, 0, ...values);
     copy.find(h => h.displayName === 'Team').args = [this.props.tournamentId, this.props.slug, this.props.phaseId];
-    if (!tournamentUsesNegs(this.props.tossupValues)) {
+    if (!this.props.usesNegs) {
       copy = removeHeadersRelatedToNegs(copy);
     }
     return copy;

@@ -18,8 +18,6 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan());
 }
 
-const pathToIndexHtml = path.resolve(__dirname, '../react-ui/build', 'index.html');
-
 // Priority serve any static files.
 const cacheTime = process.env.NODE_ENV === 'production' ? ONE_WEEK_MS : 0;
 app.use('/neg5.stats.web-server/', express.static(path.resolve(__dirname, '../react-ui/build'), { maxAge: cacheTime }));
@@ -36,6 +34,7 @@ app.use('/neg5-api', httpProxy(process.env.NEG5_API_HOST, {
   proxyReqPathResolver: req => `/neg5-api${req.url}`
 }));
 
+const pathToIndexHtml = path.resolve(__dirname, '../react-ui/build', 'index.html');
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', (request, response) => {
   response.sendFile(pathToIndexHtml);

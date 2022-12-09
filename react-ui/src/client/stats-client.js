@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import config from './../config';
 
-const HOST = config.REACT_APP_BASE_STATS_API_URL;
+const HOST = config.REACT_APP_BASE_TOURNAMENT_API_URL === undefined ? 'http://localhost:1443' : config.REACT_APP_BASE_TOURNAMENT_API_URL;
 
 const TEAM_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/team-standings`;
 const INDIVIDUAL_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/individual-standings`;

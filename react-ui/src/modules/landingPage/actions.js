@@ -66,6 +66,7 @@ export const getTournamentsBetweenDates = (startDate = new Date(), endDate = new
         recentTournaments: mapped,
       });
     } catch (error) {
+      console.error(error);
       dispatch({
         type: RECENT_TOURNAMENTS_ERROR,
       });

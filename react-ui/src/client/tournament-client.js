@@ -1,12 +1,13 @@
 import axios from 'axios';
+import moment from 'moment'
 import config from './../config';
 
-const HOST = config.REACT_APP_BASE_TOURNAMENT_API_URL;
+const HOST = config.REACT_APP_BASE_TOURNAMENT_API_URL === undefined ? 'http://localhost:1443' : config.REACT_APP_BASE_TOURNAMENT_API_URL;
 
 const INFO_URL = `${HOST}/neg5-api/tournaments/{tournamentId}`;
-const RECENT_TOURNAMENTS_URL = `${HOST}/api/t/findRecent?days={days}`;
-const BETWEEN_DATES_TOURNAMENT_URL = `${HOST}/api/t/byDateRange`;
-const BY_NAME_URL = `${HOST}/api/t/byName`;
+const RECENT_TOURNAMENTS_URL = `${HOST}/neg5-api/search/tournaments/days?days={days}`;
+const BETWEEN_DATES_TOURNAMENT_URL = `${HOST}/neg5-api/search/tournaments/dates`;
+const BY_NAME_URL = `${HOST}/neg5-api/search/tournaments/name`;
 
 export const getTournamentInfo = async (tournamentId) => {
   try {
@@ -32,11 +33,11 @@ export const getTournamentsInRange = async (startDate, endDate) => {
     const url = BETWEEN_DATES_TOURNAMENT_URL;
     const { data } = await axios.get(url, {
       params: {
-        startDate,
-        endDate,
+        start: moment(startDate).format('YYYY-MM-DD'),
+        end: moment(endDate).format('YYYY-MM-DD'),
       },
     });
-    return data.result;
+    return data;
   } catch (error) {
     throw error;
   }
@@ -47,10 +48,10 @@ export const getTournamentsByName = async (searchQuery) => {
     const url = BY_NAME_URL;
     const { data } = await axios.get(url, {
       params: {
-        searchQuery
+        name: searchQuery,
       },
     })
-    return data.result;
+    return data;
   } catch (error) {
     throw error;
   }

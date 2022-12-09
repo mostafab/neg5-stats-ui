@@ -4,13 +4,13 @@ import { RECENT_TOURNAMENTS_ERROR, RECENT_TOURNAMENTS_RECEIVED, RECENT_TOURNAMEN
   CHANGED_FOCUSED_DATE, CHANGED_START_OR_END_DATES, TOURNAMENT_SEARCH_QUERY_CHANGE, TOURNAMENT_SEARCH_QUERY_SUBMITTED,
   TOURNAMENT_SEARCH_QUERY_FAILURE, TOURNAMENT_SEARCH_QUERY_SUCCESS } from './actions';
 
-const ONE_MONTH_AGO_IN_MONTHS = 1;
+const THREE_MONTHS_AGO = 3;
 
 const initialState = {
   recentTournaments: [],
   searchForm: {
     focusedInput: null,
-    startDate: moment().subtract(ONE_MONTH_AGO_IN_MONTHS, 'months').startOf('day'),
+    startDate: moment().subtract(THREE_MONTHS_AGO, 'months').startOf('day'),
     endDate: moment().startOf('day'),
     oldStartDate: null,
     oldEndDate: null,

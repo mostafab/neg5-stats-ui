@@ -1,0 +1,21 @@
+# This workflow will build a NodeJS application
+
+name: Node CI with Yarn
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      PORT: 1337
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 6.11.5

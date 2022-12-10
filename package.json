@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Server for neg 5 stats web",
   "engines": {
-    "node": "6.11.x"
+    "node": "8.17.x"
   },
   "scripts": {
     "start": "npm run build && npm run serve",

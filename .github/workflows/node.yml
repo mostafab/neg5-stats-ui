@@ -1,0 +1,34 @@
+# This workflow will build a NodeJS application
+
+name: Node CI with Yarn
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      PORT: 3000
+      NEG5_API_HOST: http://localhost:$PORT
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 6.11.5
+    - name: Install server dependencies
+      run: yarn install
+    - name: Build server code
+      run: npm run build
+    - name: Install client dependencies
+      run: cd react-ui && yarn install && yarn install --only-dev --no-shrinkwrap
+    - name: Build client code
+      run: cd react-ui && npm run build
+    - name: Start Server
+      run: npm run serve & sleep 10
+    - name: Ensure Service is Running
+      run: curl http://localhost:$PORT

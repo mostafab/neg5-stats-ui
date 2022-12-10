@@ -9,23 +9,47 @@
     "start": "npm run build && npm run serve",
     "build": "babel server/ -d server-dist",
     "serve": "node server-dist/",
-    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "heroku-postbuild": "next build",
     "start-dev": "nodemon --watch server --exec babel-node server/"
   },
   "cacheDirectories": [
     "node_modules",
-    "react-ui/node_modules"
+    ".next/cache"
   ],
   "dependencies": {
+    "axios": "1.2.1",
     "@babel/core": "7.20.5",
     "@babel/cli": "7.19.3",
     "@babel/preset-env": "7.20.2",
+    "@babel/preset-react": "7.18.6",
     "@babel/register": "7.18.9",
+    "bootswatch": "3.3.7",
     "dotenv": "4.0.0",
     "express": "4.18.1",
     "express-http-proxy": "1.6.3",
     "express-sslify": "1.2.0",
-    "morgan": "1.10.0"
+    "font-awesome": "4.7.0",
+    "lodash": "4.17.11",
+    "moment": "2.18.1",
+    "morgan": "1.10.0",
+    "next": "12.2.0",
+    "next-redux-wrapper": "8.0.0",
+    "prop-types": "15.6.2",
+    "query-string": "5.0.0",
+    "react": "17.0.2",
+    "react-addons-shallow-compare": "15.6.0",
+    "react-bootstrap": "0.31.2",
+    "react-bootstrap-typeahead": "2.0.0-rc.4",
+    "react-dates": "21.8.0",
+    "react-dom": "17.0.2",
+    "react-fontawesome": "1.6.1",
+    "react-redux": "7.2.5",
+    "redux": "3.6.0",
+    "redux-actions": "2.2.1",
+    "redux-thunk": "2.2.0",
+    "regenerator-runtime": "0.13.11",
+    "sanitize.css": "5.0.0",
+    "slug": "0.9.1"
   },
   "repository": {
     "type": "git",
@@ -34,7 +58,6 @@
   "keywords": [
     "node",
     "heroku",
-    "create-react-app",
     "react"
   ],
   "license": "MIT",

@@ -20,4 +20,4 @@ jobs:
       with:
         node-version: 6.11.5
     - name: Install Dependencies
-    - run: yarn install
+      run: yarn install

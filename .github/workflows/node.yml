@@ -12,7 +12,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      PORT: 1337
+      PORT: 3000
     steps:
     - uses: actions/checkout@v3
     - name: Set up Node
@@ -20,4 +20,5 @@ jobs:
       with:
         node-version: 6.11.5
     - name: Install Dependencies
-      run: yarn install
+      run: yarn install && cd react-ui && yarn install && yarn install --only=dev --no-shrinkwrap && npm run build
+    - name: Start Service

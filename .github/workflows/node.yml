@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
-        node-version: 6.11.5
+        node-version: 8.17.0
     - name: Install server dependencies
       run: yarn install
     - name: Build server code

@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.0.10"
+    "react-scripts": "2.1.8"
+  },
+  "engines": {
+    "node": "8.17.x"
   },
   "proxy": "http://localhost:3000",
   "dependencies": {
@@ -38,5 +41,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "/neg5.stats.web-server"
+  "homepage": "/neg5.stats.web-server",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-import config from './../config';
-
-const HOST = config.REACT_APP_BASE_TOURNAMENT_API_URL === undefined ? 'http://localhost:1443' : config.REACT_APP_BASE_TOURNAMENT_API_URL;
-
-const TEAM_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/team-standings`;
-const INDIVIDUAL_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/individual-standings`;
-const TEAM_FULL_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/team-full-standings`;
-const INDIVIDUAL_FULL_STANDINGS_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/individual-full-standings`;
-const ROUND_REPORT_URL = `${HOST}/neg5-api/tournaments/{tournamentId}/stats/round-report`;
+const TEAM_STANDINGS_URL = `/neg5-api/tournaments/{tournamentId}/stats/team-standings`;
+const INDIVIDUAL_STANDINGS_URL = `/neg5-api/tournaments/{tournamentId}/stats/individual-standings`;
+const TEAM_FULL_STANDINGS_URL = `/neg5-api/tournaments/{tournamentId}/stats/team-full-standings`;
+const INDIVIDUAL_FULL_STANDINGS_URL = `/neg5-api/tournaments/{tournamentId}/stats/individual-full-standings`;
+const ROUND_REPORT_URL = `/neg5-api/tournaments/{tournamentId}/stats/round-report`;
 
 export const getTeamStandings = async (tournamentId, phaseId = '') => {
    try {

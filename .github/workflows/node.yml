@@ -19,6 +19,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 6.11.5
-    - name: Install Dependencies
-      run: yarn install && cd react-ui && yarn install && yarn install --only=dev --no-shrinkwrap && npm run build
-    - name: Start Service
+    - name: Install and build server dependencies
+      run: yarn install && npm run build
+    - name: Install and build client dependencies
+      run: npm run heroku-postbuild

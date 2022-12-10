@@ -28,7 +28,7 @@ jobs:
     - name: Build server code
       run: npm run build
     - name: Install client dependencies
-      run: cd react-ui && yarn install && yarn install --only-dev --no-shrinkwrap
+      run: cd react-ui && npm install && npm install --only-dev --no-shrinkwrap
     - name: Build client code
       run: cd react-ui && npm run build
     - name: Start Server

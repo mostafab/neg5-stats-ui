@@ -1,13 +1,10 @@
 import axios from 'axios';
 import moment from 'moment'
-import config from './../config';
 
-const HOST = config.REACT_APP_BASE_TOURNAMENT_API_URL === undefined ? 'http://localhost:1443' : config.REACT_APP_BASE_TOURNAMENT_API_URL;
-
-const INFO_URL = `${HOST}/neg5-api/tournaments/{tournamentId}`;
-const RECENT_TOURNAMENTS_URL = `${HOST}/neg5-api/search/tournaments/days?days={days}`;
-const BETWEEN_DATES_TOURNAMENT_URL = `${HOST}/neg5-api/search/tournaments/dates`;
-const BY_NAME_URL = `${HOST}/neg5-api/search/tournaments/name`;
+const INFO_URL = `/neg5-api/tournaments/{tournamentId}`;
+const RECENT_TOURNAMENTS_URL = `/neg5-api/search/tournaments/days?days={days}`;
+const BETWEEN_DATES_TOURNAMENT_URL = `/neg5-api/search/tournaments/dates`;
+const BY_NAME_URL = `/neg5-api/search/tournaments/name`;
 
 export const getTournamentInfo = async (tournamentId) => {
   try {

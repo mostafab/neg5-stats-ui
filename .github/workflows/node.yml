@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PORT: 3000
+      NEG5_API_HOST: http://localhost:$PORT
     steps:
     - uses: actions/checkout@v3
     - name: Set up Node

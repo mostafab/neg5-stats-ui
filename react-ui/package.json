@@ -6,7 +6,7 @@
     "react-scripts": "2.1.8"
   },
   "engines": {
-    "node": "12.22.x"
+    "node": "16.18.1"
   },
   "proxy": "http://localhost:3000",
   "dependencies": {

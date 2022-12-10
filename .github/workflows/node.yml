@@ -16,10 +16,13 @@ jobs:
       NEG5_API_HOST: http://localhost:$PORT
     steps:
     - uses: actions/checkout@v3
+    - name: Read Node Version
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+      id: nvm
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
-        node-version: 8.17.0
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
     - name: Install server dependencies
       run: yarn install
     - name: Build server code

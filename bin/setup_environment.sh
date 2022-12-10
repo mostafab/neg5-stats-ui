@@ -6,7 +6,7 @@ nvm_script_location='https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/instal
 node_version="8.17.0"
 
 cd $(dirname "$0")
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+curl -o- $nvm_script_location | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

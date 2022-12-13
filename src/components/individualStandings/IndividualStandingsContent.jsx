@@ -1,7 +1,7 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React from "react";
+import { Row, Col } from "react-bootstrap";
 
-import IndividualStatsTable from './IndividualStatsTable';
+import IndividualStatsTable from "./IndividualStatsTable";
 
 const IndividualStandingsContent = ({
   individualStats,
@@ -9,9 +9,9 @@ const IndividualStandingsContent = ({
   tournamentId,
   tossupValues,
   slug,
-  usesNegs, 
+  usesNegs,
 }) => (
-  <Row className='IndividualStandingsContent'>
+  <Row className="IndividualStandingsContent">
     <Col lg={12} md={12} sm={12}>
       <IndividualStatsTable
         slug={slug}
@@ -19,10 +19,10 @@ const IndividualStandingsContent = ({
         phaseId={phaseId}
         tournamentId={tournamentId}
         usesNegs={usesNegs}
-        tossupValues={tossupValues}/>
+        tossupValues={tossupValues}
+      />
     </Col>
   </Row>
-)
+);
 
 export default IndividualStandingsContent;
-

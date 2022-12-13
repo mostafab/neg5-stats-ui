@@ -1,13 +1,10 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import TopNavbar from 'components/TopNavbar';
+import TopNavbar from "components/TopNavbar";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   tournamentSearchForm: state.landingPage.tournamentSearchForm,
   searchingForTournaments: state.landingPage.searchingForTournaments,
 });
 
-export default connect(
-  mapStateToProps,
-  null,
-)(TopNavbar);
+export default connect(mapStateToProps, null)(TopNavbar);

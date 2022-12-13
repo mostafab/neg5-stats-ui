@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import PhaseSelector from 'components/PhaseSelector';
+import PhaseSelector from "components/PhaseSelector";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   tournamentId: state.globalState.loadedTournament.id,
   slug: state.globalState.loadedTournament.slug,
   phases: state.globalState.phases,
@@ -16,7 +16,4 @@ const mapStateToProps = state => ({
   ],
 });
 
-export default connect(
-  mapStateToProps,
-  null,
-)(PhaseSelector);
+export default connect(mapStateToProps, null)(PhaseSelector);

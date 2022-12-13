@@ -1,14 +1,11 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import LandingPageRoot from 'components/landingPage/LandingPageRoot';
+import LandingPageRoot from "components/landingPage/LandingPageRoot";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   recentTournaments: state.landingPage.recentTournaments,
   searchForm: state.landingPage.searchForm,
   numTimesTournamentsRequested: state.landingPage.numTimesTournamentsRequested,
 });
 
-export default connect(
-  mapStateToProps,
-  null,
-)(LandingPageRoot);
+export default connect(mapStateToProps, null)(LandingPageRoot);

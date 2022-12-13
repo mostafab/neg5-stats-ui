@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import RoundReportRoot from 'components/roundReport/RoundReportRoot';
+import RoundReportRoot from "components/roundReport/RoundReportRoot";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   roundReportStats: state.roundReport.roundReportStats,
   numTimesStatsReceived: state.roundReport.numTimesStatsReceived,
   requestingRoundReport: state.roundReport.requestingRoundReport,
@@ -10,7 +10,4 @@ const mapStateToProps = state => ({
   tournamentInfo: state.globalState.loadedTournament,
 });
 
-export default connect(
-  mapStateToProps,
-)(RoundReportRoot);
-
+export default connect(mapStateToProps)(RoundReportRoot);

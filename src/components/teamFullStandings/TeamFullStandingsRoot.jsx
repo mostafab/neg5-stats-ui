@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import PhaseSelector from '../../containers/common/PhaseSelector';
-import StandingsNavigation from '../../../src/components/StandingsNavigation';
-import { reportTypes } from '../../util/stats-util';
+import PhaseSelector from "../../containers/common/PhaseSelector";
+import StandingsNavigation from "../../../src/components/StandingsNavigation";
+import { reportTypes } from "../../util/stats-util";
 
-import TeamFullStandingsContent from './TeamFullStandingsContent';
+import TeamFullStandingsContent from "./TeamFullStandingsContent";
 
 const TeamFullStandingsRoot = ({
   fullTeamStats,
@@ -22,9 +22,10 @@ const TeamFullStandingsRoot = ({
         slug={slug}
         tournamentId={tournamentId}
         phaseId={selectedPhaseId}
-        reportType={reportTypes.teamFull} />
-      <div className='TeamFullStandingsRoot stats-content'>
-        <h3> { tournamentInfo.name || ''} Full Team Standings </h3>
+        reportType={reportTypes.teamFull}
+      />
+      <div className="TeamFullStandingsRoot stats-content">
+        <h3> {tournamentInfo.name || ""} Full Team Standings </h3>
         <TeamFullStandingsContent
           slug={slug}
           fullTeamStats={fullTeamStats}
@@ -37,7 +38,7 @@ const TeamFullStandingsRoot = ({
         />
       </div>
     </>
-  )
-}
+  );
+};
 
 export default TeamFullStandingsRoot;

@@ -1,4 +1,5 @@
-export const mapIndividualStandings = standings => standings.map(mapSingleIndividualStanding);
+export const mapIndividualStandings = (standings) =>
+  standings.map(mapSingleIndividualStanding);
 
 export const mapSingleIndividualStanding = (standing, index) => {
   return {
@@ -6,7 +7,7 @@ export const mapSingleIndividualStanding = (standing, index) => {
     playerId: standing.playerId,
     ppg: standing.pointsPerGame,
     pointsPerTossup: standing.pointsPerTossupHeard,
-    tossupTotals: standing.tossupAnswerCounts.map(tv => ({
+    tossupTotals: standing.tossupAnswerCounts.map((tv) => ({
       value: tv.value,
       total: tv.total,
     })),
@@ -14,28 +15,37 @@ export const mapSingleIndividualStanding = (standing, index) => {
     totalPoints: standing.totalPoints,
     powersToNegRatio: standing.powersToNegRatio,
     getsToNegRatio: standing.getsToNegRatio,
-  }
-}
+  };
+};
 
-export const mapFullIndividualStandings = standings => standings.map(playerStandings => mapSingleFullIndividualStanding(playerStandings.playerId, playerStandings.matches));
+export const mapFullIndividualStandings = (standings) =>
+  standings.map((playerStandings) =>
+    mapSingleFullIndividualStanding(
+      playerStandings.playerId,
+      playerStandings.matches
+    )
+  );
 
 export const mapSingleFullIndividualStanding = (playerId, matches) => ({
   playerId,
-  matches: Object.assign([], matches.map(match => ({
-    gamePlayed: match.percentGamePlayed,
-    opponentTeamId: match.opponentTeamId,
-    round: match.round,
-    pointsPerTossupHeard: match.pointsPerTossup,
-    tossupTotals: match.tossupAnswerCounts.map(tv => ({
-      answerType: tv.answerType,
-      total: tv.total,
-      value: tv.value,
-    })),
-    totalTUH: match.tossupsHeard,
-    totalPoints: match.points,
-    getsToNegRatio: match.getsToNegRatio,
-    powersToNegRatio: match.powersToNegRatio,
-  }))),
+  matches: Object.assign(
+    [],
+    matches.map((match) => ({
+      gamePlayed: match.percentGamePlayed,
+      opponentTeamId: match.opponentTeamId,
+      round: match.round,
+      pointsPerTossupHeard: match.pointsPerTossup,
+      tossupTotals: match.tossupAnswerCounts.map((tv) => ({
+        answerType: tv.answerType,
+        total: tv.total,
+        value: tv.value,
+      })),
+      totalTUH: match.tossupsHeard,
+      totalPoints: match.points,
+      getsToNegRatio: match.getsToNegRatio,
+      powersToNegRatio: match.powersToNegRatio,
+    }))
+  ),
 });
 
 export default {

@@ -1,8 +1,8 @@
-import tournamentClient from 'client/tournament-client';
-import { mapTournaments } from 'mappers/tournaments-mapper';
-import { getTournamentUrlFromTournament } from 'util/url-util';
+import tournamentClient from "client/tournament-client";
+import { mapTournaments } from "mappers/tournaments-mapper";
+import { getTournamentUrlFromTournament } from "util/url-util";
 
-const ROOT = 'landingPage/';
+const ROOT = "landingPage/";
 
 export const RECENT_TOURNAMENTS_REQUESTED = `${ROOT}RECENT_TOURNAMENTS_REQUESTED`;
 export const RECENT_TOURNAMENTS_RECEIVED = `${ROOT}RECENT_TOURNAMENTS_RECEIVED`;
@@ -16,28 +16,29 @@ export const TOURNAMENT_SEARCH_QUERY_SUBMITTED = `${ROOT}TOURNAMENT_SEARCH_QUERY
 export const TOURNAMENT_SEARCH_QUERY_SUCCESS = `${ROOT}TOURNAMENT_SEARCH_QUERY_SUCCESS`;
 export const TOURNAMENT_SEARCH_QUERY_FAILURE = `${ROOT}TOURNAMENT_SEARCH_QUERY_FAILURE`;
 
-export const changeFocusedDate = focusedInput =>
-  dispatch =>
-    dispatch({
-      type: CHANGED_FOCUSED_DATE,
-      focusedInput,
-    });
+export const changeFocusedDate = (focusedInput) => (dispatch) =>
+  dispatch({
+    type: CHANGED_FOCUSED_DATE,
+    focusedInput,
+  });
 
-export const changeDates = (startDate, endDate) =>
-    dispatch =>
-      dispatch({
-        type: CHANGED_START_OR_END_DATES,
-        startDate,
-        endDate,
-      });
+export const changeDates = (startDate, endDate) => (dispatch) =>
+  dispatch({
+    type: CHANGED_START_OR_END_DATES,
+    startDate,
+    endDate,
+  });
 
-export const getRecentTournaments = (daysSince = 30) =>
-  async dispatch => {
+export const getRecentTournaments =
+  (daysSince = 30) =>
+  async (dispatch) => {
     dispatch({
       type: RECENT_TOURNAMENTS_REQUESTED,
     });
     try {
-      const tournaments = await tournamentClient.getRecentTournaments(daysSince);
+      const tournaments = await tournamentClient.getRecentTournaments(
+        daysSince
+      );
       const mapped = mapTournaments(tournaments);
       dispatch({
         type: RECENT_TOURNAMENTS_RECEIVED,
@@ -50,13 +51,17 @@ export const getRecentTournaments = (daysSince = 30) =>
     }
   };
 
-export const getTournamentsBetweenDates = (startDate = new Date(), endDate = new Date()) =>
-  async dispatch => {
+export const getTournamentsBetweenDates =
+  (startDate = new Date(), endDate = new Date()) =>
+  async (dispatch) => {
     dispatch({
       type: RECENT_TOURNAMENTS_REQUESTED,
     });
     try {
-      const tournaments = await tournamentClient.getTournamentsInRange(startDate, endDate);
+      const tournaments = await tournamentClient.getTournamentsInRange(
+        startDate,
+        endDate
+      );
       const mapped = mapTournaments(tournaments);
       dispatch({
         type: RECENT_TOURNAMENTS_RECEIVED,
@@ -70,36 +75,34 @@ export const getTournamentsBetweenDates = (startDate = new Date(), endDate = new
     }
   };
 
-export const onTournamentSearchChange = query =>
-  dispatch =>
+export const onTournamentSearchChange = (query) => (dispatch) =>
+  dispatch({
+    type: TOURNAMENT_SEARCH_QUERY_CHANGE,
+    query,
+  });
+
+export const onTournamentSearchQuerySubmitted = (query) => async (dispatch) => {
+  dispatch({
+    type: TOURNAMENT_SEARCH_QUERY_SUBMITTED,
+    query,
+  });
+  try {
+    const mapped = mapTournaments(
+      await tournamentClient.getTournamentsByName(query)
+    );
     dispatch({
-      type: TOURNAMENT_SEARCH_QUERY_CHANGE,
-      query,
+      type: TOURNAMENT_SEARCH_QUERY_SUCCESS,
+      tournaments: mapped,
     });
+  } catch (err) {
+    console.error(err);
+    dispatch({
+      type: TOURNAMENT_SEARCH_QUERY_FAILURE,
+      error: err,
+    });
+  }
+};
 
-export const onTournamentSearchQuerySubmitted = query =>
-    async dispatch => {
-      dispatch({
-        type: TOURNAMENT_SEARCH_QUERY_SUBMITTED,
-        query,
-      });
-      try {
-        const mapped = mapTournaments( await tournamentClient.getTournamentsByName(query));
-        dispatch({
-          type: TOURNAMENT_SEARCH_QUERY_SUCCESS,
-          tournaments: mapped,
-        });
-      } catch (err) {
-        console.error(err);
-        dispatch({
-          type: TOURNAMENT_SEARCH_QUERY_FAILURE,
-          error: err,
-        })
-      }
-    }
-
-export const tournamentSelectedFromChoices = tournament =>
-    dispatch => {
-      const tournamentUrl = getTournamentUrlFromTournament(tournament);
-    }
-      
+export const tournamentSelectedFromChoices = (tournament) => (dispatch) => {
+  const tournamentUrl = getTournamentUrlFromTournament(tournament);
+};

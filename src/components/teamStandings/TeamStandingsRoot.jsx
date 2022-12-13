@@ -1,9 +1,9 @@
-import React from 'react';
-import TeamStandingsContent from './TeamStandingsContent';
+import React from "react";
+import TeamStandingsContent from "./TeamStandingsContent";
 
-import PhaseSelector from '../../containers/common/PhaseSelector';
-import StandingsNavigation from '../../../src/components/StandingsNavigation';
-import { reportTypes } from './../../util/stats-util';
+import PhaseSelector from "../../containers/common/PhaseSelector";
+import StandingsNavigation from "../../../src/components/StandingsNavigation";
+import { reportTypes } from "./../../util/stats-util";
 
 const TeamStandingsRoot = ({
   allTeamStats,
@@ -15,7 +15,7 @@ const TeamStandingsRoot = ({
 }) => {
   let title = `Team Standings`;
   if (tournamentInfo) {
-    title = `${tournamentInfo.name || ''} Team Standings`;
+    title = `${tournamentInfo.name || ""} Team Standings`;
   }
   const slug = tournamentInfo.slug;
   return (
@@ -25,22 +25,22 @@ const TeamStandingsRoot = ({
         slug={slug}
         tournamentId={tournamentInfo.id}
         phaseId={selectedPhaseId}
-        reportType={reportTypes.teamStandings} />
-      <div className='TeamStandingsRoot stats-content '>
-        <h3> { title } </h3>
+        reportType={reportTypes.teamStandings}
+      />
+      <div className="TeamStandingsRoot stats-content ">
+        <h3> {title} </h3>
         <TeamStandingsContent
-          allTeamStats={ allTeamStats }
-          brackets={ brackets }
+          allTeamStats={allTeamStats}
+          brackets={brackets}
           tournamentId={tournamentInfo.id}
-          phaseId={ selectedPhaseId }
+          phaseId={selectedPhaseId}
           tossupValues={tossupValues}
           slug={slug}
-          usesNegs={usesNegs} />
+          usesNegs={usesNegs}
+        />
       </div>
     </>
-  )
-}
+  );
+};
 
 export default TeamStandingsRoot;
-
-

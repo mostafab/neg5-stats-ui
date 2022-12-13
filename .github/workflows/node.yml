@@ -25,6 +25,8 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: yarn install
+      - name: Prettier Check
+        run: yarn prettier --check .
       - name: Next Build
         run: ./node_modules/next/dist/bin/next build
       - name: Start Server

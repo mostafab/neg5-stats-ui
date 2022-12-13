@@ -2,9 +2,11 @@ import express from "express";
 import path from "path";
 
 import httpProxy from "express-http-proxy";
+import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
 import httpsEnforce from "express-sslify";
+import compression from "compression";
 
 import "./config";
 
@@ -18,6 +20,9 @@ const nextApp = next({ dev });
 const nextAppHandler = nextApp.getRequestHandler();
 
 nextApp.prepare().then(() => {
+  app.use(helmet());
+  app.use(compression());
+
   if (process.env.NODE_ENV === "production") {
     app.use(httpsEnforce.HTTPS({ trustProtoHeader: true }));
   }

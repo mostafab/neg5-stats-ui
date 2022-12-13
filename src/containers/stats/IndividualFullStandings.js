@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { orderBy } from 'lodash';
 
-import IndividualFullStandingsRoot from '../../components/individualFullStandings/IndividualFullStandingsRoot';
+import IndividualFullStandingsRoot from 'components/individualFullStandings/IndividualFullStandingsRoot';
 
 const mapStateToProps = state => ({
   selectedPhaseId: state.globalState.selectedPhaseId,

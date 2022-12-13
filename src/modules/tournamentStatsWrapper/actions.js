@@ -1,19 +1,17 @@
-import tournamentClient from './../../client/tournament-client';
-import teamClient from './../../client/team-client';
-import { mapPhases } from './../../mappers/phase-mapper';
-import { mapSingleTournament } from './../../mappers/tournaments-mapper';
-import { mapTossupValues } from './../../mappers/point-scheme-mapper';
-import { mapBrackets } from './../../mappers/brackets-mapper';
-import { groupTeamsAndPlayers } from '../../util/stats-util';
+import tournamentClient from 'client/tournament-client';
+import teamClient from 'client/team-client';
+import { mapPhases } from 'mappers/phase-mapper';
+import { mapSingleTournament } from 'mappers/tournaments-mapper';
+import { mapTossupValues } from 'mappers/point-scheme-mapper';
+import { mapBrackets } from 'mappers/brackets-mapper';
+import { groupTeamsAndPlayers } from 'util/stats-util';
 
-import { BRACKETS_RECEIVED } from './../teamStandings/actions';
-
-import { requestTeamStandings } from '../teamStandings/actions';
-import { requestFullTeamStandings } from '../fullTeamStandings/actions';
-import { getIndividualStandings } from '../individualStandings/actions';
-import { requestFullIndividualStandings } from '../fullIndividualStandings/actions';
-import { getRoundReport } from '../roundReport/actions';
-import { reportTypes } from '../../util/stats-util';
+import { BRACKETS_RECEIVED, requestTeamStandings } from 'modules/teamStandings/actions';
+import { requestFullTeamStandings } from 'modules/fullTeamStandings/actions';
+import { getIndividualStandings } from 'modules/individualStandings/actions';
+import { requestFullIndividualStandings } from 'modules/fullIndividualStandings/actions';
+import { getRoundReport } from 'modules/roundReport/actions';
+import { reportTypes } from 'util/stats-util';
 
 const ROOT = 'tournamentStatsWrapper/';
 

@@ -1,4 +1,4 @@
-import slugs from './../util/slug';
+import slugs from 'util/slug';
 
 export const mapTournaments = tournaments =>
   Object.assign([], tournaments.map(mapSingleTournament)).sort((first, second) => {

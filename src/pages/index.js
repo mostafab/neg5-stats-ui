@@ -1,10 +1,10 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 
-import { wrapper } from '../store';
-import LandingPageWrapper from '../containers/landingPage/LandingPageWrapper';
+import { wrapper } from 'store.js';
+import LandingPageWrapper from 'containers/landingPage/LandingPageWrapper';
 
-import { getTournamentsBetweenDates } from '../modules/landingPage/actions';
+import { getTournamentsBetweenDates } from 'modules/landingPage/actions';
 
 const IndexPage = () => {
   return <LandingPageWrapper />;

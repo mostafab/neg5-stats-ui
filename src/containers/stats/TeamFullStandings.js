@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { groupBy, orderBy } from 'lodash';
 
-import { enrichIndividualStats } from '../../util/stats-util';
+import { enrichIndividualStats } from 'util/stats-util';
 
-import TeamFullStandingsRoot from '../../components/teamFullStandings/TeamFullStandingsRoot';
+import TeamFullStandingsRoot from 'components/teamFullStandings/TeamFullStandingsRoot';
 
 const mapStateToProps = state => ({
   fullTeamStats: enrichTeamFullStats(state.teamFullStandings.fullTeamStats, state.globalState.teams),

@@ -1,5 +1,5 @@
-import statsClient from '../../client/stats-client';
-import { mapIndividualStandings } from '../../mappers/individual-standings-mapper';
+import statsClient from 'client/stats-client';
+import { mapIndividualStandings } from 'mappers/individual-standings-mapper';
 
 const ROOT = 'individualStandings/';
 
@@ -20,6 +20,7 @@ export const getIndividualStandings = (tournamentId, phaseId) =>
         individualStats: mappedStandings,
       });
     } catch (e) {
+      console.error(e);
       dispatch({
         type: INDIVIDUAL_STANDINGS_ERROR,
       });

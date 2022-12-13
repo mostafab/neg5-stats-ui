@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import RoundReportRoot from '../../components/roundReport/RoundReportRoot';
+import RoundReportRoot from 'components/roundReport/RoundReportRoot';
 
 const mapStateToProps = state => ({
   roundReportStats: state.roundReport.roundReportStats,

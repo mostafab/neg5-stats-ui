@@ -1,5 +1,5 @@
-import { getFullIndividualStandings } from '../../client/stats-client';
-import { mapFullIndividualStandings } from './../../mappers/individual-standings-mapper';
+import { getFullIndividualStandings } from 'client/stats-client';
+import { mapFullIndividualStandings } from 'mappers/individual-standings-mapper';
 
 const ROOT = 'individualFullStandings/';
 

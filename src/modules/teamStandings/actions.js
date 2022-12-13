@@ -1,5 +1,5 @@
-import { getTeamStandings } from '../../client/stats-client';
-import { mapTeamStandings } from './../../mappers/team-standings-mapper';
+import { getTeamStandings } from 'client/stats-client';
+import { mapTeamStandings } from 'mappers/team-standings-mapper';
 
 const ROOT = 'teamStandings/';
 

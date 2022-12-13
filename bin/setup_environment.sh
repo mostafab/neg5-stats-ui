@@ -14,10 +14,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 nvm install "v${node_version}"
+yarn install
 
-yarn install
-cd react-ui
-yarn install
+if [ ! -f ".env" ]; then
+    echo 'Creating .env file in root of project directory'
+    touch .env
+    chmod a+r .env
+    echo 'NEG5_API_HOST=http://localhost:1337' > .env
+    echo 'PORT=3000' >> .env
+fi
+
 
 
 

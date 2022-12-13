@@ -1,17 +1,17 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 
-import Navbar from '../src/containers/common/Navbar';
+import Navbar from './../containers/common/Navbar';
 import { Provider } from 'react-redux';
 
-import { wrapper } from './../src/store';
+import { wrapper } from './../store';
 
 import 'bootswatch/flatly/bootstrap.min.css';
 import 'sanitize.css/sanitize.css';
 import 'font-awesome/css/font-awesome.min.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import './../src/index.css';
+import './../index.css';
 
 export default function MyApp({
     Component,

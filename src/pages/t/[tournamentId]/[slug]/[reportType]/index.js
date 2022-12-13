@@ -1,23 +1,23 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 
-import { wrapper } from '../../../../../src/store';
+import { wrapper } from '../../../../../store';
 
-import TeamStandings from '../../../../../src/containers/stats/TeamStandings';
-import TeamFullStandings from '../../../../../src/containers/stats/TeamFullStandings';
-import IndividualStandings from '../../../../../src/containers/stats/IndividualStandings';
-import IndividualFullStandings from '../../../../../src/containers/stats/IndividualFullStandings';
-import RoundReport from '../../../../../src/containers/stats/RoundReport';
+import TeamStandings from '../../../../../containers/stats/TeamStandings';
+import TeamFullStandings from '../../../../../containers/stats/TeamFullStandings';
+import IndividualStandings from '../../../../../containers/stats/IndividualStandings';
+import IndividualFullStandings from '../../../../../containers/stats/IndividualFullStandings';
+import RoundReport from '../../../../../containers/stats/RoundReport';
 
-import { getTournamentInformation, setInitialPhaseOnLoad } from '../../../../../src/modules/tournamentStatsWrapper/actions';
-import { requestTeamStandings } from '../../../../../src/modules/teamStandings/actions';
+import { getTournamentInformation, setInitialPhaseOnLoad } from '../../../../../modules/tournamentStatsWrapper/actions';
+import { requestTeamStandings } from '../../../../../modules/teamStandings/actions';
 
-import { requestFullTeamStandings } from '../../../../../src/modules/fullTeamStandings/actions';
-import { getIndividualStandings } from '../../../../../src/modules/individualStandings/actions';
-import { requestFullIndividualStandings } from '../../../../../src/modules/fullIndividualStandings/actions';
-import { getRoundReport } from '../../../../../src/modules/roundReport/actions';
+import { requestFullTeamStandings } from '../../../../../modules/fullTeamStandings/actions';
+import { getIndividualStandings } from '../../../../../modules/individualStandings/actions';
+import { requestFullIndividualStandings } from '../../../../../modules/fullIndividualStandings/actions';
+import { getRoundReport } from '../../../../../modules/roundReport/actions';
 
-import { reportTypes } from '../../../../../src/util/stats-util';
+import { reportTypes } from '../../../../../util/stats-util';
 
 const validReportTypes = Object.values(reportTypes);
 

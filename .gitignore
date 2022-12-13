@@ -2,14 +2,9 @@
 
 # dependencies
 node_modules
-react-ui/node_modules
-
-# testing
-coverage
 
 # production
 react-ui/build
-build-server
 server-dist
 
 # misc

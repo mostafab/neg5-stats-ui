@@ -1,11 +1,11 @@
-import { orderBy } from 'lodash';
+import { orderBy } from "lodash";
 
-export const mapRoundReport = standings => {
+export const mapRoundReport = (standings) => {
   const mapped = Object.assign([], standings.map(mapSingleRound));
-  return orderBy(mapped, ['round']);
-}
+  return orderBy(mapped, ["round"]);
+};
 
-export const mapSingleRound = standing => ({
+export const mapSingleRound = (standing) => ({
   round: standing.round,
   averagePPG: standing.averagePointsPerGame,
   tossupCounts: standing.tossupAnswerCounts,

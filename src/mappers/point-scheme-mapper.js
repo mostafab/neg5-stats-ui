@@ -1,10 +1,10 @@
-import { orderBy } from 'lodash';
+import { orderBy } from "lodash";
 
-export const mapTossupValues = ps => {
-  return orderBy(ps.map(mapSingleTossupValue), ['value'], ['desc']);
+export const mapTossupValues = (ps) => {
+  return orderBy(ps.map(mapSingleTossupValue), ["value"], ["desc"]);
 };
 
-export const mapSingleTossupValue = tv => ({
+export const mapSingleTossupValue = (tv) => ({
   answerType: tv.answerType,
   value: tv.value,
 });

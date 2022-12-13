@@ -1,7 +1,7 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React from "react";
+import { Row, Col } from "react-bootstrap";
 
-import TeamFullStandingsByTeamWrapper from './TeamFullStandingsByTeamWrapper';
+import TeamFullStandingsByTeamWrapper from "./TeamFullStandingsByTeamWrapper";
 
 const TeamFullStandingsContent = ({
   tossupValues,
@@ -13,7 +13,7 @@ const TeamFullStandingsContent = ({
   bouncebacks,
   usesNegs,
 }) => (
-  <Row className='TeamFullStandingsContent'>
+  <Row className="TeamFullStandingsContent">
     <Col lg={12} md={12} sm={12}>
       <TeamFullStandingsByTeamWrapper
         slug={slug}

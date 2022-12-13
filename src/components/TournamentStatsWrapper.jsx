@@ -1,19 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import PhaseSelector from '../containers/common/PhaseSelector';
-import StandingsNavigation from './StandingsNavigation';
+import PhaseSelector from "../containers/common/PhaseSelector";
+import StandingsNavigation from "./StandingsNavigation";
 
-const TournamentStatsWrapper = ({
-  loadedTournament: tournament,
-}) => {
+const TournamentStatsWrapper = ({ loadedTournament: tournament }) => {
   return (
-    <main className='TournamentStatsWrapper'>
+    <main className="TournamentStatsWrapper">
       <PhaseSelector />
       <StandingsNavigation tournamentId={tournament.id} phaseId={null} />
     </main>
   );
-}
+};
 
 export default TournamentStatsWrapper;
-
-

@@ -1,14 +1,14 @@
-import { getFullTeamStandings } from 'client/stats-client';
-import { mapFullTeamStandings } from 'mappers/team-standings-mapper';
+import { getFullTeamStandings } from "client/stats-client";
+import { mapFullTeamStandings } from "mappers/team-standings-mapper";
 
-const ROOT = 'teamFullStandings/';
+const ROOT = "teamFullStandings/";
 
 export const TEAM_FULL_STANDINGS_REQUESTED = `${ROOT}TEAM_FULL_STANDINGS_REQUESTED`;
 export const TEAM_FULL_STANDINGS_RECEIVED = `${ROOT}TEAM_FULL_STANDINGS_RECEIVED`;
 export const TEAM_FULL_STANDINGS_ERROR = `${ROOT}TEAM_FULL_STANDINGS_ERROR`;
 
-export const requestFullTeamStandings = (tournamentId, phaseId) =>
-  async dispatch => {
+export const requestFullTeamStandings =
+  (tournamentId, phaseId) => async (dispatch) => {
     dispatch({
       type: TEAM_FULL_STANDINGS_REQUESTED,
     });
@@ -25,4 +25,4 @@ export const requestFullTeamStandings = (tournamentId, phaseId) =>
         type: TEAM_FULL_STANDINGS_ERROR,
       });
     }
-  }
+  };

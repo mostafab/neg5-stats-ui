@@ -17,12 +17,12 @@
     ".next/cache"
   ],
   "dependencies": {
-    "axios": "1.2.1",
-    "@babel/core": "7.20.5",
     "@babel/cli": "7.19.3",
+    "@babel/core": "7.20.5",
     "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.18.6",
     "@babel/register": "7.18.9",
+    "axios": "1.2.1",
     "bootswatch": "3.3.7",
     "dotenv": "4.0.0",
     "express": "4.18.1",
@@ -62,10 +62,12 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.20.5",
     "@babel/cli": "7.19.3",
+    "@babel/core": "7.20.5",
     "@babel/preset-env": "7.20.2",
     "@babel/register": "7.18.9",
+    "eslint": "8.29.0",
+    "eslint-config-next": "13.0.6",
     "nodemon": "1.11.0"
   }
 }

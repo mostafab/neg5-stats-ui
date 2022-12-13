@@ -8,7 +8,7 @@ import {
   BRACKETS_ERROR,
 } from './actions';
 
-import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from './../common/common-reducers';
+import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from 'modules/common/common-reducers';
 
 const initialState = {
   requestingTeamStandings: false,

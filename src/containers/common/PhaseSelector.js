@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import PhaseSelector from '../../components/PhaseSelector';
+import PhaseSelector from 'components/PhaseSelector';
 
 const mapStateToProps = state => ({
   tournamentId: state.globalState.loadedTournament.id,

@@ -1,7 +1,7 @@
 import { orderBy } from 'lodash';
 import { connect } from 'react-redux';
 
-import IndividualStandingsRoot from '../../components/individualStandings/IndividualStandingsRoot';
+import IndividualStandingsRoot from 'components/individualStandings/IndividualStandingsRoot';
 
 const mapStateToProps = state => {
   return {

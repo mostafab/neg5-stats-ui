@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { orderBy } from 'lodash';
 
-import TeamStandingsRoot from '../../components/teamStandings/TeamStandingsRoot';
+import TeamStandingsRoot from 'components/teamStandings/TeamStandingsRoot';
 
 const mapStateToProps = state => ({
   allTeamStats: enrichStandings(state.teamStandings.allTeamStats, state.globalState.teams, state.globalState.selectedPhaseId, state.globalState.loadedTournament.currentPhaseId),

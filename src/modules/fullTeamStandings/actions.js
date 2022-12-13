@@ -1,5 +1,5 @@
-import { getFullTeamStandings } from '../../client/stats-client';
-import { mapFullTeamStandings } from './../../mappers/team-standings-mapper';
+import { getFullTeamStandings } from 'client/stats-client';
+import { mapFullTeamStandings } from 'mappers/team-standings-mapper';
 
 const ROOT = 'teamFullStandings/';
 
@@ -20,6 +20,7 @@ export const requestFullTeamStandings = (tournamentId, phaseId) =>
         fullTeamStats: mappedStandings,
       });
     } catch (e) {
+      console.error(e);
       dispatch({
         type: TEAM_FULL_STANDINGS_ERROR,
       });

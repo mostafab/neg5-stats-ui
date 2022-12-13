@@ -1,11 +1,11 @@
-import { TOURNAMENT_INFO_RECEIVED, PHASE_CHANGE } from './../tournamentStatsWrapper/actions';
+import { TOURNAMENT_INFO_RECEIVED, PHASE_CHANGE } from 'modules/tournamentStatsWrapper/actions';
 
 export const resetLazyLoadStatsOnTournamentOrPhaseChanged = {
-  [TOURNAMENT_INFO_RECEIVED]: (state, action) => ({
+  [TOURNAMENT_INFO_RECEIVED]: (state, _action) => ({
     ...state,
     numTimesStatsReceived: 0
   }),
-  [PHASE_CHANGE]: (state, action) => ({
+  [PHASE_CHANGE]: (state, _action) => ({
     ...state,
     numTimesStatsReceived: 0,
   }),

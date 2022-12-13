@@ -1,5 +1,5 @@
-import statsClient from '../../client/stats-client';
-import { mapRoundReport } from '../../mappers/round-report-mapper';
+import statsClient from 'client/stats-client';
+import { mapRoundReport } from 'mappers/round-report-mapper';
 
 const ROOT = 'roundReport/';
 

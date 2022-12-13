@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
-import rootReducer from './modules';
+
+import rootReducer from 'modules';
 
 const initialState = {};
 const enhancers = [];

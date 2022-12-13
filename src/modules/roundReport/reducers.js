@@ -4,7 +4,7 @@ import {
   ROUND_REPORT_RECEIVED,
   ROUND_REPORT_REQUESTED
 } from './actions';
-import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from './../common/common-reducers';
+import { resetLazyLoadStatsOnTournamentOrPhaseChanged } from 'modules/common/common-reducers';
 
 const initialState = {
   requestingRoundReport: false,

@@ -12,7 +12,7 @@ import {
   TEAMS_RECEIVED
 } from './actions';
 
-import { usesNeg } from './../../util/stats-util';
+import { usesNeg } from 'util/stats-util';
 
 const initialState = {
   tossupValues: [],

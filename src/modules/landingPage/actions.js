@@ -1,7 +1,6 @@
-import tournamentClient from './../../client/tournament-client';
-import { mapTournaments } from './../../mappers/tournaments-mapper';
-
-import { getTournamentUrlFromTournament } from './../../util/url-util';
+import tournamentClient from 'client/tournament-client';
+import { mapTournaments } from 'mappers/tournaments-mapper';
+import { getTournamentUrlFromTournament } from 'util/url-util';
 
 const ROOT = 'landingPage/';
 

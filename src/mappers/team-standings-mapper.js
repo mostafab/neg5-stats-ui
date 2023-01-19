@@ -41,7 +41,8 @@ export const mapSingleFullTeamStanding = (standing) => ({
     standing.matches.map((match) => ({
       bouncebackPoints: match.bouncebackPoints || null,
       opponentId: match.opponentTeamId,
-      opponentScore: match.opponentPoints == undefined ? null : match.opponentPoints ,
+      opponentScore:
+        match.opponentPoints == undefined ? null : match.opponentPoints,
       ppb: match.pointsPerBonus === undefined ? null : match.pointsPerBonus,
       result: match.result,
       round: match.round,
@@ -52,11 +53,17 @@ export const mapSingleFullTeamStanding = (standing) => ({
         answerType: tv.answerType,
       })),
       totalTUH: match.tossupsHeard === undefined ? null : match.tossupsHeard,
-      powersToNegRatio: match.powersToNegRatio === undefined ? null : match.powersToNegRatio,
-      getsToNegRatio: match.getsToNegRatio === undefined ? null : match.getsToNegRatio,
+      powersToNegRatio:
+        match.powersToNegRatio === undefined ? null : match.powersToNegRatio,
+      getsToNegRatio:
+        match.getsToNegRatio === undefined ? null : match.getsToNegRatio,
       bonusPoints: match.bonusPoints === undefined ? null : match.bonusPoints,
-      bonusesHeard: match.bonusesHeard === undefined ? null : match.bonusesHeard,
-      pointsPerTossupHeard: match.pointsPerTossupHeard === undefined ? null : match.pointsPerTossupHeard,
+      bonusesHeard:
+        match.bonusesHeard === undefined ? null : match.bonusesHeard,
+      pointsPerTossupHeard:
+        match.pointsPerTossupHeard === undefined
+          ? null
+          : match.pointsPerTossupHeard,
     }))
   ),
 });
